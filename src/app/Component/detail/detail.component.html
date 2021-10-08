@@ -1,0 +1,29 @@
+
+  <div *ngIf="valid">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>तारीख</th>
+        <th>वेळ</th>
+        <th>दूध</th>
+        <th>फॅट</th>
+        <th>SNF</th>
+        <th>एकूण दर</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let temp of data">
+        <td>{{temp.date|trimdate}} </td>
+        <td>{{temp.hours}}</td>
+        <td>{{temp.milk}}</td>
+        <td>{{temp.fat}}</td>
+        <td>{{temp.snf}}</td>
+        <td>{{temp.t_rate}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="mt-5 d-flex justify-content-center" *ngIf="!valid">
+<h3>{{err}} </h3>
+  </div>
