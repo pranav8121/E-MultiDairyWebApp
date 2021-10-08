@@ -270,8 +270,8 @@ export class MainComponent implements OnInit {
 
 
   Time() {
-    this.currentHour = moment().format("HH");
-    if (this.currentHour >= 24 && this.currentHour < 12) {
+    this.currentHour = moment().format("HH");    
+    if (this.currentHour >= 1 && this.currentHour < 15) {
       this.timeMsg = "  सकाळ  ";
       this.engtimeMsg = "Morning"
     } else {
