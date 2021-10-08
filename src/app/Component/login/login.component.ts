@@ -33,7 +33,6 @@ console.log(this.temp);
 sessionStorage.setItem('UId',this.temp.Id);
 sessionStorage.setItem('Name',this.temp.Name);
 sessionStorage.setItem('token',this.temp.token);
-sessionStorage.setItem('length',this.temp.Member_count);
 this.router.navigate([`/Main`]);
 this.err='';
   },
