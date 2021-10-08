@@ -96,6 +96,7 @@ export class MainComponent implements OnInit {
     }, err => {
       console.log(err);
       this.flag_1 = false
+      
     })
   }
 
@@ -104,7 +105,8 @@ export class MainComponent implements OnInit {
     this._api.getTodaysData(this.engtimeMsg).subscribe(res => {
       this.DoneMem = res
       this.doneMemCheck(this.DoneMem)
-      this.dmem = this.DoneMem.length
+      
+      this.EntryCheck(this.Cnum)
       // this.showMember(this.Cnum)
     }, err => {
       console.log(err);
@@ -126,7 +128,6 @@ export class MainComponent implements OnInit {
     this.Hidedetails()
     if (No) {
       this.temp = this.Members.find((ele: any) => ele.No == No)
-      
       if(this.temp==undefined){
         this.userValid = true
       }
@@ -229,8 +230,16 @@ export class MainComponent implements OnInit {
     }
     if (this.entryForm.valid && sessionStorage.getItem('UId')) {
       this._api.postToData(temp).subscribe(res => {
-        this.getTodays()
-        this.EntryCheck(this.Cnum)
+        // this.getTodays()
+        this.temp=res
+        this.entryFlag = true
+        this.milk=this.temp.data.milk
+        this.fat=this.temp.data.fat
+        this.snf=this.temp.data.snf
+        this.t_rate=this.temp.data.t_rate
+        this.rate=this.temp.data.rate
+        this.DoneMem.push(this.temp.data)
+        this.doneMemCheck(this.DoneMem)
       },
         err => {
           console.log("POST ERR", err);
@@ -245,13 +254,14 @@ export class MainComponent implements OnInit {
     this.tMilkCow = 0    
     doneData.forEach((ele: any) => {
       if (ele.type == 'Buffalow') {
-        this.tMilkBuff = this.tMilkBuff + parseFloat(ele.milk)
+        this.tMilkBuff = this.tMilkBuff + (+ele.milk)
       } else {
-        this.tMilkCow = this.tMilkCow + parseFloat(ele.milk)
+        this.tMilkCow = this.tMilkCow + (+ele.milk)
       }
-      this.tMilkBuff = this.tMilkBuff.toFixed(2)
-      this.tMilkCow = this.tMilkCow.toFixed(2)
+    
     });
+    this.dmem = doneData.length
+    
   }
 
 
