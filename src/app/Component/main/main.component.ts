@@ -23,6 +23,7 @@ export class MainComponent implements OnInit {
   inValid: any = false
   Ifcow: any = false
   Ifbuff: any = false
+  isClicked:any=false
 
 
   // Variabels
@@ -58,7 +59,7 @@ export class MainComponent implements OnInit {
   Members: any = [];
   DoneMem: any = [];
   temp_1: any;
-
+  postErr: any;
 
 
   entryForm: any = new FormGroup({
@@ -66,6 +67,7 @@ export class MainComponent implements OnInit {
     'Snf': new FormControl(null, [Validators.required]),
     'Fat': new FormControl(null, [Validators.required]),
   })
+  
 
 
 
@@ -88,6 +90,7 @@ export class MainComponent implements OnInit {
 
 
   getallMem() {
+    sessionStorage.getItem('UId')
     this._api.getallMem().subscribe(res => {
       this.Members = res
       this.showMember(this.Cnum)
@@ -211,6 +214,7 @@ export class MainComponent implements OnInit {
   }
 
   Sub() {
+    this.isClicked=true
     let temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -240,10 +244,12 @@ export class MainComponent implements OnInit {
         this.rate=this.temp.data.rate
         this.DoneMem.push(this.temp.data)
         this.doneMemCheck(this.DoneMem)
+        this.isClicked=false
       },
         err => {
+          this.isClicked=false
           console.log("POST ERR", err);
-
+          this.postErr=err.error
         }
       )
     }

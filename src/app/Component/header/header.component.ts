@@ -43,10 +43,12 @@ getData(){
 
 
  logout(){
-  sessionStorage.removeItem("token")
+   if(confirm("Do you want to logout?")){
+       sessionStorage.removeItem("token")
   sessionStorage.removeItem("Name")
   sessionStorage.removeItem("UId")
 this.router.navigate(["/"])
+   }
 }
 
 }

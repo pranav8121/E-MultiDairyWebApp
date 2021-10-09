@@ -17,7 +17,11 @@
               </div>
   
               <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" (click)="submit()" type="submit">LogIn</button>
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" (click)="submit()" type="submit" [disabled]="isClicked">
+                 <div *ngIf="!isClicked">LogIn</div> 
+                 <div *ngIf="isClicked"> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Wait...</div>
+                </button>
               </div>
             </form>
 

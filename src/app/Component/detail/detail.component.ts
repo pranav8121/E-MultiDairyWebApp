@@ -14,6 +14,7 @@ export class DetailComponent implements OnInit {
   valid: any
   err: any;
   Cnum: any;
+  onload:any=false
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -27,11 +28,13 @@ export class DetailComponent implements OnInit {
     this._api.getMemdetails(this.Cnum).subscribe(res => {
       this.data = res
       this.valid = true
+      this.onload=true
     },
       err => {
         console.log("DETAILS ERR", err);
         this.err = err.error
         this.valid = false
+        this.onload=true
       })
   }
 
