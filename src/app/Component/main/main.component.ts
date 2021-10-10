@@ -105,7 +105,8 @@ export class MainComponent implements OnInit {
 
   getTodays() {
     this.Time()
-    this._api.getTodaysData(this.engtimeMsg).subscribe(res => {
+    this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+    this._api.getTodaysData(this.engtimeMsg,this.currentDate).subscribe(res => {
       this.DoneMem = res
       this.doneMemCheck(this.DoneMem)
       

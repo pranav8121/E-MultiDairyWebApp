@@ -9,7 +9,7 @@ export class ApiService {
 //  baseUrl=`http://localhost:3000`
 
 // LIVE URL
-baseUrl='https://e-multidairybackend.herokuapp.com'
+baseUrl='http://localhost:3000'
 
   UId=sessionStorage.getItem('UId')
 
@@ -36,9 +36,9 @@ getMemdetails(No:any){
 return this.http.get(`${this.baseUrl}/getalldata/${this.UId}/${No}`)
 }
 
-getTodaysData(ehours:any){
-
-  return this.http.get(`${this.baseUrl}/GetTodayData/${this.UId}/${ehours}`)
+getTodaysData(ehours:any,date:any){
+date=encodeURIComponent(date)
+  return this.http.get(`${this.baseUrl}/GetTodayData/${this.UId}/${ehours}/${date}`)
 }
 
 }
