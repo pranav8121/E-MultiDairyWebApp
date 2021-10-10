@@ -35,9 +35,9 @@ getMemdetails(No:any){
 return this.http.get(`${this.baseUrl}/getalldata/${this.UId}/${No}`)
 }
 
-getTodaysData(ehours:any){
-
-  return this.http.get(`${this.baseUrl}/GetTodayData/${this.UId}/${ehours}`)
+getTodaysData(ehours:any,date:any){
+date=encodeURIComponent(date)
+  return this.http.get(`${this.baseUrl}/GetTodayData/${this.UId}/${ehours}/${date}`)
 }
 
 }
