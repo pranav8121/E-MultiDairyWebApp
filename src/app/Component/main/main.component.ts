@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
   inValid: any = false
   Ifcow: any = false
   Ifbuff: any = false
-  isClicked:any=false
+  isClicked: any = false
 
 
   // Variabels
@@ -60,14 +60,19 @@ export class MainComponent implements OnInit {
   DoneMem: any = [];
   temp_1: any;
   postErr: any;
-
+  totalBuff: any
+  totalCow: any
+  totalMilk: any
+  totalRate: any
+  t_rateCow: any
+  t_rateBuff: any
 
   entryForm: any = new FormGroup({
     'Milk': new FormControl(null, [Validators.required]),
     'Snf': new FormControl(null, [Validators.required]),
     'Fat': new FormControl(null, [Validators.required]),
   })
-  
+
 
 
 
@@ -99,17 +104,17 @@ export class MainComponent implements OnInit {
     }, err => {
       console.log(err);
       this.flag_1 = false
-      
+
     })
   }
 
   getTodays() {
     this.Time()
     this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
-    this._api.getTodaysData(this.engtimeMsg,this.currentDate).subscribe(res => {
+    this._api.getTodaysData(this.engtimeMsg, this.currentDate).subscribe(res => {
       this.DoneMem = res
       this.doneMemCheck(this.DoneMem)
-      
+
       this.EntryCheck(this.Cnum)
       // this.showMember(this.Cnum)
     }, err => {
@@ -132,10 +137,10 @@ export class MainComponent implements OnInit {
     this.Hidedetails()
     if (No) {
       this.temp = this.Members.find((ele: any) => ele.No == No)
-      if(this.temp==undefined){
+      if (this.temp == undefined) {
         this.userValid = true
       }
-      else{
+      else {
         this.EntryCheck(No)
         this.userValid = false
         this.Cname = this.temp.Name
@@ -154,7 +159,7 @@ export class MainComponent implements OnInit {
           this.Ifcow = true
         }
       }
-      
+
 
     }
   }
@@ -165,11 +170,11 @@ export class MainComponent implements OnInit {
       this.entryFlag = false
     }
     else {
-      this.milk=this.temp_1.milk
-      this.fat=this.temp_1.fat
-      this.snf=this.temp_1.snf
-      this.t_rate=this.temp_1.t_rate
-      this.rate=this.temp_1.rate
+      this.milk = this.temp_1.milk
+      this.fat = this.temp_1.fat
+      this.snf = this.temp_1.snf
+      this.t_rate = this.temp_1.t_rate
+      this.rate = this.temp_1.rate
       this.entryFlag = true
     }
   }
@@ -214,8 +219,8 @@ export class MainComponent implements OnInit {
     }
   }
 
-  Sub() {
-    this.isClicked=true
+  Sub(search: any) {
+    this.isClicked = true
     let temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -236,21 +241,26 @@ export class MainComponent implements OnInit {
     if (this.entryForm.valid && sessionStorage.getItem('UId')) {
       this._api.postToData(temp).subscribe(res => {
         // this.getTodays()
-        this.temp=res
+        this.temp = res
         this.entryFlag = true
-        this.milk=this.temp.data.milk
-        this.fat=this.temp.data.fat
-        this.snf=this.temp.data.snf
-        this.t_rate=this.temp.data.t_rate
-        this.rate=this.temp.data.rate
+        this.milk = this.temp.data.milk
+        this.fat = this.temp.data.fat
+        this.snf = this.temp.data.snf
+        this.t_rate = this.temp.data.t_rate
+        this.rate = this.temp.data.rate
         this.DoneMem.push(this.temp.data)
         this.doneMemCheck(this.DoneMem)
-        this.isClicked=false
+        this.isClicked = false
+        search.focus()
+
+        search.value = ""
       },
         err => {
-          this.isClicked=false
+          this.isClicked = false
           console.log("POST ERR", err);
-          this.postErr=err.error
+          this.postErr = err.error
+          search.focus()
+          search.value = ""
         }
       )
     }
@@ -258,17 +268,35 @@ export class MainComponent implements OnInit {
 
   doneMemCheck(doneData: any) {
     this.tMilkBuff = 0
-    this.tMilkCow = 0    
+    this.tMilkCow = 0
+    this.totalBuff = 0
+    this.totalCow = 0
+    this.totalMilk = 0
+    this.t_rateCow = 0
+    this.t_rateBuff = 0
+    var cRate = 0
+    var bRate = 0
     doneData.forEach((ele: any) => {
       if (ele.type == 'Buffalow') {
-        this.tMilkBuff = this.tMilkBuff + (+ele.milk)
+        this.tMilkBuff = (this.tMilkBuff + parseFloat(ele.milk))
+        this.totalBuff = this.tMilkBuff.toFixed(2)
+        bRate = bRate + parseFloat(ele.t_rate)
+
       } else {
-        this.tMilkCow = this.tMilkCow + (+ele.milk)
+        this.tMilkCow = this.tMilkCow + parseFloat(ele.milk)
+        this.totalCow = this.tMilkCow.toFixed(2)
+        cRate = cRate + parseFloat(ele.t_rate)
       }
-    
+
     });
+    this.totalMilk = parseFloat(this.totalBuff) + parseFloat(this.totalCow)
+    this.t_rateCow = cRate.toFixed(2)
+    this.t_rateBuff = bRate.toFixed(2)
+
+    var totalRate = cRate + bRate
+    this.totalRate = totalRate.toFixed(2)
     this.dmem = doneData.length
-    
+
   }
 
 
@@ -277,7 +305,7 @@ export class MainComponent implements OnInit {
     this.details = true
     this._tab.Cname = this.Cname
     this._tab.Ctype = this.Ctype
-    this._tab.Cnum=this.Cnum
+    this._tab.Cnum = this.Cnum
 
   }
   Hidedetails() {
@@ -287,13 +315,13 @@ export class MainComponent implements OnInit {
 
 
   Time() {
-    this.currentHour = moment().format("HH");    
+    this.currentHour = moment().format("HH");
     if (this.currentHour >= 1 && this.currentHour < 15) {
       this.timeMsg = "  सकाळ  ";
-      this.engtimeMsg = "Morning"
+      this.engtimeMsg = "Morning";
     } else {
       this.timeMsg = "   संध्याकाळ  ";
-      this.engtimeMsg = "Evening"
+      this.engtimeMsg = "Evening";
     }
   }
 
