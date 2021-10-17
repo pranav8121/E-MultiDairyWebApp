@@ -32,6 +32,12 @@ export class DetailComponent implements OnInit {
   })
   totalMilk: any;
   last: any;
+  totalDeduct: number = 0;
+  onPrintShow: boolean = false;
+  name: any;
+  Ifcow: any = false
+  Ifbuff: any = false
+  MCtype: any;
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -39,6 +45,18 @@ export class DetailComponent implements OnInit {
     this.Ctype = this._serv.Ctype
     this.Cnum = this._serv.Cnum
     this.sendDate()
+    this.onPrintShow = false;
+    this.name = sessionStorage.getItem('Name')
+    if (this.Ctype == "Buffalow") {
+      this.MCtype = "म्हैस"
+      this.Ifcow = false
+      this.Ifbuff = true
+    }
+    else {
+      this.MCtype = "गाय"
+      this.Ifbuff = false
+      this.Ifcow = true
+    }
   }
   API(from: any, to: any) {
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
@@ -102,13 +120,14 @@ export class DetailComponent implements OnInit {
       }
     });
     this.totalMilk = Tmilk.toFixed(2)
-    var share=(this.totalMilk*0.05).toFixed(2) 
-    this.detailsForm.controls['Saving'].setValue(Math.round(this.totalMilk) );
+    var share = (this.totalMilk * 0.05).toFixed(2)
+    this.detailsForm.controls['Saving'].setValue(Math.round(this.totalMilk));
     this.detailsForm.controls['Share'].setValue(share);
     this.totalRate = t_Trate.toFixed(2);
-    var sum=parseFloat(this.totalMilk)+parseFloat(share)
-    var sub = this.totalRate-sum
-    this.subTotal=sub.toFixed(2)    
+    var sum = parseFloat(this.totalMilk) + parseFloat(share)
+    this.totalDeduct = sum;
+    var sub = this.totalRate - sum
+    this.subTotal = sub.toFixed(2)
     // this.detailsForm.setValue(Saving:)
   }
 
@@ -117,14 +136,15 @@ export class DetailComponent implements OnInit {
     var sup = this.detailsForm.get('Sup').value
     var sav = this.detailsForm.get('Saving').value
     var share = this.detailsForm.get('Share').value
-console.log(adv, sup, sav, share);
+    console.log(adv, sup, sav, share);
 
     if (adv || sup || sav || share) {
       var sum = parseFloat(adv) + parseFloat(sup) + parseFloat(sav) + parseFloat(share)
+      this.totalDeduct = sum;
       var sub = this.totalRate - sum
       if (!sub) {
         console.log("Nan");
-        this.subTotal =  this.last
+        this.subTotal = this.last
       } else {
         this.subTotal = sub.toFixed(2)
         this.last = this.subTotal
