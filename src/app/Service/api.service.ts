@@ -41,4 +41,9 @@ date=encodeURIComponent(date)
   return this.http.get(`${this.baseUrl}/GetTodayData/${this.UId}/${ehours}/${date}`)
 }
 
+getBillData(No:any,from:any,to:any){
+  from=encodeURIComponent(from)
+  to=encodeURIComponent(to)
+  return this.http.get(`${this.baseUrl}/GetBillData/${this.UId}/${No}/${from}/${to}`)
+}
 }
