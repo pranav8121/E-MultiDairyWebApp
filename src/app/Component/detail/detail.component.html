@@ -6,14 +6,20 @@
 
 <div id="print-section">
   <div class="d-none d-print-block">
-    <div class="row px-1 py-1">
-      <strong class="col-6 text-center text-primary">{{name}} </strong> <span class="col-6 text-center">दुधाचा प्रकार:
-        {{MCtype}}</span>
+    <div class="px-1 py-1 d-flex justify-content-center">
+      <!-- <strong class="col-6 text-center text-primary">{{name}}</strong> <span class="col-6 text-center">दुधाचा प्रकार: -->
+      <!-- {{MCtype}}</span> -->
+      <h2 class="text-primary">{{name}}</h2>
     </div>
 
     <div class="row px-1 py-1">
-      <div class=" col mx-5  px-1 py-1" [ngClass]="{'cow':Ifcow, 'buff': Ifbuff}" style="border-radius: 5px;">
-        <div class=" text-center "> <strong><strong>{{Cnum}}</strong>-<strong>{{Cname}}</strong> </strong> </div>
+      <div class=" col mx-5  px-1 py-1" style="border-radius: 5px;">
+        <div class=" text-center "> <strong><strong>{{Cnum}}</strong>-<strong>{{Cname}}</strong> </strong>
+        </div>
+      </div>
+      <div class=" col mx-5  px-1 py-1" style="border-radius: 5px;">
+        <div class=" text-center "> <strong><strong>दुधाचा प्रकार:</strong>-<strong>{{MCtype}}</strong> </strong>
+        </div>
       </div>
     </div>
   </div>
@@ -117,11 +123,15 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
-<div *ngIf="!onPrintShow" class="col text-center">
-  <button [useExistingCss]="true" printSectionId="print-section" ngxPrint>print</button>
+<div *ngIf="onload">
+  <div *ngIf="!onPrintShow" class="col text-center">
+    <button [useExistingCss]="true" class="btn btn-primary my-5 mt-3" printSectionId="print-section" ngxPrint>PRINT</button>
+  </div>
 </div>
+
 
 <div class="mt-5 d-flex justify-content-center" *ngIf="!valid">
   <h3>{{err}} </h3>
