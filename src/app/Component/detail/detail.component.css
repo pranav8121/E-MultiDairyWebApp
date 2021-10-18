@@ -1,0 +1,13 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cow{
+  background-color: rgb(144, 253, 144);
+}
+.buff{
+  background-color: rgb(121, 183, 245);
+  color: black;
+}

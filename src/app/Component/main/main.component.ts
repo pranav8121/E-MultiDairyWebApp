@@ -60,7 +60,7 @@ export class MainComponent implements OnInit {
   DoneMem: any = [];
   temp_1: any;
   postErr: any;
-  totalBuff: any
+    totalBuff: any
   totalCow: any
   totalMilk: any
   totalRate: any
@@ -72,7 +72,9 @@ export class MainComponent implements OnInit {
     'Snf': new FormControl(null, [Validators.required]),
     'Fat': new FormControl(null, [Validators.required]),
   })
-
+  err: any;
+  error: any;
+  
 
 
 
@@ -100,11 +102,14 @@ export class MainComponent implements OnInit {
       this.Members = res
       this.showMember(this.Cnum)
       this.flag_1 = false
+      this.err=false
       this.tmember = this.Members.length
     }, err => {
       console.log(err);
       this.flag_1 = false
-
+      this.err=true
+      this.error="Slow Internet Connection Please Refresh Page"
+      
     })
   }
 
@@ -114,11 +119,13 @@ export class MainComponent implements OnInit {
     this._api.getTodaysData(this.engtimeMsg, this.currentDate).subscribe(res => {
       this.DoneMem = res
       this.doneMemCheck(this.DoneMem)
-
+      this.err=false
       this.EntryCheck(this.Cnum)
       // this.showMember(this.Cnum)
     }, err => {
       console.log(err);
+      this.err=true
+      this.error="Slow Internet Connection Please Refresh Page"
     })
   }
 
@@ -220,7 +227,7 @@ export class MainComponent implements OnInit {
   }
 
   Sub(search: any) {
-    this.isClicked = true
+    this.isClicked=true
     let temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -250,15 +257,14 @@ export class MainComponent implements OnInit {
         this.rate = this.temp.data.rate
         this.DoneMem.push(this.temp.data)
         this.doneMemCheck(this.DoneMem)
-        this.isClicked = false
+        this.isClicked=false
         search.focus()
-
         search.value = ""
       },
         err => {
           this.isClicked = false
           console.log("POST ERR", err);
-          this.postErr = err.error
+          this.postErr="Slow Internet Connection,Data not Saved! Please Refresh Page"
           search.focus()
           search.value = ""
         }
@@ -289,10 +295,10 @@ export class MainComponent implements OnInit {
       }
 
     });
-    this.totalMilk = parseFloat(this.totalBuff) + parseFloat(this.totalCow)
+    var tTmilk = parseFloat(this.totalBuff) + parseFloat(this.totalCow)
     this.t_rateCow = cRate.toFixed(2)
     this.t_rateBuff = bRate.toFixed(2)
-
+    this.totalMilk=tTmilk.toFixed(2)
     var totalRate = cRate + bRate
     this.totalRate = totalRate.toFixed(2)
     this.dmem = doneData.length
