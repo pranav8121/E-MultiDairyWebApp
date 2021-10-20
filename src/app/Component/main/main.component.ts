@@ -24,6 +24,10 @@ export class MainComponent implements OnInit {
   Ifcow: any = false
   Ifbuff: any = false
   isClicked: any = false
+  adv:any=false
+  cur:any=false
+  las:any=false
+  fod:any=false
 
 
   // Variabels
@@ -60,12 +64,17 @@ export class MainComponent implements OnInit {
   DoneMem: any = [];
   temp_1: any;
   postErr: any;
-    totalBuff: any
+  totalBuff: any
   totalCow: any
   totalMilk: any
   totalRate: any
   t_rateCow: any
   t_rateBuff: any
+  btn:any = [{ name: "Current", id: "cur" },
+  { name: "Last", id: "las" },
+  { name: "ऍडव्हान्स", id: "adv" },
+  { name: "पशुखाद्य", id: "fod" }
+  ]
 
   entryForm: any = new FormGroup({
     'Milk': new FormControl(null, [Validators.required]),
@@ -74,7 +83,7 @@ export class MainComponent implements OnInit {
   })
   err: any;
   error: any;
-  
+
 
 
 
@@ -84,7 +93,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.flag_1 = true
-    this.OnLoad()
+    this.OnLoad()    
   }
 
   OnLoad() {
@@ -102,14 +111,14 @@ export class MainComponent implements OnInit {
       this.Members = res
       this.showMember(this.Cnum)
       this.flag_1 = false
-      this.err=false
+      this.err = false
       this.tmember = this.Members.length
     }, err => {
       console.log(err);
       this.flag_1 = false
-      this.err=true
-      this.error="Slow Internet Connection Please Refresh Page"
-      
+      this.err = true
+      this.error = "Slow Internet Connection Please Refresh Page"
+
     })
   }
 
@@ -119,13 +128,13 @@ export class MainComponent implements OnInit {
     this._api.getTodaysData(this.engtimeMsg, this.currentDate).subscribe(res => {
       this.DoneMem = res
       this.doneMemCheck(this.DoneMem)
-      this.err=false
+      this.err = false
       this.EntryCheck(this.Cnum)
       // this.showMember(this.Cnum)
     }, err => {
       console.log(err);
-      this.err=true
-      this.error="Slow Internet Connection Please Refresh Page"
+      this.err = true
+      this.error = "Slow Internet Connection Please Refresh Page"
     })
   }
 
@@ -227,7 +236,7 @@ export class MainComponent implements OnInit {
   }
 
   Sub(search: any) {
-    this.isClicked=true
+    this.isClicked = true
     let temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -257,14 +266,14 @@ export class MainComponent implements OnInit {
         this.rate = this.temp.data.rate
         this.DoneMem.push(this.temp.data)
         this.doneMemCheck(this.DoneMem)
-        this.isClicked=false
+        this.isClicked = false
         search.focus()
         search.value = ""
       },
         err => {
           this.isClicked = false
           console.log("POST ERR", err);
-          this.postErr="Slow Internet Connection,Data not Saved! Please Refresh Page"
+          this.postErr = "Slow Internet Connection,Data not Saved! Please Refresh Page"
           search.focus()
           search.value = ""
         }
@@ -298,11 +307,36 @@ export class MainComponent implements OnInit {
     var tTmilk = parseFloat(this.totalBuff) + parseFloat(this.totalCow)
     this.t_rateCow = cRate.toFixed(2)
     this.t_rateBuff = bRate.toFixed(2)
-    this.totalMilk=tTmilk.toFixed(2)
+    this.totalMilk = tTmilk.toFixed(2)
     var totalRate = cRate + bRate
     this.totalRate = totalRate.toFixed(2)
     this.dmem = doneData.length
 
+  }
+
+
+  onBtn(id:any){
+    if(id=="cur"){
+      this.las=false
+      this.adv=false
+      this.fod=false
+      this.cur=true
+    }
+    else if(id=="las"){
+      this.las=true
+      this.adv=false
+      this.fod=false
+      this.cur=false}
+    else if(id=="adv"){
+      this.las=false
+      this.adv=true
+      this.fod=false
+      this.cur=false}
+    else if(id=="fod"){
+      this.las=false
+      this.adv=false
+      this.fod=true
+      this.cur=false}
   }
 
 
@@ -312,6 +346,7 @@ export class MainComponent implements OnInit {
     this._tab.Cname = this.Cname
     this._tab.Ctype = this.Ctype
     this._tab.Cnum = this.Cnum
+    this.onBtn("cur")
 
   }
   Hidedetails() {

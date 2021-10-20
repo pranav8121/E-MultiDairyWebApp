@@ -1,6 +1,8 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+// import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { ApiService } from 'src/app/Service/api.service';
 import { MatrixService } from 'src/app/Service/matrix.service';
 
@@ -38,8 +40,7 @@ export class DetailComponent implements OnInit {
   Ifcow: any = false
   Ifbuff: any = false
   MCtype: any;
-  constructor(private _serv: MatrixService, private _api: ApiService) { }
-
+  constructor(private _serv: MatrixService, private _api: ApiService) {}
   ngOnInit(): void {
     this.Cname = this._serv.Cname
     this.Ctype = this._serv.Ctype
@@ -58,6 +59,7 @@ export class DetailComponent implements OnInit {
       this.Ifcow = true
     }
   }
+
   API(from: any, to: any) {
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
       this.getCurrentBill(res)
@@ -113,7 +115,7 @@ export class DetailComponent implements OnInit {
       var eyrs = (ele.date).slice(6, 10)
       var cmon = this.currentDate.slice(3, 5)
       var cyrs = this.currentDate.slice(6, 10)
-      if (emon == cmon && eyrs == cyrs) {
+      if (emon == cmon && eyrs == cyrs) { 
         this.CurrentBill.push(ele);
         t_Trate = t_Trate + parseFloat(ele.t_rate);
         Tmilk = Tmilk + parseFloat(ele.milk);
@@ -121,11 +123,11 @@ export class DetailComponent implements OnInit {
     });
     this.totalMilk = Tmilk.toFixed(2)
     var share = (this.totalMilk * 0.05).toFixed(2)
-    this.detailsForm.controls['Saving'].setValue(Math.round(this.totalMilk));
+    this.detailsForm.controls['Saving'].setValue(this.totalMilk);
     this.detailsForm.controls['Share'].setValue(share);
     this.totalRate = t_Trate.toFixed(2);
     var sum = parseFloat(this.totalMilk) + parseFloat(share)
-    this.totalDeduct = sum;
+    this.totalDeduct = parseFloat(sum.toFixed(2));
     var sub = this.totalRate - sum
     this.subTotal = sub.toFixed(2)
     // this.detailsForm.setValue(Saving:)
@@ -140,10 +142,9 @@ export class DetailComponent implements OnInit {
 
     if (adv || sup || sav || share) {
       var sum = parseFloat(adv) + parseFloat(sup) + parseFloat(sav) + parseFloat(share)
-      this.totalDeduct = sum;
+      this.totalDeduct = parseFloat(sum.toFixed(2));
       var sub = this.totalRate - sum
       if (!sub) {
-        console.log("Nan");
         this.subTotal = this.last
       } else {
         this.subTotal = sub.toFixed(2)
