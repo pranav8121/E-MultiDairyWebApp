@@ -72,7 +72,7 @@
             <div class="form-group row mt-3">
               <label class="col-6 text-primary" style="padding-right: 0px;padding-left: 15px;">ऍडव्हान्स (रु.) </label>
               <div class="col-6 ml-1">
-                <input type="number" class="form-control" formControlName="Adv" (keyup)="calcu()"
+                <input type="number" class="form-control" formControlName="Adv" (keyup)="calcu()"  [attr.disabled]="exist ? '' :null"
                   style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
@@ -80,7 +80,7 @@
             <div class="form-group row mt-3">
               <label class="col-6 text-primary" style="padding-right: 0px;padding-left: 15px;">पशुखाद्य (रु.)</label>
               <div class="col-6 ml-1">
-                <input type="number" class="form-control" formControlName="Sup" (keyup)="calcu()"
+                <input type="number" class="form-control" formControlName="Sup" (keyup)="calcu()"  [attr.disabled]="exist ? '' :null"
                   style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
@@ -91,7 +91,7 @@
             <div class="form-group row mt-3">
               <label class="col-7 text-primary" style="padding-right: 5px;padding-left: 5px;">बँक भरणा (रु.)</label>
               <div class="col-5">
-                <input type="number" class="form-control" formControlName="Saving" (keyup)="calcu()"
+                <input type="number" class="form-control" formControlName="Saving" (keyup)="calcu()"  [attr.disabled]="exist ? '' :null"
                   style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
@@ -99,7 +99,7 @@
             <div class="form-group row mt-3">
               <label class="col-7 text-primary">शेअर (रु.)</label>
               <div class="col-5 ">
-                <input type="number" class="form-control" formControlName="Share" (keyup)="calcu()"
+                <input type="number" class="form-control" formControlName="Share" (keyup)="calcu()"  [attr.disabled]="exist ? '' :null"
                    style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
@@ -126,9 +126,11 @@
 
   </div>
 </div>
-<div *ngIf="onload">
-  <div *ngIf="!onPrintShow" class="col text-center">
-    <button [useExistingCss]="true" class="btn btn-primary my-5 mt-3" printSectionId="print-section" ngxPrint>PRINT</button>
+<div *ngIf="onload && valid">
+  <div *ngIf="!onPrintShow" class="col text-center  my-5 mt-3">
+    <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section" *ngIf="!exist" ngxPrint (click)="Submit()">PRINT</button><br>
+    <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section" *ngIf="exist" ngxPrint >PRINT</button><br>
+ <small class="text-danger">{{err_p}}</small>
   </div>
 </div>
 

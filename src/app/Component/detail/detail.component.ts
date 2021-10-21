@@ -40,7 +40,13 @@ export class DetailComponent implements OnInit {
   Ifcow: any = false
   Ifbuff: any = false
   MCtype: any;
-  constructor(private _serv: MatrixService, private _api: ApiService) {}
+  from: any;
+  to: any;
+  err_p: any;
+  invNo: any;
+  temp: any;
+  exist: any;
+  constructor(private _serv: MatrixService, private _api: ApiService) { }
   ngOnInit(): void {
     this.Cname = this._serv.Cname
     this.Ctype = this._serv.Ctype
@@ -63,19 +69,35 @@ export class DetailComponent implements OnInit {
   API(from: any, to: any) {
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
       this.getCurrentBill(res)
+      this.findBill()
       this.onload = true
       this.valid = true
 
     }, err => {
-      this.err = "Slow Internet Connection Please Refresh Page"
+      this.err = "No Data Found"
       this.onload = true
       this.valid = false
-      console.log(err);
 
     })
 
   }
 
+
+  findBill(){
+    this._api.FindBill(this.invNo,this.Cnum).subscribe(
+      res=>{  
+        this.temp=res        
+        this.detailsForm.controls['Adv'].setValue(this.temp[0].adv);
+        this.detailsForm.controls['Sup'].setValue(this.temp[0].supply);
+        this.detailsForm.controls['Saving'].setValue(this.temp[0].bank);
+        this.detailsForm.controls['Share'].setValue(this.temp[0].share);
+        this.exist=true
+      },err=>{
+        this.exist=false
+      }
+    )
+  }
+  
   sendDate() {
     var today = new Date()
     this.Cdate = today.getDate()
@@ -83,25 +105,34 @@ export class DetailComponent implements OnInit {
     this.Cyear = today.getFullYear()
 
     if (this.Cdate >= 1 && this.Cdate <= 10) {
-      console.log("first");
-      this.API(`01/${this.Cmonth}/${this.Cyear}`, `11/${this.Cmonth}/${this.Cyear}`)
-
+      console.log("1");
+      
+      this.from = `01/${this.Cmonth}/${this.Cyear}`
+      this.to = `11/${this.Cmonth}/${this.Cyear}`
+      this.API(this.from, this.to)
+      this.invNo=`${this.Cnum}Bill-01_${this.to}`
     }
     else if (this.Cdate >= 11 && this.Cdate <= 20) {
-      console.log("second");
-      this.API(`11/${this.Cmonth}/${this.Cyear}`, `21/${this.Cmonth}/${this.Cyear}`)
-
+      console.log("2");
+      
+      this.from = `11/${this.Cmonth}/${this.Cyear}`
+      this.to = `21/${this.Cmonth}/${this.Cyear}`
+      this.API(this.from, this.to)
+      this.invNo=`${this.Cnum}Bill-02_${this.to}`
     }
     else if (this.Cdate >= 21 && this.Cdate <= 31) {
-      console.log("third");
+      console.log("3");
       if (this.Cmonth == 1) {
-        this.API(`21/${this.Cmonth}/${this.Cyear}`, `01/01/${this.Cyear + 1}`)
-
+        this.from = `21/${this.Cmonth}/${this.Cyear}`
+        this.to = `32/01/${this.Cyear + 1}`
+        this.API(this.from, this.to)
       }
       else {
-        this.API(`21/${this.Cmonth}/${this.Cyear}`, `01/${this.Cmonth + 1}/${this.Cyear}`)
+        this.from = `21/${this.Cmonth}/${this.Cyear}`
+        this.to = `32/${this.Cmonth + 1}/${this.Cyear}`
+        this.API(this.from, this.to)
       }
-
+      this.invNo=`${this.Cnum}Bill-03_31/${this.Cmonth + 1}/${this.Cyear}`
     }
 
   }
@@ -115,7 +146,7 @@ export class DetailComponent implements OnInit {
       var eyrs = (ele.date).slice(6, 10)
       var cmon = this.currentDate.slice(3, 5)
       var cyrs = this.currentDate.slice(6, 10)
-      if (emon == cmon && eyrs == cyrs) { 
+      if (emon == cmon && eyrs == cyrs) {
         this.CurrentBill.push(ele);
         t_Trate = t_Trate + parseFloat(ele.t_rate);
         Tmilk = Tmilk + parseFloat(ele.milk);
@@ -138,7 +169,6 @@ export class DetailComponent implements OnInit {
     var sup = this.detailsForm.get('Sup').value
     var sav = this.detailsForm.get('Saving').value
     var share = this.detailsForm.get('Share').value
-    console.log(adv, sup, sav, share);
 
     if (adv || sup || sav || share) {
       var sum = parseFloat(adv) + parseFloat(sup) + parseFloat(sav) + parseFloat(share)
@@ -152,5 +182,38 @@ export class DetailComponent implements OnInit {
       }
 
     }
+  }
+
+  Submit() {
+    var adv = this.detailsForm.get('Adv').value
+    var sup = this.detailsForm.get('Sup').value
+    var sav = this.detailsForm.get('Saving').value
+    var share = this.detailsForm.get('Share').value
+    var temp
+    temp = {
+      No: this.Cnum,
+      adv: adv,
+      bank: sav,
+      supply: sup,
+      share: share,
+      inv_no:  this.invNo,
+      from: this.from,
+      to: this.to,
+      UId: sessionStorage.getItem('UId')
+    }
+    this._api.postBill(temp).subscribe(res=>{
+      this.err_p=""
+      this.temp=res
+      this.detailsForm.controls['Adv'].setValue(this.temp.data.adv);
+      this.detailsForm.controls['Sup'].setValue(this.temp.data.supply);
+      this.detailsForm.controls['Saving'].setValue(this.temp.data.bank);
+      this.detailsForm.controls['Share'].setValue(this.temp.data.share);
+      this.exist=true
+    },err=>{
+      this.exist=false
+      this.err_p="*ERROR In Saving Data"
+    })
+    // this.err_p="*ERROR In Saving Data"
+
   }
 }
