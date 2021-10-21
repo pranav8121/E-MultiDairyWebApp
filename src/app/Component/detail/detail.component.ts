@@ -65,7 +65,7 @@ export class DetailComponent implements OnInit {
       this.valid = true
 
     }, err => {
-      this.err = "Slow Internet Connection Please Refresh Page"
+      this.err = "No Data to show"
       this.onload = true
       this.valid = false
       console.log(err);
@@ -93,11 +93,11 @@ export class DetailComponent implements OnInit {
     else if (this.Cdate >= 21 && this.Cdate <= 31) {
       console.log("third");
       if (this.Cmonth == 1) {
-        this.API(`21/${this.Cmonth}/${this.Cyear}`, `01/01/${this.Cyear + 1}`)
+        this.API(`21/${this.Cmonth}/${this.Cyear}`, `32/01/${this.Cyear + 1}`)
 
       }
       else {
-        this.API(`21/${this.Cmonth}/${this.Cyear}`, `01/${this.Cmonth + 1}/${this.Cyear}`)
+        this.API(`21/${this.Cmonth}/${this.Cyear}`, `32/${this.Cmonth + 1}/${this.Cyear}`)
       }
 
     }
