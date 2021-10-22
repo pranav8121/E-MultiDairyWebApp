@@ -358,10 +358,10 @@ export class MainComponent implements OnInit {
   Time() {
     this.currentHour = moment().format("HH");
     if (this.currentHour >= 1 && this.currentHour < 15) {
-      this.timeMsg = "  सकाळ  ";
+      this.timeMsg = "सकाळ";
       this.engtimeMsg = "Morning";
     } else {
-      this.timeMsg = "   संध्याकाळ  ";
+      this.timeMsg = "संध्याकाळ";
       this.engtimeMsg = "Evening";
     }
   }
