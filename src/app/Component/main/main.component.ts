@@ -70,10 +70,10 @@ export class MainComponent implements OnInit {
   totalRate: any
   t_rateCow: any
   t_rateBuff: any
-  btn:any = [{ name: "Current", id: "cur" },
-  { name: "Last", id: "las" },
-  { name: "ऍडव्हान्स", id: "adv" },
-  { name: "पशुखाद्य", id: "fod" }
+  btn:any = [{ name: "चालू", id: "cur" ,flag:false },
+  { name: "मागील", id: "las",flag:false },
+  { name: "ऍडव्हान्स", id: "adv",flag:true },
+  { name: "पशुखाद्य", id: "fod",flag:true }
   ]
 
   entryForm: any = new FormGroup({

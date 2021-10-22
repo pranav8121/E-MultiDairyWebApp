@@ -143,6 +143,17 @@
   </div>
 </div>
 
+<div class="row mb-2" *ngIf="onload && onload_1 && valid">
+  <div class="col text-center">
+      <div> सकाळ</div>
+      <div><strong>{{this.morMilk}}लि./{{this.morRate}}रु.</strong></div>
+  </div>
+  <div class="col text-center">
+      <div> संध्याकाळ</div>
+      <div><strong>{{this.eveMilk}}लि./{{this.eveRate}}रु.</strong></div>
+  </div>
+</div>
+
 
 <div class="mt-5 d-flex justify-content-center" *ngIf="!valid">
   <h3>{{err}} </h3>

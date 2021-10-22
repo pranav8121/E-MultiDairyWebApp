@@ -179,7 +179,7 @@
             <div *ngIf="details">
                 <div class="row mx-1">
                     <div class="col-3" *ngFor="let temp of btn">
-                        <button style="width: 80px; background-color: rgb(255, 188, 106);" class="btn text-white "
+                        <button style="width: 80px; background-color: rgb(255, 188, 106);" class="btn text-white "  [disabled]="temp.flag"
                             (click)="onBtn(temp.id)">{{temp.name}}</button>
                     </div>
                 </div>

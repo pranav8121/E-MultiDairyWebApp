@@ -49,6 +49,10 @@ export class LastComponent implements OnInit {
   temp: any;
   onload_1: any;
   clicked: any;
+  morMilk: any;
+  morRate: any;
+  eveMilk: any;
+  eveRate: any;
   constructor(private _api: ApiService, private _serv: MatrixService) { }
 
   ngOnInit(): void {
@@ -169,7 +173,24 @@ export class LastComponent implements OnInit {
     this.lastBill = []
     var t_Trate = 0
     var Tmilk = 0
+    this.morMilk = 0;
+    this.morRate = 0;
+    this.eveMilk = 0;
+    this.eveRate = 0;
     res.forEach((ele: any) => {
+      if (ele.ehours == "Morning") {
+        this.morMilk = this.morMilk + parseFloat(ele.milk);
+        this.morMilk =parseFloat(this.morMilk).toFixed(2)
+        // var morM=parseFloat(this.morMilk)
+        this.morRate = this.morRate + parseFloat(ele.t_rate);
+        this.morRate=parseFloat(this.morRate).toFixed(2)
+      }
+      if (ele.ehours == "Evening") {
+        this.eveMilk = this.eveMilk + parseFloat(ele.milk);
+        this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
+        this.eveRate = this.eveRate + parseFloat(ele.t_rate);
+        this.eveRate=parseFloat(this.eveRate).toFixed(2)
+      }
       var emon = (ele.date).slice(3, 5)
       var eyrs = (ele.date).slice(6, 10)
       var cmon = this.lastDate.slice(3, 5)
