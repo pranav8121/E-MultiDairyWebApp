@@ -178,19 +178,7 @@ export class LastComponent implements OnInit {
     this.eveMilk = 0;
     this.eveRate = 0;
     res.forEach((ele: any) => {
-      if (ele.ehours == "Morning") {
-        this.morMilk = this.morMilk + parseFloat(ele.milk);
-        this.morMilk =parseFloat(this.morMilk).toFixed(2)
-        // var morM=parseFloat(this.morMilk)
-        this.morRate = this.morRate + parseFloat(ele.t_rate);
-        this.morRate=parseFloat(this.morRate).toFixed(2)
-      }
-      if (ele.ehours == "Evening") {
-        this.eveMilk = this.eveMilk + parseFloat(ele.milk);
-        this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
-        this.eveRate = this.eveRate + parseFloat(ele.t_rate);
-        this.eveRate=parseFloat(this.eveRate).toFixed(2)
-      }
+
       var emon = (ele.date).slice(3, 5)
       var eyrs = (ele.date).slice(6, 10)
       var cmon = this.lastDate.slice(3, 5)
@@ -199,8 +187,28 @@ export class LastComponent implements OnInit {
         this.lastBill.push(ele);
         t_Trate = t_Trate + parseFloat(ele.t_rate);
         Tmilk = Tmilk + parseFloat(ele.milk);
+
+        if (ele.ehours == "Morning") {
+          this.morMilk = this.morMilk + parseFloat(ele.milk);
+          // this.morMilk =parseFloat(this.morMilk).toFixed(2)
+          this.morRate = this.morRate + parseFloat(ele.t_rate);
+          // this.morRate=parseFloat(this.morRate).toFixed(2)
+        }
+
+        if (ele.ehours == "Evening") {
+          this.eveMilk = this.eveMilk + parseFloat(ele.milk);
+          // this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
+          this.eveRate = this.eveRate + parseFloat(ele.t_rate);
+          // this.eveRate=parseFloat(this.eveRate).toFixed(2)
+        }
+        
       }
     });
+    this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
+    this.eveRate=parseFloat(this.eveRate).toFixed(2)
+    this.morRate=parseFloat(this.morRate).toFixed(2)
+    this.morMilk =parseFloat(this.morMilk).toFixed(2)
+    
     this.totalMilk = Tmilk.toFixed(2)
     var share = (this.totalMilk * 0.05).toFixed(2)
     this.detailsForm.controls['Saving'].setValue(this.totalMilk);
