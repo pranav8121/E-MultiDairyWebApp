@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailComponent } from './Component/detail/detail.component';
 import { TrimdatePipe } from './Pipes/trimdate.pipe';
 import { NgxPrintModule } from 'ngx-print';
+import { LastComponent } from './Component/last/last.component';
+import { AdvanceComponent } from './Component/advance/advance.component';
+import { SupplyComponent } from './Component/supply/supply.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { NgxPrintModule } from 'ngx-print';
     MainComponent,
     HeaderComponent,
     DetailComponent,
-    TrimdatePipe
+    TrimdatePipe,
+    LastComponent,
+    AdvanceComponent,
+    SupplyComponent
   ],
   imports: [
     BrowserModule,

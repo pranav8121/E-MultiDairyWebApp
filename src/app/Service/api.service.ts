@@ -45,4 +45,13 @@ getBillData(No:any,from:any,to:any){
   to=encodeURIComponent(to)
   return this.http.get(`${this.baseUrl}/GetBillData/${this.UId}/${No}/${from}/${to}`)
 }
+postBill(data:any){
+  return this.http.post(`${this.baseUrl}/postBill`,data)
+}
+
+FindBill(inv_no:any,No:any){
+  inv_no=encodeURIComponent(inv_no)
+  return this.http.get(`${this.baseUrl}/findBill/${this.UId}/${inv_no}/${No}`)
+}
+
 }
