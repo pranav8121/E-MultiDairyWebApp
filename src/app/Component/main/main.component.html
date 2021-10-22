@@ -111,15 +111,16 @@
                                 </div>
                                 <div class="d-flex justify-content-center my-3">
                                     <button class="btn btn-info text-white" style="width: 80px"
-                                        [disabled]="!entryForm.valid || inValid || isClicked" *ngIf="!isClicked" type="button" (click)="Sub(search)"><i
-                                            class="fas fa-paper-plane"></i>
-                                            <div >OKAY</div> 
+                                        [disabled]="!entryForm.valid || inValid || isClicked" *ngIf="!isClicked"
+                                        type="button" (click)="Sub(search)"><i class="fas fa-paper-plane"></i>
+                                        <div>OKAY</div>
                                     </button>
                                     <button class="btn btn-info text-white" *ngIf="isClicked" type="button" disabled>
-                                        <span class="spinner-border spinner-border-sm" role="status"  aria-hidden="true"></span>
-                                       OKAY
-                                      </button>
-                                        <small class="text-danger">{{postErr}}</small>
+                                        <span class="spinner-border spinner-border-sm" role="status"
+                                            aria-hidden="true"></span>
+                                        OKAY
+                                    </button>
+                                    <small class="text-danger">{{postErr}}</small>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +130,8 @@
                     <div *ngIf="entryFlag" class="px-2 justify-content-center">
                         <div class="row  my-2">
                             <h4 class="text-primary col-6 ">दूध (लिटर): </h4>
-                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);"> {{milk}}</h4>
+                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);"> {{milk}}
+                            </h4>
                         </div>
 
                         <div class="row  my-2">
@@ -150,7 +152,8 @@
 
                         <div class="row  my-2">
                             <h4 class="text-primary col-6">एकूण दर(रु.):</h4>
-                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{t_rate}}</h4>
+                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{t_rate}}
+                            </h4>
                         </div>
                     </div>
 
@@ -174,7 +177,25 @@
 
             <!-- On Details -->
             <div *ngIf="details">
-                <app-detail></app-detail>
+                <div class="row mx-1">
+                    <div class="col-3" *ngFor="let temp of btn">
+                        <button style="width: 80px; background-color: rgb(255, 188, 106);" class="btn text-white "  [disabled]="temp.flag"
+                            (click)="onBtn(temp.id)">{{temp.name}}</button>
+                    </div>
+                </div>
+                <div *ngIf="cur">
+                    <app-detail></app-detail>
+                </div>
+                <div *ngIf="las">
+                    <app-last></app-last>
+                </div>
+                <div *ngIf="adv">
+                    <app-advance></app-advance>
+                </div>
+                <div *ngIf="fod">
+                    <app-supply></app-supply>
+                </div>
+
             </div>
 
         </div>
