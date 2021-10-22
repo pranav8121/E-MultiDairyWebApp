@@ -1,8 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-// import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import { ApiService } from 'src/app/Service/api.service';
 import { MatrixService } from 'src/app/Service/matrix.service';
 
@@ -46,6 +44,7 @@ export class DetailComponent implements OnInit {
   invNo: any;
   temp: any;
   exist: any;
+  onload_1: any;
   constructor(private _serv: MatrixService, private _api: ApiService) { }
   ngOnInit(): void {
     this.Cname = this._serv.Cname
@@ -92,8 +91,11 @@ export class DetailComponent implements OnInit {
         this.detailsForm.controls['Saving'].setValue(this.temp[0].bank);
         this.detailsForm.controls['Share'].setValue(this.temp[0].share);
         this.exist=true
+        this.onload_1 = true
       },err=>{
         this.exist=false
+        this.onload_1 = true
+     
       }
     )
   }
@@ -191,15 +193,20 @@ export class DetailComponent implements OnInit {
     var share = this.detailsForm.get('Share').value
     var temp
     temp = {
+      Name:this.Cname,
       No: this.Cnum,
       adv: adv,
       bank: sav,
       supply: sup,
       share: share,
-      inv_no:  this.invNo,
+      inv_no:this.invNo,
       from: this.from,
-      to: this.to,
-      UId: sessionStorage.getItem('UId')
+      to:this.to,
+      totalmilk:this.totalMilk,
+      totalRate:this.totalRate,
+      cutting:this.totalDeduct,
+      subAmount:this.subTotal,
+      UId:sessionStorage.getItem('UId')
     }
     this._api.postBill(temp).subscribe(res=>{
       this.err_p=""
