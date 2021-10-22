@@ -94,6 +94,9 @@ export class LastComponent implements OnInit {
         this.detailsForm.controls['Sup'].setValue(this.temp[0].supply);
         this.detailsForm.controls['Saving'].setValue(this.temp[0].bank);
         this.detailsForm.controls['Share'].setValue(this.temp[0].share);
+        this.totalRate=this.temp[0].totalRate
+      this.totalDeduct=this.temp[0].cutting
+      this.subTotal=this.temp[0].subAmount
         this.exist = true
         this.onload_1 = true
       }, err => {
@@ -246,6 +249,9 @@ export class LastComponent implements OnInit {
       this.detailsForm.controls['Sup'].setValue(this.temp.data.supply);
       this.detailsForm.controls['Saving'].setValue(this.temp.data.bank);
       this.detailsForm.controls['Share'].setValue(this.temp.data.share);
+      this.totalRate=this.temp.data.totalRate
+      this.totalDeduct=this.temp.data.cutting
+      this.subTotal=this.temp.data.subAmount
       this.exist = true
     }, err => {
       this.clicked = false
