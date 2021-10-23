@@ -71,7 +71,6 @@ export class LastComponent implements OnInit {
       this.Ifbuff = false
       this.Ifcow = true
     }
-    // this.API("01/10/2021","11/10/2021")
     this.sendDate()
   }
 
@@ -150,25 +149,6 @@ export class LastComponent implements OnInit {
 
   }
 
-
-  // hourTotal(ele:any){
-
-
-
-  //   console.log((ele.t_rate));
-
-  //   var T_eve:any
-  //   var T_mor:any
-  //   if(ele.ehour=="Evening"){
-  //     T_eve = T_eve + parseFloat(ele.t_rate)
-  //   }else{
-  //     T_mor=T_mor+parseFloat(ele.t_rate)
-  //   }
-  //   console.log("T_eve",T_eve,"T_mor",T_mor);
-
-  // }
-
-
   getCurrentBill(res: any) {
     this.lastBill = []
     var t_Trate = 0
@@ -190,16 +170,12 @@ export class LastComponent implements OnInit {
 
         if (ele.ehours == "Morning") {
           this.morMilk = this.morMilk + parseFloat(ele.milk);
-          // this.morMilk =parseFloat(this.morMilk).toFixed(2)
           this.morRate = this.morRate + parseFloat(ele.t_rate);
-          // this.morRate=parseFloat(this.morRate).toFixed(2)
         }
 
         if (ele.ehours == "Evening") {
           this.eveMilk = this.eveMilk + parseFloat(ele.milk);
-          // this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
           this.eveRate = this.eveRate + parseFloat(ele.t_rate);
-          // this.eveRate=parseFloat(this.eveRate).toFixed(2)
         }
         
       }
@@ -208,7 +184,7 @@ export class LastComponent implements OnInit {
     this.eveRate=parseFloat(this.eveRate).toFixed(2)
     this.morRate=parseFloat(this.morRate).toFixed(2)
     this.morMilk =parseFloat(this.morMilk).toFixed(2)
-    
+
     this.totalMilk = Tmilk.toFixed(2)
     var share = (this.totalMilk * 0.05).toFixed(2)
     this.detailsForm.controls['Saving'].setValue(this.totalMilk);
@@ -237,11 +213,6 @@ export class LastComponent implements OnInit {
       } else {
         this.subTotal = sub.toFixed(2)
         this.last = this.subTotal
-        //   let round=(sub.toFixed(0))
-        //   let og =(sub.toFixed(2))
-        //  var point=(parseFloat(og)-parseFloat(round)).toFixed(2)
-        //  var update=(parseFloat(share)+parseFloat(point)).toFixed(2)
-        //  this.detailsForm.controls['Share'].setValue(update);
       }
 
     }
@@ -287,7 +258,6 @@ export class LastComponent implements OnInit {
       this.exist = false
       this.err_p = "*ERROR In Saving Data"
     })
-    // this.err_p="*ERROR In Saving Data"
   }
 }
 
