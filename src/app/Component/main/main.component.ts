@@ -72,8 +72,8 @@ export class MainComponent implements OnInit {
   t_rateBuff: any
   btn:any = [{ name: "चालू", id: "cur" ,flag:false },
   { name: "मागील", id: "las",flag:false },
-  { name: "ऍडव्हान्स", id: "adv",flag:true },
-  { name: "पशुखाद्य", id: "fod",flag:true }
+  { name: "ऍडव्हान्स", id: "adv",flag:false },
+  { name: "पशुखाद्य", id: "fod",flag:false }
   ]
 
   entryForm: any = new FormGroup({

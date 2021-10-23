@@ -54,4 +54,11 @@ FindBill(inv_no:any,No:any){
   return this.http.get(`${this.baseUrl}/findBill/${this.UId}/${inv_no}/${No}`)
 }
 
+GetSupply(data:any){
+  return this.http.post(`${this.baseUrl}/GetEntry`,data)
+}
+PostSupply(data:any){
+  return this.http.post(`${this.baseUrl}/postEntry`,data)
+}
+
 }

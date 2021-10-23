@@ -15,7 +15,11 @@
       <input type="number" class="form-control" style="padding-right: 5px;padding-left: 5px;">
     </div>
   </div>
-
+  <div class="row mr-3">
+    <div class="d-flex justify-content-end">
+        <h4>Balance:0000.00</h4>
+    </div>
+</div>
 
 
   <div>
@@ -23,15 +27,19 @@
       <thead>
         <tr class="text-center">
           <th>तारीख</th>
+          <th>पिशवी</th>
           <th>दर</th>
           <th>रक्कम</th>
+          <th>Cutting</th>
         </tr>
       </thead>  
       <tbody>
         <tr *ngFor="let temp of data">
           <td>{{temp.date|trimdate}} </td>
+          <td>{{temp.bag}}</td>
           <td>{{temp.rate}}</td>
-          <td>{{temp.t_rate}}</td>
+          <td>{{temp.addAmount}}</td>
+          <td>{{temp.cutAmount}}</td>
         </tr>
       </tbody>
     </table>
