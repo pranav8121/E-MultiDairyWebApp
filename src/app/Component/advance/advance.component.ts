@@ -23,6 +23,7 @@ export class AdvanceComponent implements OnInit {
 
   // Flags
   onload: any = false
+  err: any;
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class AdvanceComponent implements OnInit {
     }
     this._api.GetSupply(temp).subscribe(res => {
       this.data = res
-      this.checkBal( this.data)
+      this.checkBal(this.data)
       this.onload = true
     }, err => {
       this.onload = true
@@ -53,9 +54,12 @@ export class AdvanceComponent implements OnInit {
   }
 
   postData() {
+    
     var amount = this.detailsForm.get('Amount').value
     var temp: any
-    temp = {
+    if(amount>0){
+      this.err=""
+        temp = {
       Name: this.Cname,
       No: this.Cnum,
       type: "advance",
@@ -66,28 +70,31 @@ export class AdvanceComponent implements OnInit {
     this._api.PostSupply(temp).subscribe(res => {
       this.data.push(temp)
       this.null()
-      this.checkBal( this.data)
+      this.checkBal(this.data)
     }, err => {
       this.null()
       console.log(err);
-    })
+    })  
+    }
+    else{
+      this.err="*Please Enter Valid Amount"
+      
+    }
+
 
   }
   null() {
     this.detailsForm.controls['Amount'].setValue("");
   }
-  checkBal(data:any){
-var add=0
-var cut=0
-data.forEach((ele:any) => {
-  if(ele.addAmount){add=add+parseFloat(ele.addAmount)}
-  if(ele.cutAmount){cut=cut+parseFloat(ele.cutAmount)}
-  
-  
-});
-console.log("add",add,"cut",cut);
-
-this.balance=add-cut
+  checkBal(data: any) {
+    var add = 0
+    var cut = 0
+    data.forEach((ele: any) => {
+      if (ele.addAmount) { add = add + parseFloat(ele.addAmount) }
+      if (ele.cutAmount) { cut = cut + parseFloat(ele.cutAmount) }
+    });
+    console.log("add", add, "cut", cut);
+    this.balance = add - cut
   }
 
 }

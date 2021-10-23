@@ -20,10 +20,11 @@ export class SupplyComponent implements OnInit {
   Cnum: any;
   Cname: any;
   detailsForm: any = new FormGroup({
-    'Amount': new FormControl(0, [Validators.required]),
-    'Rate': new FormControl(0, [Validators.required]),
-    'bags': new FormControl(0, [Validators.required]),
+    'Amount': new FormControl({value:1000,disabled:true}, [Validators.required]),
+    'Rate': new FormControl(1000, [Validators.required]),
+    'bags': new FormControl(1, [Validators.required]),
   })
+  val: any;
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -33,7 +34,6 @@ export class SupplyComponent implements OnInit {
   getServData() {
     this.Cnum = this._serv.Cnum
     this.Cname = this._serv.Cname
-    this.detailsForm.controls['Rate'].setValue(1000);
     this.Api()
   }
 
@@ -46,6 +46,7 @@ export class SupplyComponent implements OnInit {
     this._api.GetSupply(temp).subscribe(res => {
       this.data = res
       this.onload = true
+      this.checkBal(this.data)
     }, err => {
       this.onload = true
       console.log(err);
@@ -57,9 +58,24 @@ export class SupplyComponent implements OnInit {
     var bag = this.detailsForm.get('bags').value
     var amount
     if (rate && bag) {
+      this.val=false
       amount = rate * bag
       this.detailsForm.controls['Amount'].setValue(amount);
     }
+    else{
+      this.val=true
+    }
+  }
+
+  checkBal(data: any) {
+    var add = 0
+    var cut = 0
+    data.forEach((ele: any) => {
+      if (ele.addAmount) { add = add + parseFloat(ele.addAmount) }
+      if (ele.cutAmount) { cut = cut + parseFloat(ele.cutAmount) }
+    });
+    console.log("add", add, "cut", cut);
+    this.balance = add - cut
   }
 
   postData() {
@@ -67,6 +83,7 @@ export class SupplyComponent implements OnInit {
     var bag = this.detailsForm.get('bags').value
     var amount = this.detailsForm.get('Amount').value
     var temp: any
+    if(rate && bag && amount){
     temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -80,12 +97,19 @@ export class SupplyComponent implements OnInit {
     this._api.PostSupply(temp).subscribe(res => {
       this.data.push(temp)
       this.null()
+      this.checkBal(this.data)
     }, err => {
       this.null()
       console.log(err);
     })
+    }
+    else{
+console.log("errr");
 
+    }
   }
+
+
   null() {
     this.detailsForm.controls['Amount'].setValue("");
     this.detailsForm.controls['Rate'].setValue("");
