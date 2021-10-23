@@ -70,6 +70,7 @@ export class MainComponent implements OnInit {
   totalRate: any
   t_rateCow: any
   t_rateBuff: any
+  name:any=sessionStorage.getItem("Name")
   btn:any = [{ name: "चालू", id: "cur" ,flag:false },
   { name: "मागील", id: "las",flag:false },
   { name: "ऍडव्हान्स", id: "adv",flag:true },
