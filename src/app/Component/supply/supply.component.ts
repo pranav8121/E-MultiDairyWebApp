@@ -15,6 +15,7 @@ export class SupplyComponent implements OnInit {
 
   // variable
   data: any = []
+  balance: any = 0
   currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
   Cnum: any;
   Cname: any;
@@ -26,7 +27,6 @@ export class SupplyComponent implements OnInit {
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
-  
     this.getServData()
   }
 
@@ -34,6 +34,7 @@ export class SupplyComponent implements OnInit {
     this.Cnum = this._serv.Cnum
     this.Cname = this._serv.Cname
     this.detailsForm.controls['Rate'].setValue(1000);
+    this.Api()
   }
 
   Api() {
@@ -43,29 +44,29 @@ export class SupplyComponent implements OnInit {
       type: "supply",
     }
     this._api.GetSupply(temp).subscribe(res => {
-      this.data=res
+      this.data = res
       this.onload = true
-     }, err => {
+    }, err => {
       this.onload = true
       console.log(err);
-      })
+    })
   }
 
-  calcu(){
+  calcu() {
     var rate = this.detailsForm.get('Rate').value
     var bag = this.detailsForm.get('bags').value
     var amount
-if(rate && bag){
-amount=rate*bag
-this.detailsForm.controls['Amount'].setValue(amount);
-}
+    if (rate && bag) {
+      amount = rate * bag
+      this.detailsForm.controls['Amount'].setValue(amount);
+    }
   }
 
   postData() {
     var rate = this.detailsForm.get('Rate').value
     var bag = this.detailsForm.get('bags').value
     var amount = this.detailsForm.get('Amount').value
-    var temp:any
+    var temp: any
     temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -76,12 +77,18 @@ this.detailsForm.controls['Amount'].setValue(amount);
       bag: bag,
       UId: sessionStorage.getItem("UId")
     }
-this._api.PostSupply(temp).subscribe(res => {
-  this.data.push(temp)
- }, err => {
-  
-  console.log(err);
-  })
+    this._api.PostSupply(temp).subscribe(res => {
+      this.data.push(temp)
+      this.null()
+    }, err => {
+      this.null()
+      console.log(err);
+    })
 
+  }
+  null() {
+    this.detailsForm.controls['Amount'].setValue("");
+    this.detailsForm.controls['Rate'].setValue("");
+    this.detailsForm.controls['bags'].setValue("");
   }
 }

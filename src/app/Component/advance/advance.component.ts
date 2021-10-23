@@ -10,48 +10,51 @@ import { MatrixService } from 'src/app/Service/matrix.service';
   styleUrls: ['./advance.component.css']
 })
 export class AdvanceComponent implements OnInit {
-// vari
-data: any = []
-currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
-Cnum: any;
-Cname: any;
-detailsForm: any = new FormGroup({
-  'Amount': new FormControl(0, [Validators.required]),
-})
+  // vari
+  data: any = []
+  currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+  Cnum: any;
+  balance: any = 0
+  Cname: any;
+  detailsForm: any = new FormGroup({
+    'Amount': new FormControl(0, [Validators.required]),
+  })
 
 
   // Flags
-  onload:any=false
+  onload: any = false
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
-  
+
     this.getServData()
   }
 
   getServData() {
     this.Cnum = this._serv.Cnum
     this.Cname = this._serv.Cname
+    this.Api()
   }
 
   Api() {
     var temp = {
       UId: sessionStorage.getItem("UId"),
       No: this.Cnum,
-      type: "Advance",
+      type: "advance",
     }
     this._api.GetSupply(temp).subscribe(res => {
-      this.data=res
+      this.data = res
+      this.checkBal( this.data)
       this.onload = true
-     }, err => {
+    }, err => {
       this.onload = true
       console.log(err);
-      })
+    })
   }
 
   postData() {
     var amount = this.detailsForm.get('Amount').value
-    var temp:any
+    var temp: any
     temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -60,12 +63,31 @@ detailsForm: any = new FormGroup({
       addAmount: amount,
       UId: sessionStorage.getItem("UId")
     }
-this._api.PostSupply(temp).subscribe(res => {
-  this.data.push(temp)
- }, err => {
-  
-  console.log(err);
-  })
+    this._api.PostSupply(temp).subscribe(res => {
+      this.data.push(temp)
+      this.null()
+      this.checkBal( this.data)
+    }, err => {
+      this.null()
+      console.log(err);
+    })
 
   }
+  null() {
+    this.detailsForm.controls['Amount'].setValue("");
+  }
+  checkBal(data:any){
+var add=0
+var cut=0
+data.forEach((ele:any) => {
+  if(ele.addAmount){add=add+parseFloat(ele.addAmount)}
+  if(ele.cutAmount){cut=cut+parseFloat(ele.cutAmount)}
+  
+  
+});
+console.log("add",add,"cut",cut);
+
+this.balance=add-cut
+  }
+
 }
