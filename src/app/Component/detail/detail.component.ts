@@ -10,6 +10,7 @@ import { MatrixService } from 'src/app/Service/matrix.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  order:string = "date"
   data: any
   Cname: any
   Ctype: any
@@ -19,7 +20,7 @@ export class DetailComponent implements OnInit {
   onload: any = false
   Cmonth: any;
   Cdate: any;
-  currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+  currentDate = formatDate(new Date(), 'dd/MM/YYYY','en')
   Cyear: any;
   CurrentBill: any;
   totalRate: any = 0

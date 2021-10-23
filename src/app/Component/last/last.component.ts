@@ -15,6 +15,7 @@ export class LastComponent implements OnInit {
   valid: any
 
   // variable
+  order:string = "date"
   lastBill: any = []
   Cname: any;
   Ctype: any;
