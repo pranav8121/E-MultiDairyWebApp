@@ -54,6 +54,7 @@ export class LastComponent implements OnInit {
   morRate: any;
   eveMilk: any;
   eveRate: any;
+  currentDate: any= formatDate(new Date(), 'dd/MM/YYYY', 'en')
   constructor(private _api: ApiService, private _serv: MatrixService) { }
 
   ngOnInit(): void {
@@ -227,6 +228,25 @@ export class LastComponent implements OnInit {
     var sav = this.detailsForm.get('Saving').value
     var share = this.detailsForm.get('Share').value
     var temp
+    var adv_temp:any
+    var sup_temp:any
+    adv_temp={
+      Name: this.Cname,
+      No: this.Cnum,
+      type: "advance",
+      date: this.currentDate,
+      cutAmount: adv,
+      UId: sessionStorage.getItem("UId")
+    }
+    sup_temp= {
+      Name: this.Cname,
+      No: this.Cnum,
+      type: "supply",
+      date: this.currentDate,
+      cutAmount: sup,
+      UId: sessionStorage.getItem("UId")
+    }
+
     temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -253,11 +273,26 @@ export class LastComponent implements OnInit {
       this.totalRate=this.temp.data.totalRate
       this.totalDeduct=this.temp.data.cutting
       this.subTotal=this.temp.data.subAmount
+      this.CuttingApi( adv_temp,sup_temp)
       this.exist = true
     }, err => {
       this.clicked = false
       this.exist = false
       this.err_p = "*ERROR In Saving Data"
+    })
+  }
+
+  CuttingApi(data1:any,data2:any){
+    this._api.PostSupply(data1).subscribe(res=>{
+      console.log(" adv done");
+      
+    },err=>{
+      console.log(" adv err");
+    })
+    this._api.PostSupply(data2).subscribe(res=>{
+      console.log(" Sup done");
+    },err=>{
+      console.log(" Sup err");
     })
   }
 }
