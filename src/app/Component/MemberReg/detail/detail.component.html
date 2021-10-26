@@ -4,11 +4,6 @@
   </div>
 </div>
 
-  <div class="my-1 text-center"  *ngIf="!exist && onload_1">
-  <h4 class="text-danger">*Bill Not Generated!!</h4>
-</div>
-
-
 <div id="print-section" #Download>
   <div class="d-none d-print-block">
     <div class="px-1 py-1 d-flex justify-content-center">
@@ -30,7 +25,6 @@
   </div>
   <div *ngIf="onload && onload_1">
     <div *ngIf="valid">
-
       <table class="table table-striped">
         <thead>
           <tr>
@@ -44,7 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let temp of lastBill">
+          <tr *ngFor="let temp of CurrentBill  | orderBy: order">
             <td>{{temp.date|trimdate}} </td>
             <td>{{temp.hours | slice:0:9 }}</td>
             <td>{{temp.milk}}</td>
@@ -56,7 +50,7 @@
         </tbody>
       </table>
 
-      <div class="row ">
+      <div class="row "> 
         <div class="col-5 ">
           <div class="row " style="margin-left: 0px;">
             <div class="col-7 text-primary"><b>एकूण दूध</b></div>
@@ -72,22 +66,22 @@
         </div>
       </div>
 
-      <div class="row ">
+      <!-- <div class="row ">
         <div class="col-6">
           <form [formGroup]="detailsForm">
             <div class="form-group row mt-3">
               <label class="col-6 text-primary" style="padding-right: 0px;padding-left: 15px;">ऍडव्हान्स (रु.) </label>
               <div class="col-6 ml-1">
-                <input type="number" class="form-control" formControlName="Adv" (keyup)="calcu()"
-                  [attr.disabled]="exist ? '' :null" style="padding-right: 5px;padding-left: 5px;">
+                <input type="number" class="form-control" formControlName="Adv" (keyup)="calcu()"  [attr.disabled]="exist ? '' :null"
+                  style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
 
             <div class="form-group row mt-3">
               <label class="col-6 text-primary" style="padding-right: 0px;padding-left: 15px;">पशुखाद्य (रु.)</label>
               <div class="col-6 ml-1">
-                <input type="number" class="form-control" formControlName="Sup" (keyup)="calcu()"
-                  [attr.disabled]="exist ? '' :null" style="padding-right: 5px;padding-left: 5px;">
+                <input type="number" class="form-control" formControlName="Sup" (keyup)="calcu()"  [attr.disabled]="exist ? '' :null"
+                  style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
           </form>
@@ -97,16 +91,16 @@
             <div class="form-group row mt-3">
               <label class="col-7 text-primary" style="padding-right: 5px;padding-left: 5px;">बँक भरणा (रु.)</label>
               <div class="col-5">
-                <input type="number" class="form-control" formControlName="Saving" (keyup)="calcu()"
-                  [attr.disabled]="exist ? '' :null" style="padding-right: 5px;padding-left: 5px;">
+                <input type="number" class="form-control" formControlName="Saving" (keyup)="calcu()"  [attr.disabled]="exist ? '' :null"
+                  style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
 
             <div class="form-group row mt-3">
               <label class="col-7 text-primary">शेअर (रु.)</label>
               <div class="col-5 ">
-                <input type="number" class="form-control" formControlName="Share" (keyup)="calcu()"
-                  [attr.disabled]="exist ? '' :null" style="padding-right: 5px;padding-left: 5px;">
+                <input type="number" class="form-control" formControlName="Share" (keyup)="calcu()"  [attr.disabled]="exist ? '' :null"
+                   style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
           </form>
@@ -127,23 +121,20 @@
           <div class="text-primary"> <strong> = </strong> देय रक्कम</div>
           <div><strong>{{subTotal}} रु.</strong></div>
         </div>
-      </div>
+      </div> -->
     </div>
 
   </div>
 </div>
-<div *ngIf="onload && onload_1 && valid">
+<!-- <div *ngIf="onload && onload_1 &&  valid">
   <div *ngIf="!onPrintShow" class="col text-center  my-5 mt-3">
-    <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section" *ngIf="!exist" ngxPrint
-      (click)="Submit()" [disabled]="clicked">PRINT</button><br>
-
-    <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section" *ngIf="exist"
-      ngxPrint>PRINT</button><br>
-    <small class="text-danger">{{err_p}}</small>
+    <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section" *ngIf="!exist" ngxPrint (click)="Submit()">PRINT</button><br>
+    <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section" *ngIf="exist" ngxPrint >PRINT</button><br>
+ <small class="text-danger">{{err_p}}</small>
   </div>
-</div>
+</div> -->
 
-<div class="row mb-2" *ngIf="onload && onload_1 && valid">
+<div class="row mb-2 mt-5 " *ngIf="onload && onload_1 && valid">
   <div class="col text-center">
       <div> सकाळ</div>
       <div><strong>{{this.morMilk}}लि./{{this.morRate}}रु.</strong></div>
@@ -153,8 +144,6 @@
       <div><strong>{{this.eveMilk}}लि./{{this.eveRate}}रु.</strong></div>
   </div>
 </div>
-
-
 <div class="mt-5 d-flex justify-content-center" *ngIf="!valid">
   <h3>{{err}} </h3>
 </div>
