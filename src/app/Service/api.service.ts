@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
   // Local URL
-//  baseUrl=`http://localhost:3000`
+//  baseUrl=`https://localhost:3000`
 // LIVE URL
 baseUrl='https://e-multidairybackend.herokuapp.com'
 
@@ -31,6 +31,11 @@ postToData(data:any){
   return this.http.post(`${this.baseUrl}/addDataDB`,data) 
 }
 
+EditData(data:any,id:any){
+  console.log(id);
+  return this.http.put(`${this.baseUrl}/EditDataDB/${id}`,data) 
+}
+
 getMemdetails(No:any){
 return this.http.get(`${this.baseUrl}/getalldata/${this.UId}/${No}`)
 }
@@ -52,6 +57,13 @@ postBill(data:any){
 FindBill(inv_no:any,No:any){
   inv_no=encodeURIComponent(inv_no)
   return this.http.get(`${this.baseUrl}/findBill/${this.UId}/${inv_no}/${No}`)
+}
+
+GetSupply(data:any){
+  return this.http.post(`${this.baseUrl}/GetEntry`,data)
+}
+PostSupply(data:any){
+  return this.http.post(`${this.baseUrl}/postEntry`,data)
 }
 
 }

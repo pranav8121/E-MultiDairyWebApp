@@ -1,60 +1,66 @@
 import { formatDate } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Service/api.service';
 import { MatrixService } from 'src/app/Service/matrix.service';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  selector: 'app-last',
+  templateUrl: './last.component.html',
+  styleUrls: ['./last.component.css']
 })
-export class DetailComponent implements OnInit {
-  data: any
-  Cname: any
-  Ctype: any
-  valid: any
-  err: any;
-  Cnum: any;
+export class LastComponent implements OnInit {
+  // Boolean
   onload: any = false
-  Cmonth: any;
+  valid: any
+
+  // variable
+  order:string = "date"
+  lastBill: any = []
+  Cname: any;
+  Ctype: any;
+  Cnum: any;
+  onPrintShow: any;
+  name: any;
+  MCtype: any;
+  Ifcow: any;
+  Ifbuff: any;
+
+  err: any;
   Cdate: any;
-  currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+  Cmonth: any;
   Cyear: any;
-  CurrentBill: any;
-  totalRate: any = 0
-  subTotal: any = 0
+  totalMilk: any;
+  lastDate: any;
   detailsForm: any = new FormGroup({
     'Adv': new FormControl(0, [Validators.required]),
     'Sup': new FormControl(0, [Validators.required]),
     'Saving': new FormControl(0, [Validators.required]),
     'Share': new FormControl(0, [Validators.required]),
   })
-  totalMilk: any;
+  subTotal: any;
+  totalRate: any;
+  totalDeduct: any;
   last: any;
-  totalDeduct: number = 0;
-  onPrintShow: boolean = false;
-  name: any;
-  Ifcow: any = false
-  Ifbuff: any = false
-  MCtype: any;
   from: any;
   to: any;
-  err_p: any;
+  err_p: any
   invNo: any;
-  temp: any;
   exist: any;
+  temp: any;
   onload_1: any;
+  clicked: any;
   morMilk: any;
   morRate: any;
   eveMilk: any;
   eveRate: any;
-  constructor(private _serv: MatrixService, private _api: ApiService) { }
+  currentDate: any= formatDate(new Date(), 'dd/MM/YYYY', 'en')
+  constructor(private _api: ApiService, private _serv: MatrixService) { }
+
   ngOnInit(): void {
     this.Cname = this._serv.Cname
     this.Ctype = this._serv.Ctype
     this.Cnum = this._serv.Cnum
-    this.sendDate()
     this.onPrintShow = false;
     this.name = sessionStorage.getItem('Name')
     if (this.Ctype == "Buffalow") {
@@ -67,24 +73,23 @@ export class DetailComponent implements OnInit {
       this.Ifbuff = false
       this.Ifcow = true
     }
+    this.sendDate()
   }
 
   API(from: any, to: any) {
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
+      this.valid = true
       this.getCurrentBill(res)
       this.findBill()
       this.onload = true
-      this.valid = true
 
     }, err => {
       this.err = "No Data Found"
       this.onload = true
       this.valid = false
-
-    })
-
-  }
-
+    }
+    )
+  };
 
   findBill() {
     this._api.FindBill(this.invNo, this.Cnum).subscribe(
@@ -94,28 +99,29 @@ export class DetailComponent implements OnInit {
         this.detailsForm.controls['Sup'].setValue(this.temp[0].supply);
         this.detailsForm.controls['Saving'].setValue(this.temp[0].bank);
         this.detailsForm.controls['Share'].setValue(this.temp[0].share);
-        this.totalRate = this.temp[0].totalRate
-        this.totalDeduct = this.temp[0].cutting
-        this.subTotal = this.temp[0].subAmount
+        this.totalRate=this.temp[0].totalRate
+      this.totalDeduct=this.temp[0].cutting
+      this.subTotal=this.temp[0].subAmount
         this.exist = true
         this.onload_1 = true
       }, err => {
         this.exist = false
         this.onload_1 = true
-
       }
     )
   }
 
+
   sendDate() {
     var today = new Date()
-    this.Cdate = today.getDate()
-    this.Cmonth = today.getMonth() + 1
-    this.Cyear = today.getFullYear()
-
+    var myPastDate = new Date(today);
+    myPastDate.setDate(today.getDate() - 10)
+    this.Cdate = myPastDate.getDate()
+    this.Cmonth = myPastDate.getMonth() + 1
+    this.Cyear = myPastDate.getFullYear()
+    this.lastDate = formatDate(new Date(myPastDate), 'dd/MM/YYYY', 'en')
     if (this.Cdate >= 1 && this.Cdate <= 10) {
       console.log("1");
-
       this.from = `01/${this.Cmonth}/${this.Cyear}`
       this.to = `11/${this.Cmonth}/${this.Cyear}`
       this.API(this.from, this.to)
@@ -123,7 +129,6 @@ export class DetailComponent implements OnInit {
     }
     else if (this.Cdate >= 11 && this.Cdate <= 20) {
       console.log("2");
-
       this.from = `11/${this.Cmonth}/${this.Cyear}`
       this.to = `21/${this.Cmonth}/${this.Cyear}`
       this.API(this.from, this.to)
@@ -147,7 +152,7 @@ export class DetailComponent implements OnInit {
   }
 
   getCurrentBill(res: any) {
-    this.CurrentBill = []
+    this.lastBill = []
     var t_Trate = 0
     var Tmilk = 0
     this.morMilk = 0;
@@ -155,43 +160,32 @@ export class DetailComponent implements OnInit {
     this.eveMilk = 0;
     this.eveRate = 0;
     res.forEach((ele: any) => {
-     
+
       var emon = (ele.date).slice(3, 5)
       var eyrs = (ele.date).slice(6, 10)
-      var cmon = this.currentDate.slice(3, 5)
-      var cyrs = this.currentDate.slice(6, 10)
+      var cmon = this.lastDate.slice(3, 5)
+      var cyrs = this.lastDate.slice(6, 10)
       if (emon == cmon && eyrs == cyrs) {
-        
-        this.CurrentBill.push(ele);
+        this.lastBill.push(ele);
         t_Trate = t_Trate + parseFloat(ele.t_rate);
         Tmilk = Tmilk + parseFloat(ele.milk);
 
-         if (ele.ehours == "Morning") {
-        this.morMilk = this.morMilk + parseFloat(ele.milk);
-        // console.log("MorningM",this.morMilk);
+        if (ele.ehours == "Morning") {
+          this.morMilk = this.morMilk + parseFloat(ele.milk);
+          this.morRate = this.morRate + parseFloat(ele.t_rate);
+        }
+
+        if (ele.ehours == "Evening") {
+          this.eveMilk = this.eveMilk + parseFloat(ele.milk);
+          this.eveRate = this.eveRate + parseFloat(ele.t_rate);
+        }
         
-        // 
-        this.morRate = this.morRate + parseFloat(ele.t_rate);
-        // console.log("MorningR",this.morRate);
-        
-        // this.morRate=parseFloat(this.morRate).toFixed(2)
-      }
-      if (ele.ehours == "Evening") {
-        this.eveMilk = this.eveMilk + parseFloat(ele.milk);
-        // console.log("EveM",this.eveMilk);
-        
-        // this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
-        this.eveRate = this.eveRate + parseFloat(ele.t_rate);
-        // console.log("EveR",this.eveRate);
-        
-        // this.eveRate=parseFloat(this.eveRate).toFixed(2)
-      }
       }
     });
-    this.morMilk =parseFloat(this.morMilk).toFixed(2)
-    this.morRate=parseFloat(this.morRate).toFixed(2)
     this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
     this.eveRate=parseFloat(this.eveRate).toFixed(2)
+    this.morRate=parseFloat(this.morRate).toFixed(2)
+    this.morMilk =parseFloat(this.morMilk).toFixed(2)
 
     this.totalMilk = Tmilk.toFixed(2)
     var share = (this.totalMilk * 0.05).toFixed(2)
@@ -205,18 +199,19 @@ export class DetailComponent implements OnInit {
     // this.detailsForm.setValue(Saving:)
   }
 
+
   calcu() {
     var adv = this.detailsForm.get('Adv').value
     var sup = this.detailsForm.get('Sup').value
     var sav = this.detailsForm.get('Saving').value
     var share = this.detailsForm.get('Share').value
-
     if (adv || sup || sav || share) {
       var sum = parseFloat(adv) + parseFloat(sup) + parseFloat(sav) + parseFloat(share)
       this.totalDeduct = parseFloat(sum.toFixed(2));
       var sub = this.totalRate - sum
       if (!sub) {
         this.subTotal = this.last
+
       } else {
         this.subTotal = sub.toFixed(2)
         this.last = this.subTotal
@@ -225,12 +220,33 @@ export class DetailComponent implements OnInit {
     }
   }
 
+
   Submit() {
+    this.clicked = true
     var adv = this.detailsForm.get('Adv').value
     var sup = this.detailsForm.get('Sup').value
     var sav = this.detailsForm.get('Saving').value
     var share = this.detailsForm.get('Share').value
     var temp
+    var adv_temp:any
+    var sup_temp:any
+    adv_temp={
+      Name: this.Cname,
+      No: this.Cnum,
+      type: "advance",
+      date: this.currentDate,
+      cutAmount: adv,
+      UId: sessionStorage.getItem("UId")
+    }
+    sup_temp= {
+      Name: this.Cname,
+      No: this.Cnum,
+      type: "supply",
+      date: this.currentDate,
+      cutAmount: sup,
+      UId: sessionStorage.getItem("UId")
+    }
+
     temp = {
       Name: this.Cname,
       No: this.Cnum,
@@ -254,15 +270,31 @@ export class DetailComponent implements OnInit {
       this.detailsForm.controls['Sup'].setValue(this.temp.data.supply);
       this.detailsForm.controls['Saving'].setValue(this.temp.data.bank);
       this.detailsForm.controls['Share'].setValue(this.temp.data.share);
-      this.totalRate = this.temp.data.totalRate
-      this.totalDeduct = this.temp.data.cutting
-      this.subTotal = this.temp.data.subAmount
+      this.totalRate=this.temp.data.totalRate
+      this.totalDeduct=this.temp.data.cutting
+      this.subTotal=this.temp.data.subAmount
+      this.CuttingApi( adv_temp,sup_temp)
       this.exist = true
     }, err => {
+      this.clicked = false
       this.exist = false
       this.err_p = "*ERROR In Saving Data"
     })
-    // this.err_p="*ERROR In Saving Data"
+  }
 
+  CuttingApi(data1:any,data2:any){
+    this._api.PostSupply(data1).subscribe(res=>{
+      console.log(" adv done");
+      
+    },err=>{
+      console.log(" adv err");
+    })
+    this._api.PostSupply(data2).subscribe(res=>{
+      console.log(" Sup done");
+    },err=>{
+      console.log(" Sup err");
+    })
   }
 }
+
+

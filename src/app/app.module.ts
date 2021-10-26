@@ -3,20 +3,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { OrderModule } from 'ngx-order-pipe';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './Component/login/login.component';
-import { MainComponent } from './Component/main/main.component';
-import { HeaderComponent } from './Component/header/header.component';
+import { LoginComponent } from './Component/Xparts/login/login.component';
+import { MainComponent } from './Component/MemberReg/main/main.component';
+import { HeaderComponent } from './Component/Xparts/header/header.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DetailComponent } from './Component/detail/detail.component';
+import { DetailComponent } from './Component/MemberReg/detail/detail.component';
 import { TrimdatePipe } from './Pipes/trimdate.pipe';
 import { NgxPrintModule } from 'ngx-print';
-import { LastComponent } from './Component/last/last.component';
-import { AdvanceComponent } from './Component/advance/advance.component';
-import { SupplyComponent } from './Component/supply/supply.component';
+import { LastComponent } from './Component/MemberReg/last/last.component';
+import { AdvanceComponent } from './Component/MemberReg/advance/advance.component';
+import { SupplyComponent } from './Component/MemberReg/supply/supply.component';
+import { PaymentComponent } from './Component/PaymentReg/payment/payment.component';
+import { AddmemComponent } from './Component/Xparts/addmem/addmem.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,9 @@ import { SupplyComponent } from './Component/supply/supply.component';
     TrimdatePipe,
     LastComponent,
     AdvanceComponent,
-    SupplyComponent
+    SupplyComponent,
+    PaymentComponent,
+    AddmemComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,8 @@ import { SupplyComponent } from './Component/supply/supply.component';
     HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    NgxPrintModule
+    NgxPrintModule,
+    OrderModule
   ],
   providers: [{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]

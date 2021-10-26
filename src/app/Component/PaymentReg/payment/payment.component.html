@@ -1,0 +1,54 @@
+<!-- <table class="table">
+    <tbody>
+        <tr *ngFor="let game of parentData; let i = index">
+            <table class="table">
+                <tbody>
+                    <tr class="accordion-toggle" data-toggle="collapse" [attr.data-target]="'#game4Details' + i">
+                        <td>{{game.totalRate}}</td>
+                        <td>{{game.totalCutting}}</td>
+                        <td>{{game.subTotal}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="hiddentablerow">
+                            <div [attr.id]="'game4Details' + i" class="accordian-body collapse">Insert a large component in this place
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </tr>
+    </tbody>
+</table> -->
+
+
+<table class="table">
+    <tbody>
+        <tr *ngFor="let data of parentData; let i = index" class="clickable-row" data-toggle="collapse"
+            [attr.data-target]="'#dataDetails' + i">
+            <td>{{data.from}}-{{data.to}}
+                <div [attr.id]="'dataDetails' + i" class="collapse">
+                    <table class="table" style="width: 100%;">
+                        <thead>
+                           <th>totalMilk</th>
+                           <th>totalRate</th>
+                           <th>totalCutting</th>
+                           <th>subTotal</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of parentData">
+                                <td>{{data.totalMilk}}</td>
+                                <td> {{data.totalRate}}</td>
+                                <td> {{data.totalCutting}}</td>
+                                <td>{{data.subTotal}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+            <td>{{data.totalMilk}}</td>
+            <td> {{data.totalRate}}</td>
+            <td> {{data.totalCutting}}</td>
+            <td>{{data.subTotal}}</td>
+        </tr>
+    </tbody>
+</table>
