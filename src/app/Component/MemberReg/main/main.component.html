@@ -1,5 +1,5 @@
 <!-- loader -->
-<div class="d-flex justify-content-center mt-5 text-primary" *ngIf="this.flag_1">
+<div class="d-flex justify-content-center mt-5 text-primary" *ngIf="flag_1">
     <span style="font-size: x-large;"> Fetching data...</span>
     <div class="spinner-border text-primary" role="status">
         <span class="sr-only"></span>
@@ -7,7 +7,7 @@
 </div>
 
 <!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#007bff" type = "ball-beat" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->
-<div *ngIf="!this.flag_1">
+<div *ngIf="!flag_1">
     <!-- Header -->
     <div>
         <app-header></app-header>

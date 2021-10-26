@@ -21,6 +21,7 @@ import { LastComponent } from './Component/MemberReg/last/last.component';
 import { AdvanceComponent } from './Component/MemberReg/advance/advance.component';
 import { SupplyComponent } from './Component/MemberReg/supply/supply.component';
 import { PaymentComponent } from './Component/PaymentReg/payment/payment.component';
+import { AddmemComponent } from './Component/Xparts/addmem/addmem.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PaymentComponent } from './Component/PaymentReg/payment/payment.compone
     LastComponent,
     AdvanceComponent,
     SupplyComponent,
-    PaymentComponent
+    PaymentComponent,
+    AddmemComponent
   ],
   imports: [
     BrowserModule,
