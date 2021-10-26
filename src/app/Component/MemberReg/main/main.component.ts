@@ -24,10 +24,10 @@ export class MainComponent implements OnInit {
   Ifcow: any = false
   Ifbuff: any = false
   isClicked: any = false
-  adv:any=false
-  cur:any=false
-  las:any=false
-  fod:any=false
+  adv: any = false
+  cur: any = false
+  las: any = false
+  fod: any = false
 
 
   // Variabels
@@ -70,10 +70,10 @@ export class MainComponent implements OnInit {
   totalRate: any
   t_rateCow: any
   t_rateBuff: any
-  btn:any = [{ name: "चालू", id: "cur" ,flag:false },
-  { name: "मागील", id: "las",flag:false },
-  { name: "ऍडव्हान्स", id: "adv",flag:false },
-  { name: "पशुखाद्य", id: "fod",flag:false }
+  btn: any = [{ name: "चालू", id: "cur", flag: false },
+  { name: "मागील", id: "las", flag: false },
+  { name: "ऍडव्हान्स", id: "adv", flag: false },
+  { name: "पशुखाद्य", id: "fod", flag: false }
   ]
 
   entryForm: any = new FormGroup({
@@ -83,6 +83,9 @@ export class MainComponent implements OnInit {
   })
   err: any;
   error: any;
+  IfEdit: any = false
+  id: any;
+  EditClick: any=false
 
 
 
@@ -93,7 +96,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.flag_1 = true
-    this.OnLoad()    
+    this.OnLoad()
   }
 
   OnLoad() {
@@ -130,7 +133,6 @@ export class MainComponent implements OnInit {
       this.doneMemCheck(this.DoneMem)
       this.err = false
       this.EntryCheck(this.Cnum)
-      // this.showMember(this.Cnum)
     }, err => {
       console.log(err);
       this.err = true
@@ -152,6 +154,7 @@ export class MainComponent implements OnInit {
   showMember(No: any) {
     this.Hidedetails()
     if (No) {
+      this.IfEdit = false
       this.temp = this.Members.find((ele: any) => ele.No == No)
       if (this.temp == undefined) {
         this.userValid = true
@@ -187,11 +190,13 @@ export class MainComponent implements OnInit {
     }
     else {
       this.milk = this.temp_1.milk
+      this.id = this.temp_1._id
       this.fat = this.temp_1.fat
       this.snf = this.temp_1.snf
       this.t_rate = this.temp_1.t_rate
       this.rate = this.temp_1.rate
       this.entryFlag = true
+
     }
   }
 
@@ -264,6 +269,7 @@ export class MainComponent implements OnInit {
         this.snf = this.temp.data.snf
         this.t_rate = this.temp.data.t_rate
         this.rate = this.temp.data.rate
+        this.id = this.temp.data._id
         this.DoneMem.push(this.temp.data)
         this.doneMemCheck(this.DoneMem)
         this.isClicked = false
@@ -315,31 +321,90 @@ export class MainComponent implements OnInit {
   }
 
 
-  onBtn(id:any){
-    if(id=="cur"){
-      this.las=false
-      this.adv=false
-      this.fod=false
-      this.cur=true
+  onBtn(id: any) {
+    if (id == "cur") {
+      this.las = false
+      this.adv = false
+      this.fod = false
+      this.cur = true
     }
-    else if(id=="las"){
-      this.las=true
-      this.adv=false
-      this.fod=false
-      this.cur=false}
-    else if(id=="adv"){
-      this.las=false
-      this.adv=true
-      this.fod=false
-      this.cur=false}
-    else if(id=="fod"){
-      this.las=false
-      this.adv=false
-      this.fod=true
-      this.cur=false}
+    else if (id == "las") {
+      this.las = true
+      this.adv = false
+      this.fod = false
+      this.cur = false
+    }
+    else if (id == "adv") {
+      this.las = false
+      this.adv = true
+      this.fod = false
+      this.cur = false
+    }
+    else if (id == "fod") {
+      this.las = false
+      this.adv = false
+      this.fod = true
+      this.cur = false
+    }
   }
 
+  onEdit() {
+    this.entryFlag = false
+    this.entryForm.controls['Milk'].setValue(this.milk);
+    this.entryForm.controls['Snf'].setValue(this.snf);
+    this.entryForm.controls['Fat'].setValue(this.fat);
+    this.calcu()
+    this.rate = this.rate
+    this.t_rate = this.t_rate
+    this.IfEdit = true
+  }
+  submitEdit() {
+    this.EditClick=true
+    let temp = {
+      Name: this.Cname,
+      No: this.Cnum,
+      date: this.currentDate,
+      time: this.time,
+      milk: this.entryForm.get('Milk').value,
+      type: this.Ctype,
+      fat: this.entryForm.get('Fat').value,
+      snf: this.entryForm.get('Snf').value,
+      rate: this.RateVal,
+      t_rate: this.TotalVal,
+      hours: this.timeMsg,
+      ehours: this.engtimeMsg,
+      Phone: this.CPhone,
+      eng_hours: this.engtimeMsg,
+      UId: sessionStorage.getItem('UId')
+    }
+    if (this.entryForm.valid && sessionStorage.getItem('UId')) {
 
+      this._api.EditData(temp, this.id).subscribe(res => {
+        this.getTodays()
+        this.entryFlag = true
+        this.temp = res
+        this.entryFlag = true
+        this.milk = this.temp.data.milk
+        this.fat = this.temp.data.fat
+        this.snf = this.temp.data.snf
+        this.t_rate = this.temp.data.t_rate
+        this.rate = this.temp.data.rate
+        this.getTodays()
+        console.log("donememcheck",this.DoneMem);
+        this.EditClick=false
+      },
+        err => {
+          this.isClicked = false
+          console.log("Edit ERR", err);
+          this.postErr = "Slow Internet Connection,Data not Saved! Please Refresh Page"
+          this.EditClick=false
+        }
+      )
+    }
+  }
+  CancelEdit(){
+    this.entryFlag = true
+  }
 
   Showdetails() {
     this.details = true

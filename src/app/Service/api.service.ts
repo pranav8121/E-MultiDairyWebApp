@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
   // Local URL
-//  baseUrl=`http://localhost:3000`
+//  baseUrl=`https://localhost:3000`
 // LIVE URL
 baseUrl='https://e-multidairybackend.herokuapp.com'
 
@@ -29,6 +29,11 @@ getallMem(){
 
 postToData(data:any){
   return this.http.post(`${this.baseUrl}/addDataDB`,data) 
+}
+
+EditData(data:any,id:any){
+  console.log(id);
+  return this.http.put(`${this.baseUrl}/EditDataDB/${id}`,data) 
 }
 
 getMemdetails(No:any){
