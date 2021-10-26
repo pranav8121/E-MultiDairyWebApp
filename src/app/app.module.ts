@@ -10,17 +10,17 @@ import { OrderModule } from 'ngx-order-pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Component/Xparts/login/login.component';
-import { MainComponent } from './Component/Member Reg/main/main.component';
+import { MainComponent } from './Component/MemberReg/main/main.component';
 import { HeaderComponent } from './Component/Xparts/header/header.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DetailComponent } from './Component/Member Reg/detail/detail.component';
+import { DetailComponent } from './Component/MemberReg/detail/detail.component';
 import { TrimdatePipe } from './Pipes/trimdate.pipe';
 import { NgxPrintModule } from 'ngx-print';
-import { LastComponent } from './Component/Member Reg/last/last.component';
-import { AdvanceComponent } from './Component/Member Reg/advance/advance.component';
-import { SupplyComponent } from './Component/Member Reg/supply/supply.component';
-import { PaymentComponent } from './Component/Payment Reg/payment/payment.component';
+import { LastComponent } from './Component/MemberReg/last/last.component';
+import { AdvanceComponent } from './Component/MemberReg/advance/advance.component';
+import { SupplyComponent } from './Component/MemberReg/supply/supply.component';
+import { PaymentComponent } from './Component/PaymentReg/payment/payment.component';
 
 @NgModule({
   declarations: [
