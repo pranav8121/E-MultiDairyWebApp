@@ -1,0 +1,196 @@
+<div class="d-flex justify-content-center mt-5 text-primary" *ngIf="flag_1">
+    <span style="font-size: x-large;"></span>
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only"></span>
+    </div>
+</div>
+
+<div *ngIf="!flag_1">
+    <div>
+        <app-header></app-header>
+    </div>
+    <div>
+
+        <!-- form -->
+        <div class="container mt-3">
+            <form [formGroup]=" RegisterForm">
+
+                <div class="row my-3">
+                    <!-- Date -->
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <input type="date" class="form-control" id="_date" formControlName="Date">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row my-3">
+                    <!-- Hours -->
+                    <div class="form-group row">
+                        <label for="_hour" class="col-2 col-form-label">वेळ</label>
+                        <div class="col-10">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="mor" value="Morning"
+                                    formControlName="Hour">
+                                <label class="form-check-label" for="mor">सकाळ </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="env" value="Evening"
+                                    formControlName="Hour">
+                                <label class="form-check-label" for="env">संध्याकाळ</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row my-3">
+                    <!-- Type -->
+                    <div class="form-group row">
+                        <label for="_type" class="col-2 col-form-label">प्रकार</label>
+                        <div class="col-10">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="buff" value="Buffalow"
+                                    formControlName="Type">
+                                <label class="form-check-label" for="buff">म्हैस</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="cow" value="Cow"
+                                    formControlName="Type">
+                                <label class="form-check-label" for="cow">गाय</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row my-3">
+                    <div class="col">
+                        <!-- Milk -->
+                        <div class="form-group row">
+                            <label for="_milk" class="col-2 col-form-label">दूध:</label>
+                            <div class="col-10">
+                                <input type="number" class="mx-2 form-control" id="_milk" formControlName="Milk">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- SNF -->
+                        <div class="form-group row">
+                            <label for="_snf" class="col-5 mr-1 col-form-label">एस.एन.एफ:</label>
+                            <div class="col-7">
+                                <input type="number" class="mx-2 form-control" id="_snf" formControlName="SNF">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="row my-3">
+                    <div class="col-6">
+                        <!-- Fat -->
+                        <div class="form-group row">
+                            <label for="_fat" class="col-2 col-form-label">फॅट:</label>
+                            <div class="col-10">
+                                <input type="number" class="mx-2 form-control" id="_fat" formControlName="Fat">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row my-3">
+                    <!-- Quality -->
+                    <!-- <div class="form-group row">
+                    <label for="good" class="col-2 col-form-label">Good</label>
+                    <div class="col-10">
+                        <select class="custom-select" id="good"  formControlName="Good">
+                            <option value="G" selected>G</option>
+                            <option value="S">S</option>
+                            <option value="U">U</option>
+                        </select>
+                    </div>
+                </div> -->
+                    <div class="form-group row">
+                        <label for="_good" class="col-2 col-form-label">दर्जा</label>
+                        <div class="col-10">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="_g" value="G" formControlName="Good">
+                                <label class="form-check-label" for="_g">G</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="_s" value="S" formControlName="Good">
+                                <label class="form-check-label" for="_s">S</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="_u" value="U" formControlName="Good">
+                                <label class="form-check-label" for="_u">U</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <!-- Rate -->
+                        <div class="form-group row">
+                            <label for="_rate" class="col-3 col-form-label">दर/लिटर:</label>
+                            <div class="col-4">
+                                <input type="number" class=" form-control" id="_rate" formControlName="Rate">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row my-3">
+                    <div class="col">
+                        <!-- TotalRate -->
+                        <div class="form-group row">
+                            <label for="_trate" class="col-3">एकूण दर:</label>
+                            <div class="col-4">
+                                <input type="number" class=" form-control" id="_trate" formControlName="totalRate">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="row my-3">
+                    <div class="col-6">-->
+                        <!-- TotalRate -->
+                        <!-- <div class="form-group row">
+                            <label for="_trate" class="col-4 ">TotalRate</label>
+                            <div class="col-8">
+                                <input type="number" class="mx-2 form-control" id="_trate" formControlName="totalRate">
+                            </div>
+                        </div>
+                    </div>
+                </div>   -->
+
+
+                <div class="d-flex justify-content-center my-2">
+                    <!-- Button -->
+                    <button class="btn btn-info" (click)="Register()">
+                        okay
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+
+    </div>
+</div>
