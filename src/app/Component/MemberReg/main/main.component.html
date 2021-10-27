@@ -183,9 +183,13 @@
                         </div>
                         
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section"  ngxPrint >PRINT</button> &nbsp;
-                        <button class="btn btn-danger" (click)="onEdit()">Edit</button>
+                    <!-- <div class="row">
+                        <div class="col d-flex justify-content-center"></div>
+                        <div class="col d-flex justify-content-center"></div>
+                    </div> -->
+                    <div class=" d-flex justify-content-center">
+                        <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section"  ngxPrint > प्रिंट</button> &nbsp;
+                        <!-- x<button class="btn btn-danger" (click)="onEdit()">Edit</button> -->
                     </div>
                     </div>
 
@@ -205,6 +209,9 @@
                             <div>दूध/दर</div>
                             <div><strong>({{totalMilk}}/{{totalRate}})</strong></div>
                         </div>
+                    </div>
+                    <div class=" d-flex justify-content-end my-4">
+                        <button class="btn btn-danger" (click)="onEdit()">बदल करणे</button>
                     </div>
                 </div>
             </div>
