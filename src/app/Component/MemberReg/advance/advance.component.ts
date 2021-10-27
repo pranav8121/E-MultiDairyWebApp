@@ -96,7 +96,6 @@ export class AdvanceComponent implements OnInit {
       if (ele.addAmount) { add = add + parseFloat(ele.addAmount) }
       if (ele.cutAmount) { cut = cut + parseFloat(ele.cutAmount) }
     });
-    console.log("add", add, "cut", cut);
     this.balance = add - cut
   }
 
