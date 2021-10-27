@@ -22,6 +22,7 @@ import { AdvanceComponent } from './Component/MemberReg/advance/advance.componen
 import { SupplyComponent } from './Component/MemberReg/supply/supply.component';
 import { PaymentComponent } from './Component/PaymentReg/payment/payment.component';
 import { AddmemComponent } from './Component/Xparts/addmem/addmem.component';
+import { DairyComponent } from './Component/DairyReg/dairy/dairy.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AddmemComponent } from './Component/Xparts/addmem/addmem.component';
     AdvanceComponent,
     SupplyComponent,
     PaymentComponent,
-    AddmemComponent
+    AddmemComponent,
+    DairyComponent
   ],
   imports: [
     BrowserModule,
