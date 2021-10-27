@@ -24,6 +24,7 @@ export class AdvanceComponent implements OnInit {
   // Flags
   onload: any = false
   err: any;
+  isClicked:any=false
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -54,7 +55,7 @@ export class AdvanceComponent implements OnInit {
   }
 
   postData() {
-    
+    this.isClicked=true
     var amount = this.detailsForm.get('Amount').value
     var temp: any
     if(amount>0){
@@ -71,9 +72,11 @@ export class AdvanceComponent implements OnInit {
       this.data.push(temp)
       this.null()
       this.checkBal(this.data)
+      this.isClicked=false
     }, err => {
       this.null()
       console.log(err);
+      this.isClicked=false
     })  
     }
     else{
@@ -84,7 +87,7 @@ export class AdvanceComponent implements OnInit {
 
   }
   null() {
-    this.detailsForm.controls['Amount'].setValue("");
+    this.detailsForm.controls['Amount'].setValue(0);
   }
   checkBal(data: any) {
     var add = 0

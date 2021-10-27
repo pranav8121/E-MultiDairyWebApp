@@ -20,11 +20,12 @@ export class SupplyComponent implements OnInit {
   Cnum: any;
   Cname: any;
   detailsForm: any = new FormGroup({
-    'Amount': new FormControl({value:1000,disabled:true}, [Validators.required]),
-    'Rate': new FormControl(1000, [Validators.required]),
+    'Amount': new FormControl({value:1060,disabled:true}, [Validators.required]),
+    'Rate': new FormControl(1060, [Validators.required]),
     'bags': new FormControl(1, [Validators.required]),
   })
   val: any;
+  isClicked:any=false
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -78,6 +79,7 @@ export class SupplyComponent implements OnInit {
   }
 
   postData() {
+   this.isClicked=true
     var rate = this.detailsForm.get('Rate').value
     var bag = this.detailsForm.get('bags').value
     var amount = this.detailsForm.get('Amount').value
@@ -97,9 +99,11 @@ export class SupplyComponent implements OnInit {
       this.data.push(temp)
       this.null()
       this.checkBal(this.data)
+      this.isClicked=false
     }, err => {
       this.null()
       console.log(err);
+      this.isClicked=false
     })
     }
     else{
@@ -110,8 +114,8 @@ console.log("errr");
 
 
   null() {
-    this.detailsForm.controls['Amount'].setValue("");
-    this.detailsForm.controls['Rate'].setValue("");
-    this.detailsForm.controls['bags'].setValue("");
+    this.detailsForm.controls['Amount'].setValue(1060);
+    this.detailsForm.controls['Rate'].setValue(1060);
+    this.detailsForm.controls['bags'].setValue(1);
   }
 }
