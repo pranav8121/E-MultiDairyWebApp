@@ -23,6 +23,8 @@ import { SupplyComponent } from './Component/MemberReg/supply/supply.component';
 import { PaymentComponent } from './Component/PaymentReg/payment/payment.component';
 import { AddmemComponent } from './Component/Xparts/addmem/addmem.component';
 import { DairyComponent } from './Component/DairyReg/dairy/dairy.component';
+import { TabComponent } from './Component/DairyReg/tab/tab.component';
+import { DairytableComponent } from './Component/DairyReg/dairytable/dairytable.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { DairyComponent } from './Component/DairyReg/dairy/dairy.component';
     SupplyComponent,
     PaymentComponent,
     AddmemComponent,
-    DairyComponent
+    DairyComponent,
+    TabComponent,
+    DairytableComponent
   ],
   imports: [
     BrowserModule,
