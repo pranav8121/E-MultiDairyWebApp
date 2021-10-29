@@ -34,9 +34,11 @@ export class DairyComponent implements OnInit {
   ExtraRate: any;
   noData: any;
   entry: any;
+  initialValues: any;
   constructor(private _api:ApiService) { }
 
   ngOnInit(): void {
+    this.initialValues=this.RegisterForm.value
     this.getData()
   }
   getData() {
@@ -142,6 +144,8 @@ this._api.CheckDairyReg(temp).subscribe(result=>{
       this._api.PostDairyReg(temp).subscribe(res=>{
         console.log(res);
         this.onCancel()
+        
+        this.RegisterForm.reset(this.initialValues)
       },err=>{
         console.log(err);
         

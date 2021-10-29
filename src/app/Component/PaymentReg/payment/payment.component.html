@@ -27,7 +27,7 @@
     <tbody>
         <tr *ngFor="let data of parentData; let i = index" class="clickable-row" data-toggle="collapse"
             [attr.data-target]="'#dataDetails' + i">
-            <td>{{data.from}}-{{data.to}}
+            <td>{{data.from}}- {{data.to}}
                 <div [attr.id]="'dataDetails' + i" class="collapse">
                     <table class="table" style="width: 100%;">
                         <thead>

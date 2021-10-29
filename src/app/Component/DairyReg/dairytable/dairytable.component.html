@@ -6,50 +6,79 @@
 </div>
 
 <div *ngIf="!flag_1">
-    
+
     <div>
         <div class="container mt-4">
-           <div class="table-responsive">
-            <table class="table table-striped">
-                <thead class="thead-light">
-                    <tr>
-                        <th class="fix"> <p>तारीख</p> </th>
-                        <th class="fix"> <p>वेळ</p> </th>
-                        <th class="fix"> <p>प्रकार</p> </th>
-                        <th class="fix"> <p>दूध</p> </th>
-                        <th class="fix"> <p>फॅट</p> </th>
-                        <th class="fix"> <p>एस.एन.एफ</p> </th>
-                        <th class="fix"> <p>दर/लिटर</p> </th>
-                        <th class="fix"> <p>एकूण दर</p>  </th>
-                        <th class="fix"> <p>दर्जा</p> </th>
-                        <th class="fix"> <p>DMilk</p> </th>
-                        <th class="fix"> <p>DRate</p> </th>
-                        <th class="fix"> <p>DTotalRate</p> </th>
-                        <th class="fix"> <p>अतिरिक्त दूध</p>  </th>
-                        <th class="fix"> <p>अतिरिक्त दर/लिटर</p>  </th>
-                        <th class="fix"> <p>अतिरिक्त दर</p>   </th>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="fix">
+                                <p>तारीख</p>
+                            </th>
+                            <th class="fix">
+                                <p>वेळ</p>
+                            </th>
+                            <th class="fix">
+                                <p>प्रकार</p>
+                            </th>
+                            <th class="fix">
+                                <p>दूध</p>
+                            </th>
+                            <th class="fix">
+                                <p>फॅट</p>
+                            </th>
+                            <th class="fix">
+                                <p>एस.एन.एफ</p>
+                            </th>
+                            <th class="fix">
+                                <p>दर/लिटर</p>
+                            </th>
+                            <th class="fix">
+                                <p>एकूण दर</p>
+                            </th>
+                            <th class="fix">
+                                <p>दर्जा</p>
+                            </th>
+                            <th class="fix">
+                                <p>DMilk</p>
+                            </th>
+                            <th class="fix">
+                                <p>DRate</p>
+                            </th>
+                            <th class="fix">
+                                <p>DTotalRate</p>
+                            </th>
+                            <th class="fix">
+                                <p>अतिरिक्त दूध</p>
+                            </th>
+                            <th class="fix">
+                                <p>अतिरिक्त दर/लिटर</p>
+                            </th>
+                            <th class="fix">
+                                <p>अतिरिक्त दर</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr class="text-center" *ngFor="let temp of Data | orderBy: order">
+                        <td>{{temp.date}} </td>
+                        <td>{{temp.hours|slice:0:9}}</td>
+                        <td>{{temp.type}} </td>
+                        <td>{{temp.milk}}</td>
+                        <td>{{temp.fat}}</td>
+                        <td>{{temp.snf}}</td>
+                        <td>{{temp.rate}}</td>
+                        <td>{{temp.totalRate}}</td>
+                        <td>{{temp.good}}</td>
+                        <td>{{temp.dairyMilk}}</td>
+                        <td>{{temp.dairyRate}}</td>
+                        <td>{{temp.dairyTotalRate}}</td>
+                        <td>{{temp.extraMilk}}</td>
+                        <td>{{temp.extraRate}}</td>
+                        <td>{{temp.extraTotalRate}}</td>
                     </tr>
-                </thead>
-                  <tr class="text-center" *ngFor="let temp of Data | orderBy: order">
-                    <td>{{temp.date}} </td>
-                    <td>{{temp.hours|slice:0:9}}</td>
-                    <td>{{temp.type}} </td>
-                    <td>{{temp.milk}}</td>
-                    <td>{{temp.fat}}</td>
-                    <td>{{temp.snf}}</td>
-                    <td>{{temp.rate}}</td>
-                    <td>{{temp.totalRate}}</td>
-                    <td>{{temp.good}}</td>
-                    <td>{{temp.dairyMilk}}</td>
-                    <td>{{temp.dairyRate}}</td>
-                    <td>{{temp.dairyTotalRate}}</td>
-                    <td>{{temp.extraMilk}}</td>
-                    <td>{{temp.extraRate}}</td>
-                    <td>{{temp.extraTotalRate}}</td>
-                  </tr>
-            </table>
-        </div> 
+                </table>
+            </div>
         </div>
-        
     </div>
 </div>

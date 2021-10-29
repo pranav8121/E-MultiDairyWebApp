@@ -22,7 +22,7 @@ export class SupplyComponent implements OnInit {
   detailsForm: any = new FormGroup({
     'Amount': new FormControl({value:1060,disabled:true}, [Validators.required]),
     'Rate': new FormControl(1060, [Validators.required]),
-    'bags': new FormControl(1, [Validators.required]),
+    'bags': new FormControl("", [Validators.required]),
   })
   val: any;
   isClicked:any=false
@@ -100,10 +100,12 @@ export class SupplyComponent implements OnInit {
       this.null()
       this.checkBal(this.data)
       this.isClicked=false
+      this.detailsForm.controls['bags'].setValue("");
     }, err => {
       this.null()
       console.log(err);
       this.isClicked=false
+      this.detailsForm.controls['bags'].setValue("");
     })
     }
     else{

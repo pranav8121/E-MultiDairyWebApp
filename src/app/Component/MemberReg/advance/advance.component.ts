@@ -17,7 +17,7 @@ export class AdvanceComponent implements OnInit {
   balance: any = 0
   Cname: any;
   detailsForm: any = new FormGroup({
-    'Amount': new FormControl(0, [Validators.required]),
+    'Amount': new FormControl(null, [Validators.required]),
   })
 
 
@@ -87,7 +87,7 @@ export class AdvanceComponent implements OnInit {
 
   }
   null() {
-    this.detailsForm.controls['Amount'].setValue(0);
+    this.detailsForm.controls['Amount'].setValue(null);
   }
   checkBal(data: any) {
     var add = 0
