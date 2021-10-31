@@ -115,7 +115,12 @@ export class LastComponent implements OnInit {
   sendDate() {
     var today = new Date()
     var myPastDate = new Date(today);
-    myPastDate.setDate(today.getDate() - 10)
+     if(myPastDate.getDate()==31){
+      myPastDate.setDate(today.getDate() - 11)
+    }
+    else{
+      myPastDate.setDate(today.getDate() - 10)
+    }
     this.Cdate = myPastDate.getDate()
     this.Cmonth = myPastDate.getMonth() + 1
     this.Cyear = myPastDate.getFullYear()
