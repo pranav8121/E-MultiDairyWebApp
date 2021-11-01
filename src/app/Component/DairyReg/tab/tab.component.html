@@ -95,7 +95,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tr class="text-center" *ngFor="let temp of Data | orderBy: order">
+                                    <tr class="text-center" *ngFor="let temp of Data | orderBy: 'order' : true">
                                         <td>{{temp.date}} </td>
                                         <td>{{temp.hours|slice:0:9}}</td>
                                         <td>{{temp.type}} </td>

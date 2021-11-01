@@ -15,7 +15,7 @@ parentData:any=[]
   flag_1:any=false
   err: any;
   hideErr: any;
-
+  order:any="from"
   constructor(private _api:ApiService,private router:Router) { }
 
   ngOnInit(): void {

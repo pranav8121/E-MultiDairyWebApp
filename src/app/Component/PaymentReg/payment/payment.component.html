@@ -65,7 +65,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center" *ngFor="let temp of data">
+                    <tr class="text-center" *ngFor="let temp of data | orderBy:'order' : true">
                         <td>{{temp.from}}</td>
                         <td>{{temp.to|ReplaceDate}}</td>
                         <td>{{temp.morTotalmilk|ReplaceNan}}</td>

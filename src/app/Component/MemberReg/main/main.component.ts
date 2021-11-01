@@ -451,4 +451,14 @@ export class MainComponent implements OnInit {
     this.TotalVal = ""
     this.RateVal = ""
   }
+  OnPrint(){
+      var divContents = document.getElementById("print_section")?.innerHTML
+      var a:any = window.open('', '', 'height=500, width=500');
+      a.document.write('<html>');
+      a.document.write('<body >');
+      a.document.write(divContents);
+      a.document.write('</body></html>');
+      a.document.close();
+      a.print();  
+  }
 }
