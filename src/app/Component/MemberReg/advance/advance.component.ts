@@ -74,14 +74,14 @@ export class AdvanceComponent implements OnInit {
       this.checkBal(this.data)
       this.isClicked=false
     }, err => {
-      this.null()
+      this.null() 
       console.log(err);
       this.isClicked=false
     })  
     }
     else{
       this.err="*Please Enter Valid Amount"
-      
+      this.isClicked=false
     }
 
 

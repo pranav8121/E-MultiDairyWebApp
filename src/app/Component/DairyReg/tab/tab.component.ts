@@ -24,8 +24,7 @@ export class TabComponent implements OnInit {
     }, err => { console.log(err); })
   }
   OnHistory(){
-    console.log("Called");
-    
+
     this.getData()
   }
 }

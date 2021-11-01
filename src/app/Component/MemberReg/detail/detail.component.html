@@ -40,7 +40,7 @@
         <tbody>
           <tr *ngFor="let temp of CurrentBill  | orderBy: order">
             <td>{{temp.date|trimdate}} </td>
-            <td>{{temp.hours | slice:0:9 }}</td>
+            <td>{{temp.hours|trimhours }}</td>
             <td>{{temp.milk}}</td>
             <td>{{temp.fat}}</td>
             <td>{{temp.snf}}</td>

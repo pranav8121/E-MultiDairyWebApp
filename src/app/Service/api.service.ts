@@ -81,4 +81,20 @@ GetDairyReg(){
   return this.http.get(`${this.baseUrl}/GetDairyReg/${this.UId}`)
 }
 
+GetPaymentReg(){
+  var data={
+    UId:this.UId
+  }
+  return this.http.post(`${this.baseUrl}/PaymentBill`,data)
+}
+
+FindPaymentReg(from:any,to:any){
+  var data={
+    UId:this.UId,
+    from:from,
+    to:to
+  }
+  return this.http.post(`${this.baseUrl}/FindPaymentReg`,data)
+}
+
 }

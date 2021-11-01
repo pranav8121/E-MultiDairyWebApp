@@ -115,7 +115,12 @@ export class LastComponent implements OnInit {
   sendDate() {
     var today = new Date()
     var myPastDate = new Date(today);
-    myPastDate.setDate(today.getDate() - 10)
+    if(myPastDate.getDate()==31){
+      myPastDate.setDate(today.getDate() - 11)
+    }
+    else{
+      myPastDate.setDate(today.getDate() - 10)
+    }
     this.Cdate = myPastDate.getDate()
     this.Cmonth = myPastDate.getMonth() + 1
     this.Cyear = myPastDate.getFullYear()
@@ -258,9 +263,13 @@ export class LastComponent implements OnInit {
       from: this.from,
       to: this.to,
       totalmilk: this.totalMilk,
+      morTotalmilk: this.morMilk,
+      eveTotalmilk: this.eveMilk,
       totalRate: this.totalRate,
       cutting: this.totalDeduct,
       subAmount: this.subTotal,
+      mortotalRate: this.morRate,
+      evetotalRate: this.eveRate,
       UId: sessionStorage.getItem('UId')
     }
     this._api.postBill(temp).subscribe(res => {
@@ -284,14 +293,12 @@ export class LastComponent implements OnInit {
 
   CuttingApi(data1:any,data2:any){
     this._api.PostSupply(data1).subscribe(res=>{
-      console.log(" adv done");
       
     },err=>{
       console.log(" adv err");
     })
     this._api.PostSupply(data2).subscribe(res=>{
-      console.log(" Sup done");
-    },err=>{
+    },err=>{ 
       console.log(" Sup err");
     })
   }
