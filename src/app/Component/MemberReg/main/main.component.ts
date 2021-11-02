@@ -457,17 +457,19 @@ export class MainComponent implements OnInit {
       var a:any = window.open('', '', 'height=500, width=500');
       a.document.write('<html>');
       a.document.write('<body >');
-      a.document.write(`<h2 style="text-align:center;">${this.Name}</h2>`);
-      a.document.write(`<h4 style="text-align:center;">नाव:${this.Cnum}-${this.Cname}</h4>`);
-      a.document.write(`<h4 style="text-align:center;">तारीख/वेळ:${this.currentDate}/${this.timeMsg}</h4>`);
-      a.document.write(`<h4 style="text-align:center;">दुधाचा प्रकार:${this.MCtype}</h4>`);
-      a.document.write('<hr/>');
-      a.document.write(`<h3>दूध(लिटर):${this.milk}</h3>`);
-      a.document.write(`<h3>फॅट:${this.fat}</h3>`);
-      a.document.write(`<h3>एस एन एफ:${this.snf}</h3>`);
-      a.document.write(`<h3>दर/लिटर:${this.rate}</h3>`);
-      a.document.write(`<h3>एकूण दर:${this.t_rate}</h3>`);
-      a.document.write('<hr/>');
+      a.document.write(`<h4 style="text-align:center;">${this.Name}</h4>`);
+      // style="text-align:left;font-size:xx-large"
+      a.document.write(`<p style="text-align:center;">नाव:${this.Cnum}-${this.Cname}</p>`);
+      a.document.write(`<p style="text-align:center;">ता./वेळ:${this.currentDate}/${this.timeMsg}</p>`);
+      a.document.write(`<p style="text-align:center;">दुधाचा प्रकार:${this.MCtype}</p>`);
+      a.document.write('<hr/>')
+      a.document.write(`<p> &nbsp दूध : &nbsp  ${this.milk} लिटर</p>`)
+      a.document.write(`<p> &nbsp फॅट: &nbsp ${this.fat}</p>`)
+      a.document.write(`<p> &nbsp एस एन एफ: &nbsp ${this.snf}</p>`)
+      a.document.write(`<p> &nbsp दर/लिटर : &nbsp ${this.rate} रुपये </p>`)
+      a.document.write(`<p> &nbsp एकूण दर  : &nbsp ${this.t_rate} रुपये</p>`)
+      a.document.write('<hr/>')
+
       a.document.write('</body></html>');
       a.document.close();
       a.print();
