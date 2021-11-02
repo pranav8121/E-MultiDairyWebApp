@@ -454,23 +454,20 @@ export class MainComponent implements OnInit {
     this.RateVal = ""
   }
   OnPrint(){
-      var divContents = document.getElementById("print_section")?.innerHTML
       var a:any = window.open('', '', 'height=500, width=500');
       a.document.write('<html>');
       a.document.write('<body >');
       a.document.write(`<h2 style="text-align:center;">${this.Name}</h2>`);
-      // style="text-align:left;font-size:xx-large"
       a.document.write(`<h4 style="text-align:center;">नाव:${this.Cnum}-${this.Cname}</h4>`);
       a.document.write(`<h4 style="text-align:center;">तारीख/वेळ:${this.currentDate}/${this.timeMsg}</h4>`);
       a.document.write(`<h4 style="text-align:center;">दुधाचा प्रकार:${this.MCtype}</h4>`);
-      a.document.write('<hr/>')
-      a.document.write(`<h3>दूध(लिटर):${this.milk}</h3>`)
-      a.document.write(`<h3>फॅट:${this.fat}</h3>`)
-      a.document.write(`<h3>एस एन एफ:${this.snf}</h3>`)
-      a.document.write(`<h3>दर/लिटर:${this.rate}</h3>`)
-      a.document.write(`<h3>एकूण दर:${this.t_rate}</h3>`)
-      a.document.write('<hr/>')
-
+      a.document.write('<hr/>');
+      a.document.write(`<h3>दूध(लिटर):${this.milk}</h3>`);
+      a.document.write(`<h3>फॅट:${this.fat}</h3>`);
+      a.document.write(`<h3>एस एन एफ:${this.snf}</h3>`);
+      a.document.write(`<h3>दर/लिटर:${this.rate}</h3>`);
+      a.document.write(`<h3>एकूण दर:${this.t_rate}</h3>`);
+      a.document.write('<hr/>');
       a.document.write('</body></html>');
       a.document.close();
       a.print();
