@@ -91,6 +91,29 @@ export class LastComponent implements OnInit {
     )
   };
 
+  OnPrint(){
+    var divContents = document.getElementById("print_section")?.innerHTML
+    var a:any = window.open('', '', 'height=500, width=500');
+    a.document.write('<html>');
+    a.document.write('<body >');
+    // a.document.write(`<h4 style="text-align:center;">${this.Name}</h4>`);
+    // style="text-align:left;font-size:xx-large"
+    // a.document.write(`<p style="text-align:center;">नाव:${this.Cnum}-${this.Cname}</p>`);
+    // a.document.write(`<p style="text-align:center;">ता./वेळ:${this.currentDate}/${this.timeMsg}</p>`);
+    // a.document.write(`<p style="text-align:center;">दुधाचा प्रकार:${this.MCtype}</p>`);
+    // a.document.write('<hr/>')
+    // a.document.write(`<p> &nbsp दूध : &nbsp  ${this.milk} लिटर</p>`)
+    // a.document.write(`<p> &nbsp फॅट: &nbsp ${this.fat}</p>`)
+    // a.document.write(`<p> &nbsp एस एन एफ: &nbsp ${this.snf}</p>`)
+    // a.document.write(`<p> &nbsp दर/लिटर : &nbsp ${this.rate} रुपये </p>`)
+    // a.document.write(`<p> &nbsp एकूण दर  : &nbsp ${this.t_rate} रुपये</p>`)
+    // a.document.write('<hr/>')
+    a.document.write(divContents)
+
+    a.document.write('</body></html>');
+    a.document.close();
+    a.print();
+  }
   findBill() {
     this._api.FindBill(this.invNo, this.Cnum).subscribe(
       res => {
