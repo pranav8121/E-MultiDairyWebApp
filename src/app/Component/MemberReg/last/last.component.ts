@@ -115,7 +115,7 @@ export class LastComponent implements OnInit {
   sendDate() {
     var today = new Date()
     var myPastDate = new Date(today);
-    if(myPastDate.getDate()==31){
+     if(myPastDate.getDate()==31){
       myPastDate.setDate(today.getDate() - 11)
     }
     else{
