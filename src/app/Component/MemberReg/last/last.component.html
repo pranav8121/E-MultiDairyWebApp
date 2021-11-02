@@ -9,7 +9,7 @@
 </div>
 
 
-<div id="print-section" #Download>
+<div>
   <div class="d-none d-print-block">
     <div class="px-1 py-1 d-flex justify-content-center">
       <!-- <strong class="col-6 text-center text-primary">{{name}}</strong> <span class="col-6 text-center">दुधाचा प्रकार: -->
@@ -29,9 +29,9 @@
     </div>
   </div>
   <div *ngIf="onload && onload_1">
-    <div *ngIf="valid">
-
-      <table class="table table-striped">
+    <div *ngIf="valid" >
+<div id="print_section">
+      <table class="table table-striped"  >
         <thead>
           <tr>
             <th>तारीख</th>
@@ -55,7 +55,7 @@
           </tr>
         </tbody>
       </table>
-
+    </div>
       <div class="row ">
         <div class="col-5 ">
           <div class="row " style="margin-left: 0px;">
@@ -134,11 +134,10 @@
 </div>
 <div *ngIf="onload && onload_1 && valid">
   <div *ngIf="!onPrintShow" class="col text-center  my-5 mt-3">
-    <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section" *ngIf="!exist" ngxPrint
-      (click)="Submit()" [disabled]="clicked">PRINT</button><br>
-
-    <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section" *ngIf="exist"
-      ngxPrint>PRINT</button><br>
+    <button  class="btn btn-primary"  *ngIf="!exist" (click)="Submit()" [disabled]="clicked">PRINT</button><br>
+    <!-- <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print_section" *ngIf="exist"
+      ngxPrint (click)="OnPrint()">PRINT</button><br> -->
+      <button  class="btn btn-primary"  *ngIf="exist" (click)="OnPrint()">PRINT</button><br>
     <small class="text-danger">{{err_p}}</small>
   </div>
 </div>

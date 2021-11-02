@@ -55,6 +55,7 @@ export class LastComponent implements OnInit {
   eveMilk: any;
   eveRate: any;
   currentDate: any= formatDate(new Date(), 'dd/MM/YYYY', 'en')
+ 
   constructor(private _api: ApiService, private _serv: MatrixService) { }
 
   ngOnInit(): void {
@@ -284,6 +285,7 @@ export class LastComponent implements OnInit {
       this.subTotal=this.temp.data.subAmount
       this.CuttingApi( adv_temp,sup_temp)
       this.exist = true
+      this.OnPrint()
     }, err => {
       this.clicked = false
       this.exist = false
@@ -301,6 +303,31 @@ export class LastComponent implements OnInit {
     },err=>{ 
       console.log(" Sup err");
     })
+  }
+  
+  OnPrint(){
+    var divContents = document.getElementById("print_section")?.innerHTML
+    var adv = this.detailsForm.get('Adv').value
+    var sup = this.detailsForm.get('Sup').value
+    var sav = this.detailsForm.get('Saving').value
+    var share = this.detailsForm.get('Share').value
+    var a:any = window.open('', '', 'height=500, width=900');
+    a.document.write('<html>');
+    a.document.write('<body >');
+    a.document.write(`<h4 style="text-align:center;">${this.name}</h4>`);
+    a.document.write(`<p style="text-align:center;">नाव:${this.Cnum}-${this.Cname}</p>`);
+    a.document.write('<hr/>')
+    a.document.write(divContents)
+    a.document.write('<hr/>')
+    a.document.write(`<p> &nbsp एकूण दूध: &nbsp <strong> ${this.totalMilk}</strong> &nbsp  &nbsp एकूण रक्कम:<strong> ${this.totalRate} </strong></p>`)
+    a.document.write(`<p> &nbsp ऍडव्हान्स: &nbsp <strong>${adv}</strong> &nbsp  &nbsp बँक भरणा:<strong>${sav}</strong> </p>`)
+    a.document.write(`<p> &nbsp पशुखाद्य : &nbsp <strong>${sup}</strong> &nbsp  &nbsp शेअर:<strong>${share} </strong></p>`)
+    a.document.write(`<p> &nbsp एकूण कपात : &nbsp <strong>${this.totalDeduct}</strong></p>`)
+    a.document.write(`<p> &nbsp देय रक्कम : &nbsp <strong> ${this.subTotal}</strong></p>`)
+    a.document.write('<hr/>')
+    a.document.write('</body></html>');
+    a.document.close();
+    a.print();
   }
 }
 
