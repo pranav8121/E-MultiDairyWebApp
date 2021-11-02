@@ -15,7 +15,7 @@ import { HeaderComponent } from './Component/Xparts/header/header.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailComponent } from './Component/MemberReg/detail/detail.component';
-import { TrimdatePipe } from './Pipes/trimdate.pipe';
+import { TrimdatePipe,TrimdateHours,ReplaceNan,ReplaceDate} from './Pipes/trimdate.pipe';
 import { NgxPrintModule } from 'ngx-print';
 import { LastComponent } from './Component/MemberReg/last/last.component';
 import { AdvanceComponent } from './Component/MemberReg/advance/advance.component';
@@ -23,6 +23,8 @@ import { SupplyComponent } from './Component/MemberReg/supply/supply.component';
 import { PaymentComponent } from './Component/PaymentReg/payment/payment.component';
 import { AddmemComponent } from './Component/Xparts/addmem/addmem.component';
 import { DairyComponent } from './Component/DairyReg/dairy/dairy.component';
+import { TabComponent } from './Component/DairyReg/tab/tab.component';
+import { PaydetailComponent } from './Component/PaymentReg/paydetail/paydetail.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +34,17 @@ import { DairyComponent } from './Component/DairyReg/dairy/dairy.component';
     HeaderComponent,
     DetailComponent,
     TrimdatePipe,
+    TrimdateHours,
+    ReplaceNan,
+    ReplaceDate,
     LastComponent,
     AdvanceComponent,
     SupplyComponent,
     PaymentComponent,
     AddmemComponent,
-    DairyComponent
+    DairyComponent,
+    TabComponent,
+    PaydetailComponent
   ],
   imports: [
     BrowserModule,

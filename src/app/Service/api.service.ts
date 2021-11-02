@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
   // Local URL
-//  baseUrl=`https://localhost:3000`
+//  baseUrl=`http://localhost:3000`
 // LIVE URL
 baseUrl='https://e-multidairybackend.herokuapp.com'
 
@@ -64,6 +64,37 @@ GetSupply(data:any){
 }
 PostSupply(data:any){
   return this.http.post(`${this.baseUrl}/postEntry`,data)
+}
+
+
+
+FindOneDayTotal(data:any){
+  return this.http.post(`${this.baseUrl}/DairyOneDayTotal`,data)
+}
+PostDairyReg(data:any){
+return this.http.post(`${this.baseUrl}/AddDairyReg`,data)
+}
+CheckDairyReg(data:any){
+  return this.http.post(`${this.baseUrl}/CheckDairyReg`,data)
+}
+GetDairyReg(){
+  return this.http.get(`${this.baseUrl}/GetDairyReg/${this.UId}`)
+}
+
+GetPaymentReg(){
+  var data={
+    UId:this.UId
+  }
+  return this.http.post(`${this.baseUrl}/PaymentBill`,data)
+}
+
+FindPaymentReg(from:any,to:any){
+  var data={
+    UId:this.UId,
+    from:from,
+    to:to
+  }
+  return this.http.post(`${this.baseUrl}/FindPaymentReg`,data)
 }
 
 }

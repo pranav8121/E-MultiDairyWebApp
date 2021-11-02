@@ -136,7 +136,7 @@
                     <!-- Entry Flag True -->
 
                     <div *ngIf="entryFlag" class="px-2 justify-content-center">
-                        <div id="print-section">
+                        <div id="print_section" #print_section>
                         <div class="d-none d-print-block">
                             <div class="px-1 py-1 d-flex justify-content-center">
                               <h2 class="text-primary">{{Cname}}</h2>
@@ -188,7 +188,8 @@
                         <div class="col d-flex justify-content-center"></div>
                     </div> -->
                     <div class=" d-flex justify-content-center">
-                        <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print-section"  ngxPrint > प्रिंट</button> &nbsp;
+                        <!-- <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print_section"  ngxPrint > प्रिंट</button> &nbsp; -->
+                        <button class="btn btn-primary"  (click)="OnPrint()"> प्रिंट</button> &nbsp;
                         <!-- x<button class="btn btn-danger" (click)="onEdit()">Edit</button> -->
                     </div>
                     </div>

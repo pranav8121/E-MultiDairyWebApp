@@ -6,9 +6,7 @@
 </div>
 
 <div *ngIf="!flag_1">
-    <div>
-        <app-header></app-header>
-    </div>
+    
     <div>
 
         <!-- form -->
@@ -154,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="row my-3">
                     <div class="col">
@@ -167,12 +165,38 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="onRegRes">
+                    <div class="row my-1">
+                        <div class="col"> <strong> तुमचे एकूण दूध:{{TotalMilk}}</strong> </div>
 
+                    </div>
+                    <div class="row my-1 text-info">
+                        <div class="col"> <strong>अतिरिक्त दूध: <span class="text-success">{{ExtraMilk}}</span> </strong> </div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col"> <strong>  तुमचे दर/लिटर:{{Rate}}</strong></div>
+
+                    </div>
+                    <div class="row my-1 text-info">
+                        <div class="col"> <strong> अतिरिक्त दर/लिटर: <span class="text-success">{{ExtraRate}}</span> </strong></div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col"> <strong>  तुमचे एकूण दर:{{TotalRate}}</strong></div>
+
+                    </div>
+                    <div class="row my-1 text-info">
+                        <div class="col"> <strong>अतिरिक्त दर: <span class="text-success">{{ExtraTotalRate}}</span> </strong> </div>
+                    </div>
+                </div>
+                <div  class="d-flex justify-content-center">
+                    <h4 *ngIf="noData" class="text-danger">*No Data Found</h4>
+                    <h4 *ngIf="entry" class="text-danger">*Data Already Entered</h4>
+                </div>
 
                 <!-- <div class="row my-3">
                     <div class="col-6">-->
-                        <!-- TotalRate -->
-                        <!-- <div class="form-group row">
+                <!-- TotalRate -->
+                <!-- <div class="form-group row">
                             <label for="_trate" class="col-4 ">TotalRate</label>
                             <div class="col-8">
                                 <input type="number" class="mx-2 form-control" id="_trate" formControlName="totalRate">
@@ -184,9 +208,17 @@
 
                 <div class="d-flex justify-content-center my-2">
                     <!-- Button -->
-                    <button class="btn btn-info" (click)="Register()">
-                        okay
+                    <button class="btn btn-info" (click)="Register()" *ngIf="!onClickReg && hideOkay"
+                        [disabled]=" !this.RegisterForm.valid || onClickReg">
+                        <!--!this.RegisterForm.valid ||-->
+                        OKAY
                     </button>
+                    <button class="btn btn-info text-white" *ngIf="onClickReg && hideOkay" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        OKAY
+                    </button>
+                    <button class="btn btn-success" *ngIf="!hideOkay" (click)="onSave()">Save</button> &nbsp; &nbsp;
+                    <button class="btn btn-danger" *ngIf="!hideOkay"(click)="onCancel()" >Cancel</button>
                 </div>
 
             </form>

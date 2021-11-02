@@ -5,7 +5,7 @@
 </div>
 
 
-<div *ngIf="flag_1 && hideErr" >
+<div *ngIf="flag_1  && hideErr">
     <div>
         <app-header></app-header>
     </div>
@@ -15,10 +15,13 @@
                 <thead>
                     <tr class="text-center">
                         <th class="fix">
-                            <p>From</p>
+                            <p>No</p>
                         </th>
                         <th class="fix">
-                            <p>To</p>
+                            <p>Name</p>
+                        </th>
+                        <th class="fix">
+                            <p>subTotal</p>
                         </th>
                         <th class="fix">
                             <p>Mor Total Milk</p>
@@ -56,18 +59,14 @@
                         <th class="fix">
                             <p>Total Cutting</p>
                         </th>
-                        <th class="fix">
-                            <p>subTotal</p>
-                        </th>
-                        <th class="fix">
-                            <p>Details</p>
-                        </th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center" *ngFor="let temp of data | orderBy:'order' : true">
-                        <td>{{temp.from}}</td>
-                        <td>{{temp.to|ReplaceDate}}</td>
+                    <tr class="text-center" *ngFor="let temp of data|orderBy: order">
+                        <td>{{temp.No}}</td>
+                        <td>{{temp.Name}}</td>
+                        <td>{{temp.subAmount}}</td>
                         <td>{{temp.morTotalmilk|ReplaceNan}}</td>
                         <td>{{temp.eveTotalmilk|ReplaceNan}}</td>
                         <td>{{temp.totalmilk|ReplaceNan}}</td>
@@ -80,17 +79,12 @@
                         <td>{{temp.supply}}</td>
                         <td>{{temp.share}}</td>
                         <td>{{temp.cutting}}</td>
-                        <td>{{temp.subAmount}}</td>
-                        <td><button class="btn btn-primary" (click)="moreDetail(temp.from,temp.to)">Details</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
-    
 </div>
 <div *ngIf="flag_1 && !hideErr" class="text-center text-danger">
-    {{err}}
+    *Something Wrong Please Refresh
 </div>
