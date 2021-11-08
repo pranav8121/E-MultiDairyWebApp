@@ -84,8 +84,8 @@ this._api.CheckDairyReg(temp).subscribe(result=>{
     this.TotalMilk=temp.TotalMilk
     this.Rate=temp.Rate
     this.TotalRate=temp.TotalRate
-    this.ExtraMilk=(this.TotalMilk-milk).toFixed(2)
-    this.ExtraTotalRate=(this.TotalRate-totalRate).toFixed(2)
+    this.ExtraMilk=(milk-this.TotalMilk).toFixed(2)
+    this.ExtraTotalRate=(totalRate-this.TotalRate).toFixed(2)
     this.ExtraRate=(this.Rate-rate).toFixed(2)
     this.onRegRes=true
     this.RegisterForm.disable()

@@ -39,6 +39,6 @@ this._api.GetPaymentReg().subscribe(res=>{
 moreDetail(from:any,to:any){
   from=encodeURIComponent(from)
   to=encodeURIComponent(to)
-  this.router.navigate([`/PaymentDeatails`,from,to]);
+  this.router.navigate([`/PaymentDetails`,from,to]);
 }
 }

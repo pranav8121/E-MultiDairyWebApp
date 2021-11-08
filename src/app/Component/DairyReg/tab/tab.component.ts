@@ -21,7 +21,7 @@ export class TabComponent implements OnInit {
     this._api.GetDairyReg().subscribe(res => {
       this.Data=res
       this.flag_1 = false
-    }, err => { console.log(err); })
+    }, err => { this.flag_1 = false })
   }
   OnHistory(){
 
