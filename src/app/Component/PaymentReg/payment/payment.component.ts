@@ -16,6 +16,7 @@ parentData:any=[]
   err: any;
   hideErr: any;
   order:any="from"
+  p: number = 1
   constructor(private _api:ApiService,private router:Router) { }
 
   ngOnInit(): void {

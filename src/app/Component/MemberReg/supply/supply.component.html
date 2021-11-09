@@ -6,6 +6,18 @@
 
 <div *ngIf="onload">
   <form  [formGroup]="detailsForm">
+    <div class="row my-3">
+      <div class="col-3 text-center">तारीख</div>
+      <div class="col-6">
+        <input type="date" class="form-control" formControlName="Date"
+          style="padding-right: 5px;padding-left: 5px;">
+      </div>
+    </div>
+    <!-- <div class="col-3 text-center">तारीख</div>
+      <div class="col-3">
+        <input type="date" class="form-control" formControlName="Date"
+          style="padding-right: 5px;padding-left: 5px;">
+      </div> -->
   <div class="row my-3">
     <div class="col-3 text-center">पिशवी</div>
     <div class="col-3">

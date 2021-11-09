@@ -44,79 +44,91 @@
 
                     <div>
                         <div class="container mt-4">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th class="fix">
-                                                <p>तारीख</p>
-                                            </th>
-                                            <th class="fix">
-                                                <p>वेळ</p>
-                                            </th>
-                                            <th class="fix">
-                                                <p>प्रकार</p>
-                                            </th>
-                                            <th class="fix">
-                                                <p>दूध</p>
-                                            </th>
-                                            <th class="fix">
-                                                <p>दर</p>
-                                            </th>
+                            <div>
+                                <div class="d-flex justify-content-end my-3 mx-2">
+                                    <button class="btn btn-info text-white" (click)="export()">डाउनलोड करा</button>
+                                </div>
+                                <div class="table-responsive" #tabledata>
+                                    <table class="table table-striped">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="fix">
+                                                    <p>तारीख</p>
+                                                </th>
+                                                <th class="fix">
+                                                    <p>वेळ</p>
+                                                </th>
+                                                <th class="fix">
+                                                    <p>प्रकार</p>
+                                                </th>
+                                                <th class="fix">
+                                                    <p>दूध</p>
+                                                </th>
+                                                <th class="fix">
+                                                    <p>दर</p>
+                                                </th>
 
-                                            <th class="fix">
-                                                <p>संघ दूध</p>
-                                            </th>
-                                            <th class="fix">
-                                                <p>संघ फॅट</p>
-                                            </th>
-                                            <th class="fix">
-                                                <p> संघ एस.एन.एफ</p>
-                                            </th>
-                                            <!-- <th class="fix">
+                                                <th class="fix">
+                                                    <p>संघ दूध</p>
+                                                </th>
+                                                <th class="fix">
+                                                    <p>संघ फॅट</p>
+                                                </th>
+                                                <th class="fix">
+                                                    <p> संघ एस.एन.एफ</p>
+                                                </th>
+                                                <!-- <th class="fix">
                                                 <p>दर/लिटर</p>
                                             </th> -->
-                                            <th class="fix">
-                                                <p> संघ दर</p>
-                                            </th>
-                                            <th class="fix">
-                                                <p>दर्जा</p>
-                                            </th>
-                                          
-                                            <!-- <th class="fix">
+                                                <th class="fix">
+                                                    <p> संघ दर</p>
+                                                </th>
+                                                <th class="fix">
+                                                    <p>दर्जा</p>
+                                                </th>
+
+                                                <!-- <th class="fix">
                                                 <p>DRate</p>
                                             </th> -->
-                                           
-                                            <th class="fix">
-                                                <p>अतिरिक्त दूध</p>
-                                            </th>
-                                            <!-- <th class="fix">
+
+                                                <th class="fix">
+                                                    <p>अतिरिक्त दूध</p>
+                                                </th>
+                                                <!-- <th class="fix">
                                                 <p>अतिरिक्त दर/लिटर</p>
                                             </th> -->
-                                            <th class="fix">
-                                                <p>अतिरिक्त दर</p>
-                                            </th>
+                                                <th class="fix">
+                                                    <p>अतिरिक्त दर</p>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tr class="text-center"
+                                            *ngFor="let temp of Data | orderBy: 'order' : true| paginate: { itemsPerPage: 20, currentPage: p }">
+                                            <td>{{temp.date}} </td>
+                                            <td>{{temp.hours|slice:0:9}}</td>
+                                            <td>{{temp.type}} </td>
+                                            <td>{{temp.dairyMilk}}</td>
+                                            <!-- <td>{{temp.dairyRate}}</td> -->
+                                            <td>{{temp.dairyTotalRate}}</td>
+                                            <td>{{temp.milk}}</td>
+                                            <td>{{temp.fat}}</td>
+                                            <td>{{temp.snf}}</td>
+                                            <!-- <td>{{temp.rate}}</td> -->
+                                            <td>{{temp.totalRate}}</td>
+                                            <td>{{temp.good}}</td>
+                                            <td>{{temp.extraMilk}}</td>
+                                            <!-- <td>{{temp.extraRate}}</td> -->
+                                            <td>{{temp.extraTotalRate}}</td>
                                         </tr>
-                                    </thead>
-                                    <tr class="text-center" *ngFor="let temp of Data | orderBy: 'order' : true">
-                                        <td>{{temp.date}} </td>
-                                        <td>{{temp.hours|slice:0:9}}</td>
-                                        <td>{{temp.type}} </td>
-                                        <td>{{temp.dairyMilk}}</td>
-                                        <!-- <td>{{temp.dairyRate}}</td> -->
-                                        <td>{{temp.dairyTotalRate}}</td>
-                                        <td>{{temp.milk}}</td>
-                                        <td>{{temp.fat}}</td>
-                                        <td>{{temp.snf}}</td>
-                                        <!-- <td>{{temp.rate}}</td> -->
-                                        <td>{{temp.totalRate}}</td>
-                                        <td>{{temp.good}}</td>
-                                        <td>{{temp.extraMilk}}</td>
-                                        <!-- <td>{{temp.extraRate}}</td> -->
-                                        <td>{{temp.extraTotalRate}}</td>
-                                    </tr>
-                                </table>
+                                        
+
+                                    </table>
+                                    <div class="row">
+                                        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

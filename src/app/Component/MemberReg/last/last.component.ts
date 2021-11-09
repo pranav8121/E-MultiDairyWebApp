@@ -32,6 +32,7 @@ export class LastComponent implements OnInit {
   Cyear: any;
   totalMilk: any;
   lastDate: any;
+  balance: any;
   detailsForm: any = new FormGroup({
     'Adv': new FormControl(0, [Validators.required]),
     'Sup': new FormControl(0, [Validators.required]),
@@ -81,9 +82,22 @@ export class LastComponent implements OnInit {
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
       this.valid = true
       this.getCurrentBill(res)
-      this.findBill()
-      this.onload = true
-
+      
+      var temp={
+        No:this.Cnum,
+        UId:sessionStorage.getItem("UId")
+      }
+      this._api.GetBalance(temp).subscribe(result=>{
+        this.balance=result
+      this.detailsForm.controls['Balance'].setValue( this.balance);
+      this.findBill() 
+        this.onload = true
+      },
+        error=>{
+          this.onload = true
+          this.balance=0
+      this.detailsForm.controls['Balance'].setValue( this.balance);
+        })
     }, err => {
       this.err = "No Data Found"
       this.onload = true
@@ -99,6 +113,8 @@ export class LastComponent implements OnInit {
         this.detailsForm.controls['Adv'].setValue(this.temp[0].adv);
         this.detailsForm.controls['Sup'].setValue(this.temp[0].supply);
         this.detailsForm.controls['Saving'].setValue(this.temp[0].bank);
+        console.log("this.temp[0].balance",this.temp[0].balance);
+        this.detailsForm.controls['Balance'].setValue(this.temp[0].balance?this.temp[0].balance:0);
         // this.detailsForm.controls['Share'].setValue(this.temp[0].share);
         this.totalRate=this.temp[0].totalRate
       this.totalDeduct=this.temp[0].cutting
@@ -210,14 +226,20 @@ export class LastComponent implements OnInit {
     var adv = this.detailsForm.get('Adv').value
     var sup = this.detailsForm.get('Sup').value
     var sav = this.detailsForm.get('Saving').value
-    // var share = this.detailsForm.get('Share').value
+    var Bal = this.balance
     if (adv || sup || sav ) {
-      var sum = parseFloat(adv) + parseFloat(sup) + parseFloat(sav) 
+      var sum = parseFloat(adv) + parseFloat(sup) + parseFloat(sav)
+     if(Bal){
+        var NewBal=parseFloat(Bal)-parseFloat(sup)
+      this.detailsForm.controls['Balance'].setValue(NewBal);
+    }
+    else{
+      this.detailsForm.controls['Balance'].setValue(Bal);
+    }
       this.totalDeduct = parseFloat(sum.toFixed(2));
       var sub = this.totalRate - sum
       if (!sub) {
         this.subTotal = this.last
-
       } else {
         this.subTotal = sub.toFixed(2)
         this.last = this.subTotal
@@ -259,7 +281,7 @@ export class LastComponent implements OnInit {
       adv: adv,
       bank: sav,
       supply: sup,
-      // share: share,
+      balance: this.detailsForm.get('Balance').value,
       inv_no: this.invNo,
       from: this.from,
       to: this.to,
@@ -279,7 +301,7 @@ export class LastComponent implements OnInit {
       this.detailsForm.controls['Adv'].setValue(this.temp.data.adv);
       this.detailsForm.controls['Sup'].setValue(this.temp.data.supply);
       this.detailsForm.controls['Saving'].setValue(this.temp.data.bank);
-      // this.detailsForm.controls['Share'].setValue(this.temp.data.share);
+      this.detailsForm.controls['Balance'].setValue(this.temp.data.balance);
       this.totalRate=this.temp.data.totalRate
       this.totalDeduct=this.temp.data.cutting
       this.subTotal=this.temp.data.subAmount
@@ -310,7 +332,7 @@ export class LastComponent implements OnInit {
     var adv = this.detailsForm.get('Adv').value
     var sup = this.detailsForm.get('Sup').value
     var sav = this.detailsForm.get('Saving').value
-    // var share = this.detailsForm.get('Share').value
+    var bal = this.detailsForm.get('Balance').value
     var a:any = window.open('', '', 'height=500, width=900');
     a.document.write('<html>');
     a.document.write('<body >');
@@ -321,7 +343,7 @@ export class LastComponent implements OnInit {
     a.document.write('<hr/>')
     a.document.write(`<p> &nbsp ए.दूध:<strong> ${this.totalMilk}लि.</strong> &nbsp ए.रक्कम:<strong> ${this.totalRate}रु.</strong></p>`)
     a.document.write(`<p> &nbsp ऍडव्हान्स:<strong>${adv}रु.</strong> &nbsp  &nbsp बँक भरणा:<strong>${sav}रु.</strong></p>`)
-    a.document.write(`<p> &nbsp पशुखाद्य :<strong>${sup}रु.</strong> &nbsp शि.पशुखाद्य:<strong> 0.0रु.</strong> </p>`)
+    a.document.write(`<p> &nbsp पशुखाद्य :<strong>${sup}रु.</strong> &nbsp शि.पशुखाद्य:<strong> ${bal}रु.</strong> </p>`)
     a.document.write(`<p> &nbsp ए. कपात :<strong>${this.totalDeduct}रु.</strong> &nbsp देय रक्कम :<strong> ${this.subTotal}रु.</strong> </p>`)
     // a.document.write(`<p> </p>`)
     a.document.write('<hr/>')

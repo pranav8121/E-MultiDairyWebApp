@@ -10,7 +10,11 @@
         <app-header></app-header>
     </div>
     <div>
-        <div class="table-responsive">
+        <div>
+            <div class="d-flex justify-content-end my-3 mx-2">
+                <button class="btn btn-info text-white" (click)="export()">डाउनलोड करा</button>
+            </div>
+          <div class="table-responsive" #tabledata>
             <table class="table">
                 <thead>
                     <tr class="text-center">
@@ -87,7 +91,9 @@
                     </tr>
                 </tbody>
             </table>
+        </div>   
         </div>
+       
     </div>
 </div>
 <div *ngIf="flag_1 && !hideErr" class="text-center text-danger">

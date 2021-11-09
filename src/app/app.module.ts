@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { OrderModule } from 'ngx-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -55,7 +56,8 @@ import { PaydetailComponent } from './Component/PaymentReg/paydetail/paydetail.c
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NgxPrintModule,
-    OrderModule
+    OrderModule,
+    NgxPaginationModule
   ],
   providers: [{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]

@@ -62,6 +62,9 @@ FindBill(inv_no:any,No:any){
 GetSupply(data:any){
   return this.http.post(`${this.baseUrl}/GetEntry`,data)
 }
+GetBalance(data:any){
+  return this.http.post(`${this.baseUrl}/GetSupplyBalance`,data)
+}
 PostSupply(data:any){
   return this.http.post(`${this.baseUrl}/postEntry`,data)
 }
