@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   currentHour: any;
   time:any
   Name:any="#######"
-
+  navbaropen:any=false
 
   constructor(private router:Router) { }
 
@@ -50,5 +50,7 @@ getData(){
 this.router.navigate(["/"])
    }
 }
-
+navbarToggel(){
+  this.navbaropen=!this.navbaropen
+}
 }
