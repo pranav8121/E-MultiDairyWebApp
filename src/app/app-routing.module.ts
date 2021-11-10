@@ -8,14 +8,16 @@ import { AddmemComponent } from './Component/Xparts/addmem/addmem.component';
 // import { DairytableComponent } from './Component/DairyReg/dairytable/dairytable.component';
 import { TabComponent } from './Component/DairyReg/tab/tab.component';
 import { PaydetailComponent } from './Component/PaymentReg/paydetail/paydetail.component';
+import { SalesComponent } from './Component/Xparts/sales/sales.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'Main', component:MainComponent},
   {path:'Payment', component:PaymentComponent},
-  {path:'PaymentDeatails/:from/:to', component:PaydetailComponent},
+  {path:'PaymentDetails/:from/:to', component:PaydetailComponent},
   {path:'AddMemeber', component:AddmemComponent},
   {path:'DairyRegister', component:TabComponent},
+  {path:'DairySales', component:SalesComponent},
 ];
 
 @NgModule({

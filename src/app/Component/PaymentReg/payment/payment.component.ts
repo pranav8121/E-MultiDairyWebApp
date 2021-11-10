@@ -16,6 +16,7 @@ parentData:any=[]
   err: any;
   hideErr: any;
   order:any="from"
+  p: number = 1
   constructor(private _api:ApiService,private router:Router) { }
 
   ngOnInit(): void {
@@ -27,18 +28,17 @@ this._api.GetPaymentReg().subscribe(res=>{
   this.data=this.temp.data
   this.flag_1=true
   this.hideErr=true
-  this.err="*Something Wrong Please Refresh!!"
-
+  this.err="*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!"
 },err=>{
   console.log(err);
   this.flag_1=true
   this.hideErr=false
-  this.err="*Something Wrong Please Refresh!!"
+  this.err="*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!"
 })
 }
 moreDetail(from:any,to:any){
   from=encodeURIComponent(from)
   to=encodeURIComponent(to)
-  this.router.navigate([`/PaymentDeatails`,from,to]);
+  this.router.navigate([`/PaymentDetails`,from,to]);
 }
 }

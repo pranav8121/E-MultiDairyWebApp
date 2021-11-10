@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/Service/api.service';
+import * as xlsx from 'xlsx';
 
 @Component({
   selector: 'app-paydetail',
@@ -15,7 +16,7 @@ to:any
   flag_1:any=false
   err: any;
   hideErr:any
-
+  @ViewChild('tabledata', { static: false }) tabledata: any;
   constructor(private _Activatedroute:ActivatedRoute,private _api:ApiService) { }
 
   ngOnInit(): void {
@@ -38,4 +39,14 @@ to:any
     })
   }
 
+
+  export(){
+    let f:any=this._Activatedroute.snapshot.paramMap.get("from")
+    let t:any=this._Activatedroute.snapshot.paramMap.get("to")
+    const ws: xlsx.WorkSheet =   
+  xlsx.utils.table_to_sheet(this.tabledata.nativeElement);
+  const wb: xlsx.WorkBook = xlsx.utils.book_new();
+  xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+  xlsx.writeFile(wb, `पेमेंट रजिस्टर${this.from}-${ this.to}.xlsx`);
+  }
 }
