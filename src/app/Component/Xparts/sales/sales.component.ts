@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/Service/api.service';
 
 @Component({
   selector: 'app-sales',
@@ -8,7 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sales.component.css']
 })
 export class SalesComponent implements OnInit {
-  flag_1: any = false
+  flag_1: any = true
+  getErr:any=false
   onClickReg: any = false
   currentDate = formatDate(new Date(), 'YYYY-MM-dd', 'en')
   salesForm: any = new FormGroup({
@@ -19,9 +21,24 @@ export class SalesComponent implements OnInit {
     'Rate': new FormControl(null, [Validators.required]),
     'totalRate': new FormControl({ value: null, disabled: true }, [Validators.required]),
   })
-  constructor() { }
+  InitialForm:any
+  err: any;
+  constructor(private _api:ApiService) { }
 
   ngOnInit(): void {
+    this.InitialForm=this.salesForm.value
+    this.getData()
+  }
+  getData(){
+    this._api.GetDairySales().subscribe(res=>{
+      console.log(res);
+      this.flag_1=false
+      this.getErr=false
+    },err=>{
+      console.log(err);
+      this.getErr=true
+      this.flag_1=false
+    })
   }
 
   calcu() {
@@ -41,7 +58,8 @@ export class SalesComponent implements OnInit {
   }
 
   onSave() {
-    this.onClickReg = false
+    this.err=false
+    this.onClickReg = true
     var hour
     var type
     var date = this.salesForm.get('Date').value
@@ -64,5 +82,16 @@ export class SalesComponent implements OnInit {
       "totalRate": totalrate
     }
     console.log(temp);
+    this._api.PostDairySales(temp).subscribe(res=>{
+      this.onClickReg=false
+      console.log(res);
+      this.salesForm.reset(this.InitialForm)
+      this.err=false
+    },err=>{
+      console.log(err);
+      this.err=true
+      this.onClickReg=false
+    })
+
   }
 }

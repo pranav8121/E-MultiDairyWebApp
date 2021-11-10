@@ -27,6 +27,11 @@ getallMem(){
   return this.http.get(`${this.baseUrl}/getallMem/${this.UId}`)
 }
 
+postToMem(data:any){
+  return this.http.post(`${this.baseUrl}/addMem/${this.UId}`,data) 
+}
+
+
 postToData(data:any){
   return this.http.post(`${this.baseUrl}/addDataDB`,data) 
 }
@@ -100,4 +105,14 @@ FindPaymentReg(from:any,to:any){
   return this.http.post(`${this.baseUrl}/FindPaymentReg`,data)
 }
 
+
+GetDairySales(){
+  return this.http.get(`${this.baseUrl}/GetDairysales/${this.UId}`)
+}
+PostDairySales(data:any){
+  return this.http.post(`${this.baseUrl}/AddDairysales/${this.UId}`,data)
+}
+FindDairySales(data:any){
+  return this.http.post(`${this.baseUrl}/FindDairysales`,data)
+}
 }

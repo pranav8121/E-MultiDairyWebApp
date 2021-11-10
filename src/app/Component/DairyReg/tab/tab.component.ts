@@ -10,6 +10,8 @@ import * as xlsx from 'xlsx';
 export class TabComponent implements OnInit {
   header: any = ["Date", "Hour", "Type", "Milk", "Fat", "Snf", "Rate", "Total Rate", "Good", "DMilk", "DRate", "DTotalRate", "Extra Milk", "Extra Rate", "Extra Total Rate"]
   flag_1: any
+  flag_2: any
+  getErr: any = false
   order: string = "date"
   p: number = 1
   Data: any = [];
@@ -18,13 +20,21 @@ export class TabComponent implements OnInit {
 
   ngOnInit(): void {
     this.flag_1 = true
+    this.flag_2 = true
     this.getData()
   }
   getData() {
+    this.flag_2 = true
     this._api.GetDairyReg().subscribe(res => {
-      this.Data = res
+      this.Data = res    
+      this.flag_2 = false
       this.flag_1 = false
-    }, err => { this.flag_1 = false })
+      this.getErr = false
+    }, err => {
+      this.flag_1 = false
+      this.flag_2 = false
+      this.getErr = true
+    })
   }
   OnHistory() {
 

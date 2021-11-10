@@ -1,3 +1,9 @@
+<div>
+    <app-header></app-header>
+</div>
+
+
+
 <div class="d-flex justify-content-center mt-5 text-primary" *ngIf="flag_1">
     <span style="font-size: x-large;"></span>
     <div class="spinner-border text-primary" role="status">
@@ -6,10 +12,8 @@
 </div>
 
 
-<div *ngIf="!flag_1">
-    <div>
-        <app-header></app-header>
-    </div>
+<div *ngIf="!flag_1 && !getErr">
+
     <div>
         <div class="d-flex justify-content-center mt-4">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -35,15 +39,16 @@
 
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
-
-
-
-
                 <div>
 
                     <div>
-                        <div class="container mt-4">
+                        <div class="d-flex justify-content-center mt-5 text-primary" *ngIf="flag_2">
+                            <span style="font-size: x-large;"></span>
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                        <div class="container mt-4" *ngIf="!flag_2">
                             <div>
                                 <div class="d-flex justify-content-end my-3 mx-2">
                                     <button class="btn btn-info text-white" (click)="export()">डाउनलोड करा</button>
@@ -120,11 +125,11 @@
                                             <!-- <td>{{temp.extraRate}}</td> -->
                                             <td>{{temp.extraTotalRate}}</td>
                                         </tr>
-                                        
+
 
                                     </table>
                                     <div class="row">
-                                        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+                                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
                                     </div>
                                 </div>
                             </div>
@@ -141,3 +146,6 @@
         </div>
     </div>
 </div>
+<div *ngIf="getErr" class=" d-flex justify-content-center">
+    <h4 class="text-danger mx-2 my-3">*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!</h4>
+   </div>

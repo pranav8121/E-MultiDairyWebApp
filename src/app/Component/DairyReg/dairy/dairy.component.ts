@@ -35,6 +35,8 @@ export class DairyComponent implements OnInit {
   noData: any;
   entry: any;
   initialValues: any;
+  onSaveErr: any=false
+  onSaveClick=false
   constructor(private _api:ApiService) { }
 
   ngOnInit(): void {
@@ -106,6 +108,7 @@ this._api.CheckDairyReg(temp).subscribe(result=>{
 
 
   onSave(){
+    this.onSaveClick=true
     let date = this.RegisterForm.get('Date').value
     let etype = this.RegisterForm.get('Type').value
     let ehour = this.RegisterForm.get('Hour').value
@@ -142,20 +145,21 @@ this._api.CheckDairyReg(temp).subscribe(result=>{
     }
     if(sessionStorage.getItem("UId")){
       this._api.PostDairyReg(temp).subscribe(res=>{
-        console.log(res);
-        this.onCancel()
-        
+        this.onCancel()        
         this.RegisterForm.reset(this.initialValues)
+        this.onSaveClick=false
+        this.onSaveErr=false
       },err=>{
         console.log(err);
+        this.onSaveClick=false
+        this.onSaveErr=true
         
       })
-    }
-    
-    
+    } 
   }
 
   onCancel(){
+    this.onSaveErr=false
     this.onClickReg=false
     this.onRegRes=false
     this.hideOkay=true
