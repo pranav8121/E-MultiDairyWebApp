@@ -61,6 +61,11 @@
                                     formControlName="Type">
                                 <label class="form-check-label" for="cow">गाय</label>
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="mix" value="Mix"
+                                    formControlName="Type">
+                                <label class="form-check-label" for="mix">एकत्र</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -174,7 +179,7 @@
 
                     </div>
                     <div class="row my-1 text-info">
-                        <div class="col"> <strong>अतिरिक्त दूध: <span class="text-success">{{ExtraMilk}}</span>
+                        <div class="col"> <strong>अतिरिक्त दूध: <span class="text-success" [ngClass]="{'text-danger' : 0>ExtraMilk}" >{{ExtraMilk}}</span>
                             </strong> </div>
                     </div>
                     <!-- <div class="row my-1">
@@ -186,11 +191,20 @@
                     </div> -->
                     <div class="row my-1">
                         <div class="col"> <strong> एकूण दर:{{TotalRate}}</strong></div>
-
                     </div>
                     <div class="row my-1 text-info">
-                        <div class="col"> <strong>अतिरिक्त दर: <span class="text-success">{{ExtraTotalRate}}</span>
+                        <div class="col"> <strong>अतिरिक्त दर: <span class="text-success" [ngClass]="{'text-danger' : 0>ExtraTotalRate}">{{ExtraTotalRate}}</span>
                             </strong> </div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col"> <strong> एकूण विक्री दूध:{{SalesTotalMilk}}</strong></div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col"> <strong> एकूण विक्री दर:{{SalesTotalRate}}</strong></div>
+                    </div>
+                    <div *ngIf="err_1">
+                        <small class="text-danger d-flex justify-content-center">*काहीतरी चूक झाली आहे कृपया रिफ्रेश
+                            करा!!</small>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">

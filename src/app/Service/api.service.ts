@@ -113,6 +113,6 @@ PostDairySales(data:any){
   return this.http.post(`${this.baseUrl}/AddDairysales/${this.UId}`,data)
 }
 FindDairySales(data:any){
-  return this.http.post(`${this.baseUrl}/FindDairysales`,data)
+  return this.http.post(`${this.baseUrl}/FindDairysales/${this.UId}`,data)
 }
 }
