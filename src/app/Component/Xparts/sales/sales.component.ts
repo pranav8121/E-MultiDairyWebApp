@@ -11,6 +11,8 @@ import { ApiService } from 'src/app/Service/api.service';
 export class SalesComponent implements OnInit {
   flag_1: any = true
   getErr:any=false
+  order:string = "date"
+  p: number = 1
   onClickReg: any = false
   currentDate = formatDate(new Date(), 'YYYY-MM-dd', 'en')
   salesForm: any = new FormGroup({
@@ -23,6 +25,7 @@ export class SalesComponent implements OnInit {
   })
   InitialForm:any
   err: any;
+  data: any=[]
   constructor(private _api:ApiService) { }
 
   ngOnInit(): void {
@@ -31,6 +34,7 @@ export class SalesComponent implements OnInit {
   }
   getData(){
     this._api.GetDairySales().subscribe(res=>{
+      this.data=res
       console.log(res);
       this.flag_1=false
       this.getErr=false
@@ -84,6 +88,7 @@ export class SalesComponent implements OnInit {
     console.log(temp);
     this._api.PostDairySales(temp).subscribe(res=>{
       this.onClickReg=false
+      this.data.push(temp)
       console.log(res);
       this.salesForm.reset(this.InitialForm)
       this.err=false
