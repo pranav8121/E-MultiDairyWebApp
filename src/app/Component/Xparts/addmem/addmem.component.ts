@@ -14,13 +14,15 @@ export class AddmemComponent implements OnInit {
   AddMemberForm: any = new FormGroup({
     'Mname': new FormControl(null, [Validators.required]),
     'Ename': new FormControl(null, [Validators.required]),
-    'Number': new FormControl({value:null,disabled:true}, [Validators.required]),
-    'Phone': new FormControl(null, [Validators.required]),
+    'Number': new FormControl(null, [Validators.required]),
+    'Phone': new FormControl(null),
     'type': new FormControl('Buffalow', [Validators.required]),
   })
   onClickOkay: any = false
   length: any;
   InitialForm: any;
+  exist: any=false
+  existMsg: any;
   constructor(private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -31,12 +33,9 @@ export class AddmemComponent implements OnInit {
   getMembers() {
     this._api.getallMem().subscribe(res => {
       this.temp = res
-      this.length = this.temp.length+1
-      this.AddMemberForm.controls['Number'].setValue(this.length);
       this.flag_1 = false
       this.getErr=false
     }, err => {
-      console.log(err);
       this.flag_1 = false
       this.getErr=true
     })
@@ -48,20 +47,39 @@ export class AddmemComponent implements OnInit {
     var num = this.AddMemberForm.get('Number').value
     var phone = this.AddMemberForm.get('Phone').value
     var type = this.AddMemberForm.get('type').value
-
-    var temp = {
-      Name: mName,
-      engName: eName,
-      No: num,
-      type: type,
-      Phone: phone
-    }
-    console.log(temp);
+if(this.checkExist(num)){
+  this.exist=false
+  var temp = {
+    Name: mName,
+    engName: eName,
+    No: num,
+    type: type,
+    Phone: phone
+  }
 this._api.postToMem(temp).subscribe(res=>{
-  this.onClickOkay=false
-  this.AddMemberForm.reset(this.InitialForm)
+this.onClickOkay=false
+this.temp.push(temp)
+
+this.AddMemberForm.reset(this.InitialForm)
 },err=>{
-  this.onClickOkay=false
+this.onClickOkay=false
 })
+}
+else{
+  this.existMsg=`*${num} क्रमांक अस्तित्वात आहे!!`
+  this.onClickOkay=false
+  this.exist=true
+}
+  }
+
+
+  checkExist(num:any){
+   var exist= this.temp.find((res: any) => res.No == num)   
+   if(exist){
+     return false
+   }
+   else{
+     return true
+   }
   }
 }
