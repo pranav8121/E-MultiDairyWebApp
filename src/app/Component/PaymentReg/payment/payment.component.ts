@@ -36,9 +36,11 @@ this._api.GetPaymentReg().subscribe(res=>{
   this.err="*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!"
 })
 }
-moreDetail(from:any,to:any){
+moreDetail(from:any,to:any,temp:any){
+  temp=JSON.stringify(temp)
   from=encodeURIComponent(from)
   to=encodeURIComponent(to)
-  this.router.navigate([`/PaymentDetails`,from,to]);
+  temp=encodeURIComponent(temp)
+  this.router.navigate([`/PaymentDetails`,from,to,temp]);
 }
 }

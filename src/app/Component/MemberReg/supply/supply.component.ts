@@ -14,6 +14,7 @@ export class SupplyComponent implements OnInit {
   onload: any = false
 
   // variable
+  order:any="date"
   data: any = []
   balance: any = 0
   currentDate = formatDate(new Date(), 'YYYY-MM-dd', 'en')
@@ -85,7 +86,8 @@ export class SupplyComponent implements OnInit {
     var rate = this.detailsForm.get('Rate').value
     var bag = this.detailsForm.get('bags').value
     var amount = this.detailsForm.get('Amount').value
-    var temp: any
+    var temp: any;
+    
     let newdate=formatDate(new Date(date), 'dd/MM/YYYY', 'en')
     if(rate && bag && amount){
     temp = {
