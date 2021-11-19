@@ -57,8 +57,8 @@
         </tr>
       </thead>  
       <tbody>
-        <tr *ngFor="let temp of data">
-          <td>{{temp.date|trimdate}} </td>
+        <tr *ngFor="let temp of data| orderBy: order">
+          <td>{{temp.date}} </td>
           <td>{{temp.bag}}</td>
           <td>{{temp.rate}}</td>
           <td>{{temp.addAmount}}</td>

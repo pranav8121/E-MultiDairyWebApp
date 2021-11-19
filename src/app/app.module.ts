@@ -27,6 +27,8 @@ import { DairyComponent } from './Component/DairyReg/dairy/dairy.component';
 import { TabComponent } from './Component/DairyReg/tab/tab.component';
 import { PaydetailComponent } from './Component/PaymentReg/paydetail/paydetail.component';
 import { SalesComponent } from './Component/Xparts/sales/sales.component';
+import { DailyregComponent } from './Component/MemberReg/dailyreg/dailyreg.component';
+import { SpinnerComponent } from './Component/Xparts/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { SalesComponent } from './Component/Xparts/sales/sales.component';
     DairyComponent,
     TabComponent,
     PaydetailComponent,
-    SalesComponent
+    SalesComponent,
+    DailyregComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
