@@ -1,7 +1,8 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as moment from 'moment';
 import { ApiService } from 'src/app/Service/api.service';
+import * as xlsx from 'xlsx';
 
 @Component({
   selector: 'app-dailyreg',
@@ -25,6 +26,7 @@ export class DailyregComponent implements OnInit {
   totalBuffRate: any = 0;
   totalMilk: any;
   totalRate: any;
+  @ViewChild('print_A4', { static: false }) print_A4: any;
   constructor(private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -90,8 +92,8 @@ export class DailyregComponent implements OnInit {
     this.totalCowMilk=temp3
     this.totalCowRate=temp4
     
-    this.totalMilk = parseFloat(temp1+temp3)
-    this.totalRate = parseFloat(temp2+temp4)
+    this.totalMilk = parseFloat(temp1)+parseFloat(temp3)
+    this.totalRate = parseFloat(temp2)+parseFloat(temp4)
     var temp5=this.totalMilk.toFixed(2)
     this.totalMilk=temp5
     var temp6=this.totalRate.toFixed(2)
@@ -114,5 +116,15 @@ export class DailyregComponent implements OnInit {
     a.document.write('</body></html>');
     a.document.close();
     a.print();
+  }
+
+  printA4(){
+    const ws: xlsx.WorkSheet =   
+    xlsx.utils.table_to_sheet(this.print_A4.nativeElement);
+    console.log(this.print_A4.nativeElement);
+    
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, `दैनिक रजिस्टर`);
+    xlsx.writeFile(wb, `दैनिक रजिस्टर${this.currentDate}_${ this.timeMsg}.xlsx`);
   }
 }
