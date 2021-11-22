@@ -6,12 +6,13 @@
 </div>
 <div *ngIf="flag">
     <div *ngIf="!dataEmp">
-        <div class="my-2">
-            <button class="btn btn-info mx-2" (click)="print()">Print</button>
+        <div class="my-2 d-flex justify-content-end">
+            <button class="btn btn-info mx-2" (click)="print()">थर्मल प्रिंट</button>
+            <button class="btn btn-primary mx-2" (click)="printA4()">A4 प्रिंट</button>
         </div>
         <div>
             <h5 class="text-center my-2">{{currentDate}}-{{timeMsg}}</h5>
-            <div class="table-responsive" #printSection id="printSection">
+            <div class="table-responsive "  #printSection id="printSection">
                 <table class="table table-striped">
                     <thead>
                         <tr class="text-center">
@@ -24,7 +25,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let temp of data| orderBy: order">
+                        <tr *ngFor="let temp of data| orderBy: order" class="text-center">
                             <td>{{temp.No}} </td>
                             <td>{{temp.milk}} </td>
                             <td>{{temp.fat}} </td>
@@ -35,34 +36,76 @@
                     </tbody>
                 </table>
             </div>
-                <div #printSection2 id="printSection2">
-                    <table class="table table-border">
-                        <thead>
-                            <tr class="text-center">
-                                <th>{{data.length}}</th>
-                                <th>म्हैस</th>
-                                <th>गाय</th>
-                                <th>एकूण</th>
-                            </tr>
-                        </thead>
-                        <tbody>
 
-                            <tr class="text-center">
-                                <th>दूध</th>
-                                <td>{{totalBuffMilk}}</td>
-                                <td>{{totalCowMilk}}</td>
-                                <td>{{totalMilk}}</td>
-                            </tr>
-                            <tr class="text-center">
-                                <th>रक्कम</th>
-                                <td>{{totalBuffRate}}</td>
-                                <td>{{totalCowRate}}</td>
-                                <td>{{totalRate}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            
+
+
+
+            <div class="table-responsive  d-none" #print_A4 id="print_A4">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th>क्र.</th>
+                            <th>नाव</th>
+                            <th>दूध(लि.)</th>
+                            <th> फॅट &nbsp;</th>
+                            <th>SNF&nbsp;</th>
+                            <th>दर(रु.)</th>
+                            <th>रक्कम(रु.)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let temp of data| orderBy: order" class="text-center">
+                            <td>{{temp.No}} </td>
+                            <td>{{temp.Name}} </td>
+                            <td>{{temp.milk}} </td>
+                            <td>{{temp.fat}} </td>
+                            <td>{{temp.snf}}</td>
+                            <td>{{temp.rate}}</td>
+                            <td>{{temp.t_rate}}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <th>{{currentDate}}</th>
+                            <th>{{timeMsg}}</th>
+                            <th>{{totalBuffMilk}}+{{totalCowMilk}}={{totalMilk}}</th>
+                            <th> </th>
+                            <th></th>
+                            <th></th>
+                            <th>{{totalBuffRate}}+{{totalCowRate}}={{totalRate}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+            <div #printSection2 id="printSection2">
+                <table class="table table-border">
+                    <thead>
+                        <tr class="text-center">
+                            <th>{{data.length}}</th>
+                            <th>म्हैस</th>
+                            <th>गाय</th>
+                            <th>एकूण</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <th>दूध</th>
+                            <td>{{totalBuffMilk}}</td>
+                            <td>{{totalCowMilk}}</td>
+                            <td>{{totalMilk}}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <th>रक्कम</th>
+                            <td>{{totalBuffRate}}</td>
+                            <td>{{totalCowRate}}</td>
+                            <td>{{totalRate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 
