@@ -25,6 +25,7 @@ export class SupplyComponent implements OnInit {
     'Rate': new FormControl(1060, [Validators.required]),
     'bags': new FormControl("", [Validators.required]),
     'Date': new FormControl(this.currentDate, [Validators.required]),
+    'SupType':new FormControl("सुग्रास",[Validators.required]),
   })
   val: any;
   isClicked:any=false
@@ -86,6 +87,7 @@ export class SupplyComponent implements OnInit {
     var rate = this.detailsForm.get('Rate').value
     var bag = this.detailsForm.get('bags').value
     var amount = this.detailsForm.get('Amount').value
+    var supType=this.detailsForm.get('SupType').value
     var temp: any;
     
     let newdate=formatDate(new Date(date), 'dd/MM/YYYY', 'en')
@@ -98,6 +100,7 @@ export class SupplyComponent implements OnInit {
       addAmount: amount,
       rate: rate,
       bag: bag,
+      supType:supType,
       UId: sessionStorage.getItem("UId")
     }
     this._api.PostSupply(temp).subscribe(res => {

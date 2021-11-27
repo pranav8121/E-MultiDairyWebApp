@@ -15,7 +15,7 @@ export class LastComponent implements OnInit {
   valid: any
 
   // variable
-  order:string = "date"
+  order: string = "date"
   lastBill: any = []
   Cname: any;
   Ctype: any;
@@ -55,8 +55,8 @@ export class LastComponent implements OnInit {
   morRate: any;
   eveMilk: any;
   eveRate: any;
-  currentDate: any= formatDate(new Date(), 'dd/MM/YYYY', 'en')
- 
+  currentDate: any = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+
   constructor(private _api: ApiService, private _serv: MatrixService) { }
 
   ngOnInit(): void {
@@ -82,21 +82,21 @@ export class LastComponent implements OnInit {
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
       this.valid = true
       this.getCurrentBill(res)
-      
-      var temp={
-        No:this.Cnum,
-        UId:sessionStorage.getItem("UId")
+
+      var temp = {
+        No: this.Cnum,
+        UId: sessionStorage.getItem("UId")
       }
-      this._api.GetBalance(temp).subscribe(result=>{
-        this.balance=result
-      this.detailsForm.controls['Balance'].setValue( this.balance);
-      this.findBill() 
+      this._api.GetBalance(temp).subscribe(result => {
+        this.balance = result
+        this.detailsForm.controls['Balance'].setValue(this.balance);
+        this.findBill()
         this.onload = true
       },
-        error=>{
+        error => {
           this.onload = true
-          this.balance=0
-      this.detailsForm.controls['Balance'].setValue( this.balance);
+          this.balance = 0
+          this.detailsForm.controls['Balance'].setValue(this.balance);
         })
     }, err => {
       this.err = "No Data Found"
@@ -113,12 +113,12 @@ export class LastComponent implements OnInit {
         this.detailsForm.controls['Adv'].setValue(this.temp[0].adv);
         this.detailsForm.controls['Sup'].setValue(this.temp[0].supply);
         this.detailsForm.controls['Saving'].setValue(this.temp[0].bank);
-        console.log("this.temp[0].balance",this.temp[0].balance);
-        this.detailsForm.controls['Balance'].setValue(this.temp[0].balance?this.temp[0].balance:0);
+        console.log("this.temp[0].balance", this.temp[0].balance);
+        this.detailsForm.controls['Balance'].setValue(this.temp[0].balance ? this.temp[0].balance : 0);
         // this.detailsForm.controls['Share'].setValue(this.temp[0].share);
-        this.totalRate=this.temp[0].totalRate
-      this.totalDeduct=this.temp[0].cutting
-      this.subTotal=this.temp[0].subAmount
+        this.totalRate = this.temp[0].totalRate
+        this.totalDeduct = this.temp[0].cutting
+        this.subTotal = this.temp[0].subAmount
         this.exist = true
         this.onload_1 = true
       }, err => {
@@ -132,10 +132,10 @@ export class LastComponent implements OnInit {
   sendDate() {
     var today = new Date()
     var myPastDate = new Date(today);
-    if(myPastDate.getDate()==31){
+    if (myPastDate.getDate() == 31) {
       myPastDate.setDate(today.getDate() - 11)
     }
-    else{
+    else {
       myPastDate.setDate(today.getDate() - 10)
     }
     this.Cdate = myPastDate.getDate()
@@ -201,20 +201,20 @@ export class LastComponent implements OnInit {
           this.eveMilk = this.eveMilk + parseFloat(ele.milk);
           this.eveRate = this.eveRate + parseFloat(ele.t_rate);
         }
-        
+
       }
     });
-    this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
-    this.eveRate=parseFloat(this.eveRate).toFixed(2)
-    this.morRate=parseFloat(this.morRate).toFixed(2)
-    this.morMilk =parseFloat(this.morMilk).toFixed(2)
+    this.eveMilk = parseFloat(this.eveMilk).toFixed(2)
+    this.eveRate = parseFloat(this.eveRate).toFixed(2)
+    this.morRate = parseFloat(this.morRate).toFixed(2)
+    this.morMilk = parseFloat(this.morMilk).toFixed(2)
 
     this.totalMilk = Tmilk.toFixed(2)
     // var share = (this.totalMilk * 0.05).toFixed(2)
     this.detailsForm.controls['Saving'].setValue(this.totalMilk);
     // this.detailsForm.controls['Share'].setValue(share);
     this.totalRate = t_Trate.toFixed(2);
-    var sum = parseFloat(this.totalMilk) 
+    var sum = parseFloat(this.totalMilk)
     this.totalDeduct = parseFloat(sum.toFixed(2));
     var sub = this.totalRate - sum
     this.subTotal = sub.toFixed(2)
@@ -227,15 +227,15 @@ export class LastComponent implements OnInit {
     var sup = this.detailsForm.get('Sup').value
     var sav = this.detailsForm.get('Saving').value
     var Bal = this.balance
-    if (adv || sup || sav ) {
+    if (adv || sup || sav) {
       var sum = parseFloat(adv) + parseFloat(sup) + parseFloat(sav)
-     if(Bal){
-        var NewBal=parseFloat(Bal)-parseFloat(sup)
-      this.detailsForm.controls['Balance'].setValue(NewBal);
-    }
-    else{
-      this.detailsForm.controls['Balance'].setValue(Bal);
-    }
+      if (Bal) {
+        var NewBal = parseFloat(Bal) - parseFloat(sup)
+        this.detailsForm.controls['Balance'].setValue(NewBal);
+      }
+      else {
+        this.detailsForm.controls['Balance'].setValue(Bal);
+      }
       this.totalDeduct = parseFloat(sum.toFixed(2));
       var sub = this.totalRate - sum
       if (!sub) {
@@ -256,9 +256,9 @@ export class LastComponent implements OnInit {
     var sav = this.detailsForm.get('Saving').value
     // var share = this.detailsForm.get('Share').value
     var temp
-    var adv_temp:any
-    var sup_temp:any
-    adv_temp={
+    var adv_temp: any
+    var sup_temp: any
+    adv_temp = {
       Name: this.Cname,
       No: this.Cnum,
       type: "advance",
@@ -266,7 +266,7 @@ export class LastComponent implements OnInit {
       cutAmount: adv,
       UId: sessionStorage.getItem("UId")
     }
-    sup_temp= {
+    sup_temp = {
       Name: this.Cname,
       No: this.Cnum,
       type: "supply",
@@ -302,10 +302,10 @@ export class LastComponent implements OnInit {
       this.detailsForm.controls['Sup'].setValue(this.temp.data.supply);
       this.detailsForm.controls['Saving'].setValue(this.temp.data.bank);
       this.detailsForm.controls['Balance'].setValue(this.temp.data.balance);
-      this.totalRate=this.temp.data.totalRate
-      this.totalDeduct=this.temp.data.cutting
-      this.subTotal=this.temp.data.subAmount
-      this.CuttingApi( adv_temp,sup_temp)
+      this.totalRate = this.temp.data.totalRate
+      this.totalDeduct = this.temp.data.cutting
+      this.subTotal = this.temp.data.subAmount
+      this.CuttingApi(adv_temp, sup_temp)
       this.exist = true
       this.OnPrint()
     }, err => {
@@ -315,25 +315,33 @@ export class LastComponent implements OnInit {
     })
   }
 
-  CuttingApi(data1:any,data2:any){
-    this._api.PostSupply(data1).subscribe(res=>{
-      
-    },err=>{
-      console.log(" adv err");
-    })
-    this._api.PostSupply(data2).subscribe(res=>{
-    },err=>{ 
-      console.log(" Sup err");
-    })
+  CuttingApi(data1: any, data2: any) {
+    var adv = this.detailsForm.get('Adv').value
+    var sup = this.detailsForm.get('Sup').value
+    if (adv > 0) {
+      this._api.PostSupply(data1).subscribe(res => {
+
+      }, err => {
+        console.log(" adv err");
+      })
+    };
+    if (sup > 0) {
+      this._api.PostSupply(data2).subscribe(res => {
+      }, err => {
+        console.log(" Sup err");
+      })
+    };
+
+
   }
-  
-  OnPrint(){
+
+  OnPrint() {
     var divContents = document.getElementById("print_section")?.innerHTML
     var adv = this.detailsForm.get('Adv').value
     var sup = this.detailsForm.get('Sup').value
     var sav = this.detailsForm.get('Saving').value
     var bal = this.detailsForm.get('Balance').value
-    var a:any = window.open('', '', 'height=500, width=900');
+    var a: any = window.open('', '', 'height=500, width=900');
     a.document.write('<html>');
     a.document.write('<body >');
     a.document.write(`<h4 style="text-align:center;">${this.name}</h4>`);
