@@ -1,3 +1,7 @@
+<div>
+    <app-header></app-header>
+</div>
+
 <div class="d-flex justify-content-center mt-5 text-primary" *ngIf="!flag_1">
     <div class="spinner-border text-primary" role="status">
         <span class="sr-only"></span>
@@ -6,83 +10,112 @@
 
 
 <div *ngIf="flag_1  && hideErr">
+    
     <div>
-        <app-header></app-header>
-    </div>
-    <div>
-        <div class="table-responsive">
+        <div class="row">
+            <div class=" col d-flex justify-content-start my-3 mx-2">
+                <button class="btn btn-primary text-white" (click)="goBack()">	&larr; मागे</button>
+            </div>
+            <div class="col  d-flex justify-content-end my-3 mx-2">
+                <button class="btn btn-info text-white" (click)="export()">डाउनलोड करा</button>
+            </div>
+          <div class="table-responsive" #tabledata>
+
             <table class="table">
                 <thead>
                     <tr class="text-center">
                         <th class="fix">
-                            <p>No</p>
+                            <p>नंबर</p>
                         </th>
                         <th class="fix">
-                            <p>Name</p>
-                        </th>
-                        <th class="fix">
-                            <p>subTotal</p>
-                        </th>
-                        <th class="fix">
-                            <p>Mor Total Milk</p>
-                        </th>
-                        <th class="fix">
-                            <p>Eve Total Milk</p>
-                        </th>
-                        <th class="fix">
-                            <p>Total Milk</p>
-                        </th>
-                        <!-- <th class="fix">
-                        <p>Rate</p>
-                    </th> -->
-                        <th class="fix">
-                            <p>Mor Total Rate</p>
-                        </th>
-                        <th class="fix">
-                            <p>Eve Total Rate</p>
-                        </th>
-                        <th class="fix">
-                            <p>Total Rate</p>
-                        </th>
-                        <th class="fix">
-                            <p>Advance</p>
-                        </th>
-                        <th class="fix">
-                            <p>Bank</p>
-                        </th>
-                        <th class="fix">
-                            <p>Supply</p>
-                        </th>
-                        <th class="fix">
-                            <p>Share</p>
-                        </th>
-                        <th class="fix">
-                            <p>Total Cutting</p>
+                            <p>नाव</p>
                         </th>
 
+                       <th class="fix">
+                        <p>सकाळ(लि./रु.)</p>
+                    </th>
+                    <!-- <th class="fix">
+                        <p>सकाळ ए. दर</p>
+                    </th> -->
+                    <th class="fix">
+                        <p>संध्याकाळ(लि./रु.)</p>
+                    </th>
+                    <!-- <th class="fix">
+                        <p>संध्याकाळ एकूण दर</p>
+                    </th> -->
+                    <th class="fix">
+                        <p>एकूण दूध(लि.)</p>
+                    </th>
+                    <!-- <th class="fix">
+                    <p>Rate</p>
+                </th> -->
+                    <th class="fix">
+                        <p>एकूण दर(रु.)</p>
+                    </th>
+                    <th class="fix">
+                        <p>ॲडव्हान्स(रु.)</p>
+                    </th>
+                    <th class="fix">
+                        <p>बँक भरणा(रु.)</p>
+                    </th>
+                    <th class="fix">
+                        <p>पशुखाद्य(रु.)</p>
+                    </th>
+                    <!-- <th class="fix">
+                        <p>Share</p>
+                    </th> -->
+                    <th class="fix">
+                        <p>एकूण कपात(रु.)</p>
+                    </th>
+                    <th class="fix">
+                        <p>देय रक्कम(रु.)</p>
+                    </th>
+                    <th class="fix">
+                        <p>मिळाले</p>
+                    </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="text-center" *ngFor="let temp of data|orderBy: order">
                         <td>{{temp.No}}</td>
                         <td>{{temp.Name}}</td>
-                        <td>{{temp.subAmount}}</td>
-                        <td>{{temp.morTotalmilk|ReplaceNan}}</td>
-                        <td>{{temp.eveTotalmilk|ReplaceNan}}</td>
+                        <td>{{temp.morTotalmilk|ReplaceNan}}/{{temp.mortotalRate|ReplaceNan}}</td>
+                        <!-- <td>{{temp.mortotalRate|ReplaceNan}}</td> -->
+                        <td>{{temp.eveTotalmilk|ReplaceNan}}/{{temp.evetotalRate|ReplaceNan}}</td>
                         <td>{{temp.totalmilk|ReplaceNan}}</td>
                         <!-- <td>{{temp.}}</td> -->
-                        <td>{{temp.mortotalRate|ReplaceNan}}</td>
-                        <td>{{temp.evetotalRate|ReplaceNan}}</td>
+                        <!-- <td>{{temp.mortotalRate|ReplaceNan}}</td>
+                        <td>{{temp.evetotalRate|ReplaceNan}}</td> -->
                         <td>{{temp.totalRate}}</td>
                         <td>{{temp.adv}}</td>
                         <td>{{temp.bank}}</td>
                         <td>{{temp.supply}}</td>
-                        <td>{{temp.share}}</td>
+                        <!-- <td>{{temp.share}}</td> -->
                         <td>{{temp.cutting}}</td>
+                        <td>{{temp.subAmount}}</td>
+                        <td></td>
+                    </tr>
+                    <tr class="text-center ">
+                        
+                        <td>{{mainData.from}}</td>
+                        <td>{{mainData.to|ReplaceDate}}</td>
+                        <td><strong>{{mainData.morTotalmilk|ReplaceNan}}/{{mainData.mortotalRate|ReplaceNan}}</strong></td>
+                        <td><strong>{{mainData.eveTotalmilk|ReplaceNan}}/{{mainData.evetotalRate|ReplaceNan}}</strong></td>
+                        <td><strong>{{mainData.totalmilk|ReplaceNan}}</strong></td>
+                        <td><strong>{{mainData.totalRate}}</strong></td>
+                        <td><strong>{{mainData.adv}}</strong></td>
+                        <td><strong>{{mainData.bank}}</strong></td>
+                        <td><strong>{{mainData.supply}}</strong></td>
+                        <td><strong>{{mainData.cutting}}</strong></td>
+                        <td><strong>{{mainData.subAmount}}</strong></td>
+                        <td></td>
+                    
                     </tr>
                 </tbody>
             </table>
+        </div>   
         </div>
+       
     </div>
 </div>
 <div *ngIf="flag_1 && !hideErr" class="text-center text-danger">

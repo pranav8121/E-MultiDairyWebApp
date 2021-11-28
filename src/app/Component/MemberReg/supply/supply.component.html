@@ -6,6 +6,34 @@
 
 <div *ngIf="onload">
   <form  [formGroup]="detailsForm">
+    <div class="row my-3">
+      <div class="col-3 text-center">तारीख</div>
+      <div class="col-6">
+        <input type="date" class="form-control" formControlName="Date"
+          style="padding-right: 5px;padding-left: 5px;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3 text-center"> 
+        प्रकार
+      </div>
+      <div class="col-6">
+        <select class="form-select" aria-label="Default select example" formControlName="SupType">
+          <option value="सुग्रास">सुग्रास</option>
+          <option value="ट.एम.आर">ट.एम.आर</option>
+          <option value="फर्टिमन">फर्टिमन</option>
+          <option value="भेट शुल्क">भेट शुल्क</option>
+          <option value="इतर">इतर</option>
+        </select>
+
+      </div>
+        
+      </div>
+    <!-- <div class="col-3 text-center">तारीख</div>
+      <div class="col-3">
+        <input type="date" class="form-control" formControlName="Date"
+          style="padding-right: 5px;padding-left: 5px;">
+      </div> -->
   <div class="row my-3">
     <div class="col-3 text-center">पिशवी</div>
     <div class="col-3">
@@ -38,6 +66,7 @@
       <thead>
         <tr class="text-center">
           <th>तारीख</th>
+          <th>प्रकार</th>
           <th>पिशवी</th>
           <th>दर</th>
           <th>रक्कम</th>
@@ -45,8 +74,9 @@
         </tr>
       </thead>  
       <tbody>
-        <tr *ngFor="let temp of data">
-          <td>{{temp.date|trimdate}} </td>
+        <tr *ngFor="let temp of data" class="text-center">
+          <td>{{temp.date}} </td>
+          <td>{{temp.supType}} </td>
           <td>{{temp.bag}}</td>
           <td>{{temp.rate}}</td>
           <td>{{temp.addAmount}}</td>

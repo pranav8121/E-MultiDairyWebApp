@@ -1,3 +1,7 @@
+
+<div>
+    <app-header></app-header>
+</div>
 <div class="d-flex justify-content-center mt-5 text-primary" *ngIf="!flag_1">
     <div class="spinner-border text-primary" role="status">
         <span class="sr-only"></span>
@@ -5,92 +9,118 @@
 </div>
 
 
-<div *ngIf="flag_1 && hideErr" >
-    <div>
-        <app-header></app-header>
-    </div>
+
+<div *ngIf="flag_1 && hideErr">
     <div>
         <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr class="text-center">
                         <th class="fix">
-                            <p>From</p>
+                            <p>पासून</p>
                         </th>
                         <th class="fix">
-                            <p>To</p>
+                            <p>पर्यंत</p>
                         </th>
                         <th class="fix">
-                            <p>Mor Total Milk</p>
+                            <p>सकाळ (लि./रु.)</p>
+                        </th>
+                        <!-- <th class="fix">
+                            <p>दूध</p>
                         </th>
                         <th class="fix">
-                            <p>Eve Total Milk</p>
+                            <p>दर</p>
+                        </th> -->
+                        <th class="fix">
+                            <p>संध्याकाळ(लि./रु.)</p>
+                        </th>
+                        <!-- <th class="fix">
+                            <p>दूध</p>
                         </th>
                         <th class="fix">
-                            <p>Total Milk</p>
+                            <p>दर</p>
+                        </th> -->
+                        <th class="fix">
+                            <p>एकूण दूध(लि.)</p>
                         </th>
                         <!-- <th class="fix">
                         <p>Rate</p>
                     </th> -->
+
                         <th class="fix">
-                            <p>Mor Total Rate</p>
+                            <p>एकूण दर(रु.)</p>
                         </th>
                         <th class="fix">
-                            <p>Eve Total Rate</p>
+                            <p>ॲडव्हान्स(रु.) </p>
                         </th>
                         <th class="fix">
-                            <p>Total Rate</p>
+                            <p>बँक भरणा (रु.)</p>
                         </th>
                         <th class="fix">
-                            <p>Advance</p>
+                            <p>पशुखाद्य (रु.)</p>
                         </th>
-                        <th class="fix">
-                            <p>Bank</p>
-                        </th>
-                        <th class="fix">
-                            <p>Supply</p>
-                        </th>
-                        <th class="fix">
+                        <!-- <th class="fix">
                             <p>Share</p>
+                        </th> -->
+                        <th class="fix">
+                            <p>एकूण कपात (रु.)</p>
                         </th>
                         <th class="fix">
-                            <p>Total Cutting</p>
+                            <p>देय रक्कम(रु.)</p>
                         </th>
                         <th class="fix">
-                            <p>subTotal</p>
-                        </th>
-                        <th class="fix">
-                            <p>Details</p>
+                            <p>माहिती</p>
                         </th>
                     </tr>
+                    <!-- <tr>
+                        <th></th>
+                        <th></th>
+                        <th scope="col" class="fix">
+                            <p>दूध</p>
+                        </th>
+                        <th  scope="col" class="fix">
+                            <p>दर</p>
+                        </th>
+                        <th scope="col" class="fix">
+                            <p>दूध</p>
+                        </th>
+                        <th  scope="col" class="fix">
+                            <p>दर</p>
+                        </th>
+                      
+                      </tr> -->
                 </thead>
                 <tbody>
-                    <tr class="text-center" *ngFor="let temp of data | orderBy:'order' : true">
+                    <tr class="text-center"
+                        *ngFor="let temp of data | orderBy:'order' : true| paginate: { itemsPerPage: 5, currentPage: p }">
                         <td>{{temp.from}}</td>
                         <td>{{temp.to|ReplaceDate}}</td>
-                        <td>{{temp.morTotalmilk|ReplaceNan}}</td>
-                        <td>{{temp.eveTotalmilk|ReplaceNan}}</td>
+                        <td>{{temp.morTotalmilk|ReplaceNan}}&nbsp;/ &nbsp;{{temp.mortotalRate|ReplaceNan}}</td>
+                        <!-- <td>{{temp.mortotalRate|ReplaceNan}}</td> -->
+                        <td>{{temp.eveTotalmilk|ReplaceNan}}&nbsp;/ &nbsp;{{temp.evetotalRate|ReplaceNan}}</td>
+                        <!-- <td>{{temp.evetotalRate|ReplaceNan}}</td> -->
                         <td>{{temp.totalmilk|ReplaceNan}}</td>
                         <!-- <td>{{temp.}}</td> -->
-                        <td>{{temp.mortotalRate|ReplaceNan}}</td>
-                        <td>{{temp.evetotalRate|ReplaceNan}}</td>
                         <td>{{temp.totalRate}}</td>
                         <td>{{temp.adv}}</td>
                         <td>{{temp.bank}}</td>
                         <td>{{temp.supply}}</td>
-                        <td>{{temp.share}}</td>
+                        <!-- <td>{{temp.share}}</td> -->
                         <td>{{temp.cutting}}</td>
                         <td>{{temp.subAmount}}</td>
-                        <td><button class="btn btn-primary" (click)="moreDetail(temp.from,temp.to)">Details</button>
+                        <td><button class="btn btn-primary" (click)="moreDetail(temp.from,temp.to,temp)">माहिती</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="row">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
         </div>
 
     </div>
-    
 </div>
-<div *ngIf="flag_1 && !hideErr" class="text-center text-danger">
-    {{err}}
+<div *ngIf="flag_1 && !hideErr" class=" my-3 mx-1 text-center text-danger">
+   <h4>{{err}}</h4>
+    
 </div>

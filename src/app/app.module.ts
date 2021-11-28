@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { OrderModule } from 'ngx-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -25,6 +26,9 @@ import { AddmemComponent } from './Component/Xparts/addmem/addmem.component';
 import { DairyComponent } from './Component/DairyReg/dairy/dairy.component';
 import { TabComponent } from './Component/DairyReg/tab/tab.component';
 import { PaydetailComponent } from './Component/PaymentReg/paydetail/paydetail.component';
+import { SalesComponent } from './Component/Xparts/sales/sales.component';
+import { DailyregComponent } from './Component/MemberReg/dailyreg/dailyreg.component';
+import { SpinnerComponent } from './Component/Xparts/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,10 @@ import { PaydetailComponent } from './Component/PaymentReg/paydetail/paydetail.c
     AddmemComponent,
     DairyComponent,
     TabComponent,
-    PaydetailComponent
+    PaydetailComponent,
+    SalesComponent,
+    DailyregComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,8 @@ import { PaydetailComponent } from './Component/PaymentReg/paydetail/paydetail.c
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NgxPrintModule,
-    OrderModule
+    OrderModule,
+    NgxPaginationModule
   ],
   providers: [{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]

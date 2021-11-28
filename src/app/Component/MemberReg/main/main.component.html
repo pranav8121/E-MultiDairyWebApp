@@ -1,3 +1,9 @@
+<!-- Header -->
+<div>
+    <app-header></app-header>
+</div>
+
+
 <!-- loader -->
 <div class="d-flex justify-content-center mt-5 text-primary" *ngIf="flag_1">
     <span style="font-size: x-large;"> Fetching data...</span>
@@ -7,11 +13,8 @@
 </div>
 
 <!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#007bff" type = "ball-beat" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->
-<div *ngIf="!flag_1">
-    <!-- Header -->
-    <div>
-        <app-header></app-header>
-    </div>
+<div *ngIf="!flag_1 && !getErr">
+    
     <!-- Main Body -->
     <div style="width: 96%;">
 
@@ -111,8 +114,9 @@
                                 </div>
                                 <div class="d-flex justify-content-center my-3">
                                     <button class="btn btn-info text-white" style="width: 80px"
-                                        [disabled]="!entryForm.valid || inValid || isClicked " *ngIf="!isClicked && !IfEdit"
-                                        type="button" (click)="Sub(search)"><i class="fas fa-paper-plane"></i>
+                                        [disabled]="!entryForm.valid || inValid || isClicked "
+                                        *ngIf="!isClicked && !IfEdit" type="button" (click)="Sub(search)"><i
+                                            class="fas fa-paper-plane"></i>
                                         <div>OKAY</div>
                                     </button>
                                     <button class="btn btn-info text-white" *ngIf="isClicked " type="button" disabled>
@@ -120,13 +124,15 @@
                                             aria-hidden="true"></span>
                                         OKAY
                                     </button>
-                                    <button class="btn btn-info text-white" *ngIf="IfEdit && !EditClick" (click)="submitEdit()" [disabled]="EditClick">Enter</button>
+                                    <button class="btn btn-info text-white" *ngIf="IfEdit && !EditClick"
+                                        (click)="submitEdit()" [disabled]="EditClick">Enter</button>
                                     <button class="btn btn-info text-white" *ngIf="EditClick " type="button" disabled>
                                         <span class="spinner-border spinner-border-sm" role="status"
                                             aria-hidden="true"></span>
                                         Enter
                                     </button> &nbsp;
-                                    <button class="btn btn-danger text-white" *ngIf="IfEdit" (click)="CancelEdit()">Cancel</button><br>
+                                    <button class="btn btn-danger text-white" *ngIf="IfEdit"
+                                        (click)="CancelEdit()">Cancel</button><br>
                                     <small class="text-danger">{{postErr}}</small>
                                 </div>
                             </div>
@@ -137,61 +143,67 @@
 
                     <div *ngIf="entryFlag" class="px-2 justify-content-center">
                         <div id="print_section" #print_section>
-                        <div class="d-none d-print-block">
-                            <div class="px-1 py-1 d-flex justify-content-center">
-                              <h2 class="text-primary">{{Cname}}</h2>
-                            </div>
-                        
-                            <div class="row px-1 py-1">
-                              <div class=" col mx-5  px-1 py-1" style="border-radius: 5px;">
-                                <div class=" text-center "> <strong><strong>{{Cnum}}</strong>-<strong>{{Cname}}</strong> </strong>
+                            <div class="d-none d-print-block">
+                                <div class="px-1 py-1 d-flex justify-content-center">
+                                    <h2 class="text-primary">{{Cname}}</h2>
                                 </div>
-                              </div>
-                              <div class=" col mx-5  px-1 py-1" style="border-radius: 5px;">
-                                <div class=" text-center "> <strong><strong>दुधाचा प्रकार:</strong>-<strong>{{MCtype}}</strong> </strong>
+
+                                <div class="row px-1 py-1">
+                                    <div class=" col mx-5  px-1 py-1" style="border-radius: 5px;">
+                                        <div class=" text-center ">
+                                            <strong><strong>{{Cnum}}</strong>-<strong>{{Cname}}</strong> </strong>
+                                        </div>
+                                    </div>
+                                    <div class=" col mx-5  px-1 py-1" style="border-radius: 5px;">
+                                        <div class=" text-center "> <strong><strong>दुधाचा
+                                                    प्रकार:</strong>-<strong>{{MCtype}}</strong> </strong>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
 
-                        <div class="row  my-2">
-                            <h4 class="text-primary col-6 ">दूध (लिटर): </h4>
-                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);"> {{milk}}
-                            </h4>
+                            <div class="row  my-2">
+                                <h4 class="text-primary col-6 ">दूध (लिटर): </h4>
+                                <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);"> {{milk}}
+                                </h4>
+                            </div>
+
+                            <div class="row  my-2">
+                                <h4 class="text-primary col-6">फॅट:</h4>
+                                <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{fat}}
+                                </h4>
+                            </div>
+
+                            <div class="row  my-2">
+                                <h4 class="text-primary col-6">एस एन एफ:</h4>
+                                <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{snf}}
+                                </h4>
+
+                            </div>
+
+                            <div class="row  my-2">
+                                <h4 class="text-primary col-6">दर/लिटर(रु.):</h4>
+                                <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{rate}}
+                                </h4>
+                            </div>
+
+                            <div class="row  my-2">
+                                <h4 class="text-primary col-6">एकूण दर(रु.):</h4>
+                                <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">
+                                    {{t_rate}}
+                                </h4>
+                            </div>
+
                         </div>
-
-                        <div class="row  my-2">
-                            <h4 class="text-primary col-6">फॅट:</h4>
-                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{fat}}</h4>
-                        </div>
-
-                        <div class="row  my-2">
-                            <h4 class="text-primary col-6">एस एन एफ:</h4>
-                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{snf}}</h4>
-
-                        </div>
-
-                        <div class="row  my-2">
-                            <h4 class="text-primary col-6">दर/लिटर(रु.):</h4>
-                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{rate}}</h4>
-                        </div>
-
-                        <div class="row  my-2">
-                            <h4 class="text-primary col-6">एकूण दर(रु.):</h4>
-                            <h4 class="col d-flex justify-content-start" style="color:rgb(255, 188, 106);">{{t_rate}}
-                            </h4>
-                        </div>
-                        
-                    </div>
-                    <!-- <div class="row">
+                        <!-- <div class="row">
                         <div class="col d-flex justify-content-center"></div>
                         <div class="col d-flex justify-content-center"></div>
                     </div> -->
-                    <div class=" d-flex justify-content-center">
-                        <!-- <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print_section"  ngxPrint > प्रिंट</button> &nbsp; -->
-                        <button class="btn btn-primary"  (click)="OnPrint()"> प्रिंट</button> &nbsp;
-                        <!-- x<button class="btn btn-danger" (click)="onEdit()">Edit</button> -->
-                    </div>
+                        <div class=" d-flex justify-content-center">
+                            <!-- <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print_section"  ngxPrint > प्रिंट</button> &nbsp; -->
+                            <button class="btn btn-primary" (click)="OnPrint()"> प्रिंट</button> &nbsp;
+                            <!-- x<button class="btn btn-danger" (click)="onEdit()">Edit</button> -->
+                        </div>
                     </div>
 
 
@@ -222,8 +234,8 @@
             <div *ngIf="details">
                 <div class="row mx-1">
                     <div class="col-3" *ngFor="let temp of btn">
-                        <button style="width: 80px; background-color: rgb(255, 188, 106);" class="btn text-white "  [disabled]="temp.flag"
-                            (click)="onBtn(temp.id)">{{temp.name}}</button>
+                        <button style="width: 80px; background-color: rgb(255, 188, 106);" class="btn text-white "
+                            [disabled]="temp.flag" (click)="onBtn(temp.id)">{{temp.name}}</button>
                     </div>
                 </div>
                 <div *ngIf="cur">
@@ -245,8 +257,11 @@
 
         <!-- User Not Valid -->
         <div class="mt-5 d-flex justify-content-center" *ngIf=" userValid">
-            <h2> User Not Found!! </h2>
+            <h2> सभासद अस्तित्वात नाही!! </h2>
         </div>
 
     </div>
+</div>
+<div *ngIf="getErr" class=" d-flex justify-content-center">
+    <h4 class="text-danger mx-2 my-3">{{error}}</h4>
 </div>

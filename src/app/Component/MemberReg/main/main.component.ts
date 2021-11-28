@@ -13,6 +13,7 @@ import { MatrixService } from 'src/app/Service/matrix.service';
 })
 export class MainComponent implements OnInit {
   // flags
+  getErr:any=false
   flag_1: any = true
   flag_2: any = true
   flag_3: any = true
@@ -115,13 +116,12 @@ export class MainComponent implements OnInit {
       this.Members = res
       this.showMember(this.Cnum)
       this.flag_1 = false
-      this.err = false
+      this.getErr = false
       this.tmember = this.Members.length
     }, err => {
-      console.log(err);
       this.flag_1 = false
-      this.err = true
-      this.error = "Slow Internet Connection Please Refresh Page"
+      this.getErr = true
+      this.error = "*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!"
 
     })
   }
@@ -132,12 +132,12 @@ export class MainComponent implements OnInit {
     this._api.getTodaysData(this.engtimeMsg, this.currentDate).subscribe(res => {
       this.DoneMem = res
       this.doneMemCheck(this.DoneMem)
-      this.err = false
+      this.getErr = false
       this.EntryCheck(this.Cnum)
     }, err => {
       console.log(err);
-      this.err = true
-      this.error = "Slow Internet Connection Please Refresh Page"
+      this.getErr = true
+      this.error = "*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!"
     })
   }
 
@@ -281,7 +281,7 @@ export class MainComponent implements OnInit {
         err => {
           this.isClicked = false
           console.log("POST ERR", err);
-          this.postErr = "Slow Internet Connection,Data not Saved! Please Refresh Page"
+          this.postErr = "*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!"
           search.focus()
           search.value = ""
         }
@@ -398,7 +398,7 @@ export class MainComponent implements OnInit {
         err => {
           this.isClicked = false
           console.log("Edit ERR", err);
-          this.postErr = "Slow Internet Connection,Data not Saved! Please Refresh Page"
+          this.postErr = "*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!"
           this.EditClick=false
         }
       )
@@ -458,7 +458,6 @@ export class MainComponent implements OnInit {
       a.document.write('<html>');
       a.document.write('<body >');
       a.document.write(`<h4 style="text-align:center;">${this.Name}</h4>`);
-      // style="text-align:left;font-size:xx-large"
       a.document.write(`<p style="text-align:center;">नाव:${this.Cnum}-${this.Cname}</p>`);
       a.document.write(`<p style="text-align:center;">ता./वेळ:${this.currentDate}/${this.timeMsg}</p>`);
       a.document.write(`<p style="text-align:center;">दुधाचा प्रकार:${this.MCtype}</p>`);
@@ -469,7 +468,6 @@ export class MainComponent implements OnInit {
       a.document.write(`<p> &nbsp दर/लिटर : &nbsp ${this.rate} रुपये </p>`)
       a.document.write(`<p> &nbsp एकूण दर  : &nbsp ${this.t_rate} रुपये</p>`)
       a.document.write('<hr/>')
-
       a.document.write('</body></html>');
       a.document.close();
       a.print();

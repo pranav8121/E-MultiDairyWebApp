@@ -14,15 +14,18 @@ export class SupplyComponent implements OnInit {
   onload: any = false
 
   // variable
+  order:any="date"
   data: any = []
   balance: any = 0
-  currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+  currentDate = formatDate(new Date(), 'YYYY-MM-dd', 'en')
   Cnum: any;
   Cname: any;
   detailsForm: any = new FormGroup({
     'Amount': new FormControl({value:1060,disabled:true}, [Validators.required]),
     'Rate': new FormControl(1060, [Validators.required]),
     'bags': new FormControl("", [Validators.required]),
+    'Date': new FormControl(this.currentDate, [Validators.required]),
+    'SupType':new FormControl("सुग्रास",[Validators.required]),
   })
   val: any;
   isClicked:any=false
@@ -80,19 +83,24 @@ export class SupplyComponent implements OnInit {
 
   postData() {
    this.isClicked=true
+   let date = this.detailsForm.get('Date').value
     var rate = this.detailsForm.get('Rate').value
     var bag = this.detailsForm.get('bags').value
     var amount = this.detailsForm.get('Amount').value
-    var temp: any
+    var supType=this.detailsForm.get('SupType').value
+    var temp: any;
+    
+    let newdate=formatDate(new Date(date), 'dd/MM/YYYY', 'en')
     if(rate && bag && amount){
     temp = {
       Name: this.Cname,
       No: this.Cnum,
       type: "supply",
-      date: this.currentDate,
+      date: newdate,
       addAmount: amount,
       rate: rate,
       bag: bag,
+      supType:supType,
       UId: sessionStorage.getItem("UId")
     }
     this._api.PostSupply(temp).subscribe(res => {

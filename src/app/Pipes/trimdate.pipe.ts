@@ -35,7 +35,7 @@ export class TrimdateHours implements PipeTransform {
 export class ReplaceNan implements PipeTransform {
 
   transform(string: any): any {
-    if (string=="NaN" || !string ) {
+    if (string == "NaN" || !string) {
       return "-"
     }
     else return string
@@ -50,8 +50,17 @@ export class ReplaceNan implements PipeTransform {
 export class ReplaceDate implements PipeTransform {
 
   transform(date: any): any {
-    if (date=="32/11/2021") {
-      return "31/11/2021"
+    if (date.slice(0, 2) == "32") {
+      return `31/${date.slice(3, date.length)}`
+    }
+    if (date.slice(0, 2) == "31") {
+      return `30/${date.slice(3, date.length)}`
+    }
+    if (date.slice(0, 2) == "21") {
+      return `20/${date.slice(3, date.length)}`
+    }
+     if (date.slice(0, 2) == "11") {
+      return `10/${date.slice(3, date.length)}`
     }
     else return date
   }
