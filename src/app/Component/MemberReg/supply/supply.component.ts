@@ -14,21 +14,24 @@ export class SupplyComponent implements OnInit {
   onload: any = false
 
   // variable
-  order:any="date"
+  order: any = "date"
   data: any = []
   balance: any = 0
   currentDate = formatDate(new Date(), 'YYYY-MM-dd', 'en')
   Cnum: any;
   Cname: any;
+  types: any = ["सुग्रास", "टि.एम.आर", "फर्टिमन प्लस","फर्टिमन", "भेट शुल्क", "इतर"];
+  typeRates: any = [1060, 200, 130, 80, 60, 0]
   detailsForm: any = new FormGroup({
-    'Amount': new FormControl({value:1060,disabled:true}, [Validators.required]),
-    'Rate': new FormControl(1060, [Validators.required]),
-    'bags': new FormControl("", [Validators.required]),
+    'Amount': new FormControl({ value: this.typeRates[0], disabled: true }, [Validators.required]),
+    'Rate': new FormControl(this.typeRates[0], [Validators.required]),
+    'bags': new FormControl(1, [Validators.required]),
     'Date': new FormControl(this.currentDate, [Validators.required]),
-    'SupType':new FormControl("सुग्रास",[Validators.required]),
+    'SupType': new FormControl(this.types[0], [Validators.required]),
   })
   val: any;
-  isClicked:any=false
+  isClicked: any = false
+  setRate: any;
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -57,17 +60,31 @@ export class SupplyComponent implements OnInit {
     })
   }
 
+  changeRate() {
+
+    
+    console.log(this.detailsForm.get('SupType').value);
+    this.setRate = (this.detailsForm.get('SupType').value == this.types[0]) ? this.typeRates[0]
+      : (this.detailsForm.get('SupType').value == this.types[1]) ? this.typeRates[1]
+        : (this.detailsForm.get('SupType').value == this.types[2]) ? this.typeRates[2]
+          : (this.detailsForm.get('SupType').value == this.types[3]) ? this.typeRates[3]
+          : (this.detailsForm.get('SupType').value == this.types[4]) ? this.typeRates[4]
+            : this.typeRates[5];
+this.detailsForm.get("Rate").setValue(this.setRate);
+this.detailsForm.get("Amount").setValue(this.setRate);
+  }
+
   calcu() {
     var rate = this.detailsForm.get('Rate').value
     var bag = this.detailsForm.get('bags').value
     var amount
     if (rate && bag) {
-      this.val=false
+      this.val = false
       amount = rate * bag
       this.detailsForm.controls['Amount'].setValue(amount);
     }
-    else{
-      this.val=true
+    else {
+      this.val = true
     }
   }
 
@@ -82,42 +99,42 @@ export class SupplyComponent implements OnInit {
   }
 
   postData() {
-   this.isClicked=true
-   let date = this.detailsForm.get('Date').value
+    this.isClicked = true
+    let date = this.detailsForm.get('Date').value
     var rate = this.detailsForm.get('Rate').value
     var bag = this.detailsForm.get('bags').value
     var amount = this.detailsForm.get('Amount').value
-    var supType=this.detailsForm.get('SupType').value
+    var supType = this.detailsForm.get('SupType').value
     var temp: any;
-    
-    let newdate=formatDate(new Date(date), 'dd/MM/YYYY', 'en')
-    if(rate && bag && amount){
-    temp = {
-      Name: this.Cname,
-      No: this.Cnum,
-      type: "supply",
-      date: newdate,
-      addAmount: amount,
-      rate: rate,
-      bag: bag,
-      supType:supType,
-      UId: sessionStorage.getItem("UId")
+
+    let newdate = formatDate(new Date(date), 'dd/MM/YYYY', 'en')
+    if (rate && bag && amount) {
+      temp = {
+        Name: this.Cname,
+        No: this.Cnum,
+        type: "supply",
+        date: newdate,
+        addAmount: amount,
+        rate: rate,
+        bag: bag,
+        supType: supType,
+        UId: sessionStorage.getItem("UId")
+      }
+      this._api.PostSupply(temp).subscribe(res => {
+        this.data.push(temp)
+        this.null()
+        this.checkBal(this.data)
+        this.isClicked = false
+        this.detailsForm.controls['bags'].setValue("");
+      }, err => {
+        this.null()
+        console.log(err);
+        this.isClicked = false
+        this.detailsForm.controls['bags'].setValue("");
+      })
     }
-    this._api.PostSupply(temp).subscribe(res => {
-      this.data.push(temp)
-      this.null()
-      this.checkBal(this.data)
-      this.isClicked=false
-      this.detailsForm.controls['bags'].setValue("");
-    }, err => {
-      this.null()
-      console.log(err);
-      this.isClicked=false
-      this.detailsForm.controls['bags'].setValue("");
-    })
-    }
-    else{
-console.log("errr");
+    else {
+      console.log("errr");
 
     }
   }
