@@ -10,47 +10,48 @@ import * as moment from 'moment';
 export class HeaderComponent implements OnInit {
   timeMsg: any;
   currentHour: any;
-  time:any
-  Name:any="#######"
-  navbaropen:any=false
+  time: any
+  Name: any = "#######"
+  navbaropen: any = false
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
-this.getData()
-    
+    this.getData()
+
     setInterval(() => {
       this.Time()
     }, 1000)
   }
 
-getData(){
-  this.Name=sessionStorage.getItem("Name")
-  this.Time()
-}
+  getData() {
+    this.Name = sessionStorage.getItem("Name")
+    this.Time()
+  }
 
 
-  Time(){
+  Time() {
     this.currentHour = moment().format("HH");
-   if (this.currentHour >= 3 && this.currentHour < 15){
-       this.timeMsg= "  सकाळ  ";
-       // सकाळ-आणि-संध्याकाळ
-   } else {
-     this.timeMsg= "   संध्याकाळ  ";
-   }
- }
+    if (this.currentHour >= 3 && this.currentHour < 15) {
+      this.timeMsg = "  सकाळ  ";
+      // सकाळ-आणि-संध्याकाळ
+    } else {
+      this.timeMsg = "   संध्याकाळ  ";
+    }
+  }
 
 
- logout(){
-   if(confirm("Do you want to logout?")){
-       sessionStorage.removeItem("token")
-  sessionStorage.removeItem("Name")
-  sessionStorage.removeItem("UId")
-this.router.navigate(["/"])
-   }
-}
-navbarToggel(){
-  this.navbaropen=!this.navbaropen
-}
+  logout() {
+    if (confirm("Do you want to logout?")) {
+      sessionStorage.removeItem("token")
+      sessionStorage.removeItem("Name")
+      sessionStorage.removeItem("UId")
+      sessionStorage.removeItem("multi")
+      this.router.navigate(["/"])
+    }
+  }
+  navbarToggel() {
+    this.navbaropen = !this.navbaropen
+  }
 }
