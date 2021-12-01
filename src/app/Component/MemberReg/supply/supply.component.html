@@ -18,12 +18,12 @@
         प्रकार
       </div>
       <div class="col-6">
-        <select class="form-select" aria-label="Default select example" formControlName="SupType">
-          <option value="सुग्रास">सुग्रास</option>
-          <option value="ट.एम.आर">ट.एम.आर</option>
+        <select class="form-select" aria-label="Default select example" formControlName="SupType" (change)="changeRate()">
+          <option value={{type}} *ngFor="let type of types">{{type}}</option>
+          <!-- <option value="ट.एम.आर">ट.एम.आर</option>
           <option value="फर्टिमन">फर्टिमन</option>
           <option value="भेट शुल्क">भेट शुल्क</option>
-          <option value="इतर">इतर</option>
+          <option value="इतर">इतर</option> -->
         </select>
 
       </div>

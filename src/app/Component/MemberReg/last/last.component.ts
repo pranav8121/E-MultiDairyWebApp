@@ -210,11 +210,19 @@ export class LastComponent implements OnInit {
     this.morMilk = parseFloat(this.morMilk).toFixed(2)
 
     this.totalMilk = Tmilk.toFixed(2)
+    var multi:any=sessionStorage.getItem("multi")
     // var share = (this.totalMilk * 0.05).toFixed(2)
-    this.detailsForm.controls['Saving'].setValue(this.totalMilk);
+    var bankB:any=this.totalMilk * multi
+    this.detailsForm.controls['Saving'].setValue(bankB);
+
+    // if(sessionStorage.getItem("UId")=="615c3b6696eff45842bdacd0"){
+    //   this.detailsForm.controls['Saving'].setValue(this.totalMilk *2);
+    // }else{
+    //   this.detailsForm.controls['Saving'].setValue(this.totalMilk);
+    // }
     // this.detailsForm.controls['Share'].setValue(share);
     this.totalRate = t_Trate.toFixed(2);
-    var sum = parseFloat(this.totalMilk)
+    var sum = parseFloat(bankB)
     this.totalDeduct = parseFloat(sum.toFixed(2));
     var sub = this.totalRate - sum
     this.subTotal = sub.toFixed(2)
