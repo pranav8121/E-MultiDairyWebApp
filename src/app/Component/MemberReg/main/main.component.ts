@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { NgNavigatorShareService } from 'ng-navigator-share';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/Service/api.service';
 import { MatrixService } from 'src/app/Service/matrix.service';
@@ -88,13 +89,14 @@ export class MainComponent implements OnInit {
   id: any;
   EditClick: any=false
   Name: any;
+  wa_text:any
 
 
 
 
 
 
-  constructor(private _api: ApiService, private _tab: MatrixService, private spinner: NgxSpinnerService) { }
+  constructor(private _api: ApiService, private _tab: MatrixService, private _navigate: NgNavigatorShareService) { }
 
   ngOnInit(): void {
     this.flag_1 = true
@@ -181,7 +183,13 @@ export class MainComponent implements OnInit {
         }
       }
 
+      let watxt=`नमस्कार ${this.Cname}, तुमचे आजचे ${this.currentDate}/${this.timeMsg}
+      दूध:${this.milk}लि,
+       एस एन एफ:${this.snf},
+       फॅट:${this.fat}, 
+        दर ${this.rate} आणि एकूण दर ${this.t_rate}`
 
+        this.wa_text=encodeURIComponent(watxt)
     }
   }
 
@@ -471,5 +479,26 @@ export class MainComponent implements OnInit {
       a.document.write('</body></html>');
       a.document.close();
       a.print();
+  }
+  OnShare(){
+    if (!this._navigate.canShare()) {
+      alert(`This service/api is not supported in your Browser`);
+      return;
+    }
+ 
+    this._navigate.share({
+      title: `${this.Name}`,
+      text: `नमस्कार ${this.Cname}, तुमचे आजचे ${this.currentDate}/${this.timeMsg}
+       दूध:${this.milk}लि,
+        एस एन एफ:${this.snf},
+        फॅट:${this.fat}, 
+         दर ${this.rate}} आणि एकूण दर ${this.t_rate}`,
+      // url: 'https://developers.google.com/web'
+    }).then( (response) => {
+      console.log(response);
+    })
+    .catch( (error) => {
+      console.log(error);
+    });
   }
 }
