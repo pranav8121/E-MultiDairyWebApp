@@ -120,7 +120,7 @@ export class DairyComponent implements OnInit {
         err => {
           this.noData = true
           this.onClickReg = false
-
+   
         });
     },
       error => {
