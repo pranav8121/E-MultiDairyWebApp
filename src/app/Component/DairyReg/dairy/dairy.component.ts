@@ -65,6 +65,9 @@ export class DairyComponent implements OnInit {
     let rate = this.RegisterForm.get('Rate').value
     let totalRate = this.RegisterForm.get('totalRate').value
     let newdate = formatDate(new Date(date), 'dd/MM/YYYY', 'en')
+        if(newdate=="01/01/2021"){
+      newdate="01/01/2022"
+    }
     var hour
     var type
     if (ehour == "Morning") { hour = "सकाळ" } else { hour = "संध्याकाळ" }
