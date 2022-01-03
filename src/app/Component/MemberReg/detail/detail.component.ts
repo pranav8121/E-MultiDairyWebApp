@@ -111,7 +111,7 @@ export class DetailComponent implements OnInit {
   sendDate() {
     var today = new Date()
     this.Cdate = today.getDate()
-    this.Cmonth = today.getMonth() + 1
+    this.Cmonth =  ("0" + (today.getMonth() + 1)).slice(-2)
     this.Cyear = today.getFullYear()
 
     if (this.Cdate >= 1 && this.Cdate <= 10) {
