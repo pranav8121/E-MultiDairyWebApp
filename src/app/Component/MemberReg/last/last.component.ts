@@ -139,7 +139,7 @@ export class LastComponent implements OnInit {
       myPastDate.setDate(today.getDate() - 10)
     }
     this.Cdate = myPastDate.getDate()
-    this.Cmonth = myPastDate.getMonth() + 1
+    this.Cmonth = ("0" + (myPastDate.getMonth() + 1)).slice(-2)
     this.Cyear = myPastDate.getFullYear()
     this.lastDate = formatDate(new Date(myPastDate), 'dd/MM/YYYY', 'en')
     if (this.Cdate >= 1 && this.Cdate <= 10) {
