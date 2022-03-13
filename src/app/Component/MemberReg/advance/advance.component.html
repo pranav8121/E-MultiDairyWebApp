@@ -5,6 +5,7 @@
 </div>
 
 <div *ngIf="onload">
+    <div  *ngIf="showtoAdmin">
     <form  [formGroup]="detailsForm">
     <div class="row my-3">
         <div class="col-3 text-center">दर</div>
@@ -21,6 +22,7 @@
       </div>
       
     </form>
+</div>
     <div class="row mt-2 mr-3">
         <div class="d-flex justify-content-end">
             <h4>एकूण शिल्लक:Rs.{{balance}}</h4>

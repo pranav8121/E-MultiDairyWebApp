@@ -29,6 +29,8 @@ import { PaydetailComponent } from './Component/PaymentReg/paydetail/paydetail.c
 import { SalesComponent } from './Component/Xparts/sales/sales.component';
 import { DailyregComponent } from './Component/MemberReg/dailyreg/dailyreg.component';
 import { SpinnerComponent } from './Component/Xparts/spinner/spinner.component';
+import { IndividualMemberComponent } from './Component/MemberReg/individual-member/individual-member.component';
+import { MemberLoginComponent } from './Component/Xparts/member-login/member-login.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { SpinnerComponent } from './Component/Xparts/spinner/spinner.component';
     PaydetailComponent,
     SalesComponent,
     DailyregComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    IndividualMemberComponent,
+    MemberLoginComponent
   ],
   imports: [
     BrowserModule,

@@ -134,11 +134,13 @@
 </div>
 <div *ngIf="onload && onload_1 && valid">
   <div *ngIf="!onPrintShow" class="col text-center  my-5 mt-3">
+<div *ngIf="showtoAdmin"> 
     <button  class="btn btn-primary"  *ngIf="!exist" (click)="Submit()" [disabled]="clicked">PRINT</button><br>
     <!-- <button [useExistingCss]="true" class="btn btn-primary" printSectionId="print_section" *ngIf="exist"
       ngxPrint (click)="OnPrint()">PRINT</button><br> -->
       <button  class="btn btn-primary"  *ngIf="exist" (click)="OnPrint()">PRINT</button><br>
     <small class="text-danger">{{err_p}}</small>
+  </div>
   </div>
 </div>
 

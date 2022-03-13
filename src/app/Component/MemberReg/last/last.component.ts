@@ -56,10 +56,17 @@ export class LastComponent implements OnInit {
   eveMilk: any;
   eveRate: any;
   currentDate: any = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+  userAuth: any;
+  showtoAdmin: boolean=true;
 
   constructor(private _api: ApiService, private _serv: MatrixService) { }
 
   ngOnInit(): void {
+    this.userAuth = sessionStorage.getItem('auth');
+    if(this.userAuth =="Member"){
+    console.log(this.userAuth);
+this.showtoAdmin=false;
+    }
     this.Cname = this._serv.Cname
     this.Ctype = this._serv.Ctype
     this.Cnum = this._serv.Cnum
@@ -143,7 +150,7 @@ export class LastComponent implements OnInit {
     this.Cyear = myPastDate.getFullYear()
     this.lastDate = formatDate(new Date(myPastDate), 'dd/MM/YYYY', 'en')
     if (this.Cdate >= 1 && this.Cdate <= 10) {
-      console.log("1");
+      // console.log("1");
       this.from = `01/${this.Cmonth}/${this.Cyear}`
       this.to = `11/${this.Cmonth}/${this.Cyear}`
       this.API(this.from, this.to)

@@ -24,11 +24,17 @@ export class AdvanceComponent implements OnInit {
   // Flags
   onload: any = false
   err: any;
-  isClicked:any=false
+  isClicked:any=false;
+  userAuth: any;
+  showtoAdmin: boolean=true;
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
-
+    this.userAuth = sessionStorage.getItem('auth');
+    if(this.userAuth =="Member"){
+    console.log(this.userAuth);
+this.showtoAdmin=false;
+    }
     this.getServData()
   }
 

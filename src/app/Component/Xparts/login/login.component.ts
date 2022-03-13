@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('Name', this.temp.Name);
         sessionStorage.setItem('token', this.temp.token);
         sessionStorage.setItem('multi', this.temp.multi);
+        sessionStorage.setItem('auth', this.temp.auth);
 
         this._api.UId = this.temp.Id;
         this.router.navigate([`/Main`]);

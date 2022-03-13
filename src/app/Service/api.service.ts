@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
   // Local URL
-//  baseUrl=`http://localhost:3000`
+ baseUrl=`http://localhost:3000`
 // LIVE URL
-baseUrl='https://e-multidairybackend.herokuapp.com'
+// baseUrl='https://e-multidairybackend.herokuapp.com'
 
   UId=sessionStorage.getItem('UId')
 
@@ -18,14 +18,20 @@ baseUrl='https://e-multidairybackend.herokuapp.com'
 LoginAuth(username:any,password:any){
 return this.http.get(`${this.baseUrl}/getCred/${username}/${password}`)
 }
+LoginMemAuth(username:any,password:any){
+  return this.http.get(`${this.baseUrl}/getMemCred/${username}/${password}`)
+  }
 
 ShowMem(Uid:any,No:any){              
   return this.http.get(`${this.baseUrl}/getOneMem/${Uid}/${No}`)
 }
 
 getallMem(){
+console.log(this.UId);
+
   return this.http.get(`${this.baseUrl}/getallMem/${this.UId}`)
 }
+
 
 postToMem(data:any){
   return this.http.post(`${this.baseUrl}/addMem/${this.UId}`,data) 

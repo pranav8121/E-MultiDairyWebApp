@@ -32,9 +32,16 @@ export class SupplyComponent implements OnInit {
   val: any;
   isClicked: any = false
   setRate: any;
+  userAuth: any;
+  showtoAdmin: boolean=true;
   constructor(private _serv: MatrixService, private _api: ApiService) { }
 
   ngOnInit(): void {
+    this.userAuth = sessionStorage.getItem('auth');
+    if(this.userAuth =="Member"){
+    console.log(this.userAuth);
+this.showtoAdmin=false;
+    }
     this.getServData()
   }
 
