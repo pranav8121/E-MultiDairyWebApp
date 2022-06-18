@@ -33,7 +33,7 @@
 <div id="print_section">
       <table class="table table-striped"  >
         <thead>
-          <tr>
+          <tr class="text-white">
             <th>तारीख</th>
             <th>वेळ</th>
             <th>दूध</th>
@@ -44,7 +44,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let temp of lastBill| orderBy: order">
+          <tr class="text-warning" *ngFor="let temp of lastBill| orderBy: order">
             <td>{{temp.date|trimdate}} </td>
             <td>{{temp.hours|trimhours}}</td>
             <td>{{temp.milk}}</td>
@@ -59,14 +59,14 @@
       <div class="row ">
         <div class="col-5 ">
           <div class="row " style="margin-left: 0px;">
-            <div class="col-7 text-primary"><b>एकूण दूध</b></div>
-            <div class="col-5"><strong>{{totalMilk}}लि</strong></div>
+            <div class="col-7 text-white"><b>एकूण दूध</b></div>
+            <div class="col-5 text-warning"><strong>{{totalMilk}}लि</strong></div>
           </div>
         </div>
         <div class="col-7 ">
           <div class="row " style="margin-left: 0px;">
-            <div class="col-6 text-primary"><b>एकूण रक्कम</b></div>
-            <div class="col-6"><strong>{{totalRate}}रु.</strong> </div>
+            <div class="col-6 text-white"><b>एकूण रक्कम</b></div>
+            <div class="col-6 text-warning"><strong>{{totalRate}}रु.</strong> </div>
           </div>
 
         </div>
@@ -76,17 +76,17 @@
         <div class="col-6">
           <form [formGroup]="detailsForm">
             <div class="form-group row mt-3">
-              <label class="col-6 text-primary" style="padding-right: 0px;padding-left: 15px;">ऍडव्हान्स (रु.) </label>
+              <label class="col-5 text-white" style="padding-right: 0px;padding-left: 15px;">ऍडव्हान्स(रु.) </label>
               <div class="col-6 ml-1">
-                <input type="number" class="form-control" formControlName="Adv" (keyup)="calcu()"
+                <input type="number" class="form-control text-warning" formControlName="Adv" (keyup)="calcu()"
                   [attr.disabled]="exist ? '' :null" style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
 
             <div class="form-group row mt-3">
-              <label class="col-6 text-primary" style="padding-right: 0px;padding-left: 15px;">पशुखाद्य (रु.)</label>
+              <label class="col-5 text-white" style="padding-right: 0px;padding-left: 15px;">पशुखाद्य(रु.)</label>
               <div class="col-6 ml-1">
-                <input type="number" class="form-control" formControlName="Sup" (keyup)="calcu()"
+                <input type="number" class="form-control text-warning" formControlName="Sup" (keyup)="calcu()"
                   [attr.disabled]="exist ? '' :null" style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
@@ -95,17 +95,17 @@
         <div class="col-6">
           <form [formGroup]="detailsForm">
             <div class="form-group row mt-3">
-              <label class="col-7 text-primary" style="padding-right: 5px;padding-left: 5px;">बँक भरणा (रु.)</label>
+              <label class="col-7 text-white" style="padding-right: 5px;padding-left: 5px;">बँक भरणा (रु.)</label>
               <div class="col-5">
-                <input type="number" class="form-control" formControlName="Saving" (keyup)="calcu()"
+                <input type="number" class="form-control text-warning" formControlName="Saving" (keyup)="calcu()"
                   [attr.disabled]="exist ? '' :null" style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
 
             <div class="form-group row mt-3">
-              <label class="col-7 text-primary">शि.पशुखाद्य</label>
-              <div class="col-5 ">
-                <input type="number" class="form-control" formControlName="Balance" (keyup)="calcu()"
+              <label class="col-7 text-white">शि.पशुखाद्य</label>
+              <div class="col-5  ">
+                <input type="number" class="form-control text-warning" formControlName="Balance" (keyup)="calcu()"
                   [attr.disabled]="true" style="padding-right: 5px;padding-left: 5px;">
               </div>
             </div>
@@ -116,16 +116,16 @@
       </div>
       <div class="row mt-3">
         <div class="col text-center ">
-          <div class="text-primary"> एकूण रक्कम</div>
-          <div><strong>{{totalRate}} रु.</strong></div>
+          <div class="text-white"> एकूण रक्कम</div>
+          <div class="text-warning"><strong>{{totalRate}} रु.</strong></div>
         </div>
         <div class="col text-center ">
           <div class="text-danger"> <strong> - </strong> एकूण कपात</div>
-          <div><strong>{{totalDeduct}} रु.</strong></div>
+          <div class="text-danger"><strong>{{totalDeduct}} रु.</strong></div>
         </div>
         <div class="col text-center ">
-          <div class="text-primary"> <strong> = </strong> देय रक्कम</div>
-          <div><strong>{{subTotal}} रु.</strong></div>
+          <div class="text-white"> <strong> = </strong> देय रक्कम</div>
+          <div class="text-warning"><strong>{{subTotal}} रु.</strong></div>
         </div>
       </div>
     </div>
@@ -146,12 +146,12 @@
 
 <div class="row mb-2" *ngIf="onload && onload_1 && valid">
   <div class="col text-center">
-      <div> सकाळ</div>
-      <div><strong>{{this.morMilk}}लि./{{this.morRate}}रु.</strong></div>
+      <div class="text-white"> सकाळ</div>
+      <div class="text-warning"><strong>{{this.morMilk}}लि./{{this.morRate}}रु.</strong></div>
   </div>
   <div class="col text-center">
-      <div> संध्याकाळ</div>
-      <div><strong>{{this.eveMilk}}लि./{{this.eveRate}}रु.</strong></div>
+      <div class="text-white"> संध्याकाळ</div>
+      <div class="text-warning"> <strong>{{this.eveMilk}}लि./{{this.eveRate}}रु.</strong></div>
   </div>
 </div>
 

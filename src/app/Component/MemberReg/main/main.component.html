@@ -25,33 +25,33 @@
         </div>
 
         <!-- Count -->
-        <div class="row">
+        <div class="row text-white">
             <div class="col text-center">
                 <div> म्हैस दूध</div>
-                <div><strong>{{totalBuff}} लि</strong></div>
+                <div style="color:#FFBC6A;"><strong>{{totalBuff}} लि</strong></div>
             </div>
             <div class="col text-center">
                 <div> गाय दूध</div>
-                <div><strong>{{totalCow}} लि</strong></div>
+                <div style="color:#FFBC6A;"><strong>{{totalCow}} लि</strong></div>
             </div>
             <div class="col text-center">
                 <div>सभासद</div>
-                <div><strong>({{dmem}}/{{tmember}})</strong></div>
+                <div style="color:#FFBC6A;"><strong>({{dmem}}/{{tmember}})</strong></div>
             </div>
         </div>
 
         <!-- Search Name Details -->
         <div class="px-2 py-2">
             <div class="row">
-                <div class="col-3"><input type="number" (keyup)="showMember(search.value)" class="form-control mt-1"
-                        id="search" #search value={{Cnum}} autofocus></div>
+                <div class="col-3"><input type="number" (keyup)="showMember(search.value)" class="form-control mt-1" 
+                 style="font-weight:bolder;color:#FFBC6A ;background-color: #00305a;"       id="search" #search value={{Cnum}} autofocus></div>
                 <div class="col-6">
                     <div class=" px-1 py-2  text-center " *ngIf=" !userValid"
                         style="border-radius: 5px; color: rgb(255, 188, 106);">
                         <strong>{{Cname}}</strong>
                     </div>
                 </div>
-                <div class="col-3 mr-1" *ngIf=" !userValid">
+                <div class="col-3" *ngIf=" !userValid">
                     <button class="mt-1 btn btn-primary" *ngIf="!details" (click)="Showdetails()">माहिती </button>
                     <button class="mt-1 btn btn-primary" *ngIf="details" (click)="Hidedetails()">नोंद </button>
                 </div>
@@ -81,36 +81,36 @@
             <div *ngIf="flag_4">
                 <div *ngIf="!details">
                     <!-- Entry flag False -->
-                    <form class="bg-light  row mt-3 mx-1 " [formGroup]="entryForm" *ngIf="!entryFlag">
+                    <form class="row mt-3 mx-1 " [formGroup]="entryForm" *ngIf="!entryFlag">
                         <div class="form-group row  my-2">
-                            <label for="milk" class="col-4 form-label">दूध (लिटर) :</label>
+                            <label for="milk" class="col-5 form-label text-white font-weight-bold fs-2">दूध (लिटर) :</label>
                             <div class="col">
                                 <input type="number" autocomplete="off" class=" form-control" id="milk" #milk
-                                    name="milk" formControlName="Milk" (keyup)=calcu()>
+                                  style="font-size: 24px;font-weight: bolder;color:#FFBC6A ;background-color: #00305a;"  name="milk" formControlName="Milk" (keyup)=calcu() >
                             </div>
                         </div>
                         <div class="form-group row my-2">
-                            <label for="fat" class="col-4 form-label"> फॅट:</label>
+                            <label for="fat" class="col-5 form-label text-white font-weight-bold fs-2"> फॅट:</label>
                             <div class="col">
                                 <input type="number" class="  form-control" autocomplete="off" id="fat" #fat name="fat"
-                                    formControlName="Fat" (keyup)=calcu()>
+                                style="font-size: 24px;font-weight: bolder;color:#FFBC6A ;background-color: #00305a;"   formControlName="Fat" (keyup)=calcu()>
                             </div>
                         </div>
                         <div class="form-group row my-2">
-                            <label for="snf" class="col-4 col-form-label">एस एन एफ:</label>
+                            <label for="snf" class="col-5 col-form-label text-white font-weight-bold fs-2">एस एन एफ:</label>
                             <div class="col">
                                 <input type="number" autocomplete="off" class=" form-control" id="snf" #snf name="snf"
-                                    formControlName="Snf" (keyup)=calcu()>
+                                style="font-size: 24px;font-weight: bolder;color:#FFBC6A ;background-color: #00305a;"     formControlName="Snf" (keyup)=calcu()>
                                 <small class="text-danger" *ngIf="inValid">*Enter Valid Value</small>
                             </div>
                         </div>
                         <div *ngIf="!inValid">
                             <div *ngIf="RateVal">
                                 <div class="form-group row my-2">
-                                    <h6 class="col ">दर/लिटर: <strong>{{RateVal}}</strong> </h6>
-                                    <h6 class="col d-flex justify-content-start">एकूण दर:
-                                        <strong>{{TotalVal}}</strong>
-                                    </h6>
+                                    <h4 class="col text-white ">दर/लिटर: <strong style="color:#FFBC6A">{{RateVal}}</strong> </h4>
+                                    <h4 class="col d-flex justify-content-start text-white">एकूण दर:
+                                        <strong style="color:#FFBC6A">{{TotalVal}}</strong>
+                                    </h4>
                                 </div>
                                 <div class="d-flex justify-content-center my-3">
                                     <button class="btn btn-info text-white" style="width: 80px"
@@ -209,18 +209,18 @@
 
 
 
-                    <div class="row mt-5">
+                    <div class="row text-white mt-5">
                         <div class="col text-center">
                             <div> म्हैस दर</div>
-                            <div><strong>{{t_rateBuff}} रु</strong></div>
+                            <div style="color:#FFBC6A;"><strong>{{t_rateBuff}} रु</strong></div>
                         </div>
                         <div class="col text-center">
                             <div> गाय दर</div>
-                            <div><strong>{{t_rateCow}} रु</strong></div>
+                            <div style="color:#FFBC6A;"><strong>{{t_rateCow}} रु</strong></div>
                         </div>
                         <div class="col text-center">
                             <div>दूध/दर</div>
-                            <div><strong>({{totalMilk}}/{{totalRate}})</strong></div>
+                            <div style="color:#FFBC6A;"><strong>({{totalMilk}}/{{totalRate}})</strong></div>
                         </div>
                     </div>
                     <div class=" d-flex justify-content-end my-4">
@@ -234,7 +234,7 @@
             <div *ngIf="details">
                 <div class="row mx-1">
                     <div class="col-3" *ngFor="let temp of btn">
-                        <button style="width: 80px; background-color: rgb(255, 188, 106);" class="btn text-white "
+                        <button style="width: 80px;" class="btn btn-primary text-white"
                             [disabled]="temp.flag" (click)="onBtn(temp.id)">{{temp.name}}</button>
                     </div>
                 </div>

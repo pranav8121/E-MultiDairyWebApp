@@ -10,3 +10,5 @@ input::-webkit-inner-spin-button {
   background-color: rgb(160, 158, 158);
   color: white;
 }
+
+/* input[type='number'] { font-size: 24px;font-weight: bolder;color:#FFBC6A ;background-color: #00305a; } */

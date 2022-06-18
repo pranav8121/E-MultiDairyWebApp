@@ -32,15 +32,19 @@
         <div class="row  text-center py-1 text-white" style="border-radius: 5px; background-color: rgb(255, 188, 106);">
             <div class="col 3"> <strong>{{currentDate}}</strong></div>
             <div class="col 3"> <strong>{{timeMsg}}</strong></div> 
-            <div class="col 5">  <form [formGroup]=" dateForm">
-                <div class="form-group row">
-                    <div>
+        
+        </div>
+        <div class="row">
+            <div class="col 3 text-center ">  <form [formGroup]=" dateForm">
+                <div class="form-group ml-3 mt-2 ">
                         <input type="date" class="form-control" id="_date" formControlName="Date" [max]="maxDate">
-                    </div>
                 </div>
             </form></div>
+            <div class="col 3 text-center">
+            <button class="btn btn-success btn-sm mt-2" (click)="ShowdateDetails()"><strong>Search</strong> </button>
+
+            </div>
             <!-- <button class="col 1"> <strong>Search</strong></button>  -->
-            <button class="col 1" (click)="ShowdateDetails()"><strong>Search</strong> </button>
 
         </div>
 
@@ -65,7 +69,7 @@
             <div class="row">
                 <div  class="col-3"><input    [disabled]="disableMemId" type="number" (keyup)="showMember(search.value)" class="form-control mt-1"
                         id="search" #search value={{Cnum}} autofocus></div>
-                <div class="col-6">
+                <div class="col-5">
                     <div class=" px-1 py-2  text-center " *ngIf=" !userValid"
                         style="border-radius: 5px; color: rgb(255, 188, 106);">
                         <strong>{{Cname}}</strong>

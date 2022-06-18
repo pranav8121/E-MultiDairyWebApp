@@ -11,11 +11,11 @@
             <button class="btn btn-primary mx-2" (click)="printA4()">A4 प्रिंट</button>
         </div>
         <div>
-            <h5 class="text-center my-2">{{currentDate}}-{{timeMsg}}</h5>
+            <h5 class="text-center my-2 text-white">{{currentDate}}-{{timeMsg}}</h5>
             <div class="table-responsive "  #printSection id="printSection">
                 <table class="table table-striped">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="text-center text-white">
                             <th>क्र.</th>
                             <th>दूध(लि.)</th>
                             <th> फॅट &nbsp;</th>
@@ -25,7 +25,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let temp of data| orderBy: order" class="text-center">
+                        <tr *ngFor="let temp of data| orderBy: order" class="text-center text-white">
                             <td>{{temp.No}} </td>
                             <td>{{temp.milk}} </td>
                             <td>{{temp.fat}} </td>
@@ -43,7 +43,7 @@
             <div class="table-responsive  d-none" #print_A4 id="print_A4">
                 <table class="table table-striped">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="text-center text-white">
                             <th>क्र.</th>
                             <th>नाव</th>
                             <th>दूध(लि.)</th>
@@ -54,7 +54,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let temp of data| orderBy: order" class="text-center">
+                        <tr *ngFor="let temp of data| orderBy: order" class="text-center text-warning">
                             <td>{{temp.No}} </td>
                             <td>{{temp.Name}} </td>
                             <td>{{temp.milk}} </td>
@@ -63,7 +63,7 @@
                             <td>{{temp.rate}}</td>
                             <td>{{temp.t_rate}}</td>
                         </tr>
-                        <tr class="text-center">
+                        <tr class="text-center text-warning">
                             <th>{{currentDate}}</th>
                             <th>{{timeMsg}}</th>
                             <th>{{totalBuffMilk}}+{{totalCowMilk}}={{totalMilk}}</th>
@@ -83,7 +83,7 @@
             <div #printSection2 id="printSection2">
                 <table class="table table-border">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="text-center text-white">
                             <th>{{data.length}}</th>
                             <th>म्हैस</th>
                             <th>गाय</th>
@@ -91,13 +91,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-center">
+                        <tr class="text-center text-warning">
                             <th>दूध</th>
                             <td>{{totalBuffMilk}}</td>
                             <td>{{totalCowMilk}}</td>
                             <td>{{totalMilk}}</td>
                         </tr>
-                        <tr class="text-center">
+                        <tr class="text-center text-warning">
                             <th>रक्कम</th>
                             <td>{{totalBuffRate}}</td>
                             <td>{{totalCowRate}}</td>

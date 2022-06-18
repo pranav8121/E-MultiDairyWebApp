@@ -27,7 +27,7 @@
     <div *ngIf="valid">
       <table class="table table-striped">
         <thead>
-          <tr>
+          <tr class="text-white">
             <th>तारीख</th>
             <th>वेळ</th>
             <th>दूध</th>
@@ -38,7 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let temp of CurrentBill  | orderBy: order">
+          <tr class="text-warning" *ngFor="let temp of CurrentBill  | orderBy: order">
             <td>{{temp.date|trimdate}} </td>
             <td>{{temp.hours|trimhours }}</td>
             <td>{{temp.milk}}</td>
@@ -53,14 +53,14 @@
       <div class="row "> 
         <div class="col-5 ">
           <div class="row " style="margin-left: 0px;">
-            <div class="col-7 text-primary"><b>एकूण दूध</b></div>
-            <div class="col-5"><strong>{{totalMilk}}लि</strong></div>
+            <div class="col-7 text-white"><b>एकूण दूध</b></div>
+            <div class="col-5 text-warning"><strong>{{totalMilk}}लि</strong></div>
           </div>
         </div>
         <div class="col-7 ">
           <div class="row " style="margin-left: 0px;">
-            <div class="col-6 text-primary"><b>एकूण रक्कम</b></div>
-            <div class="col-6"><strong>{{totalRate}}रु.</strong> </div>
+            <div class="col-6 text-white"><b>एकूण रक्कम</b></div>
+            <div class="col-6 text-warning"><strong>{{totalRate}}रु.</strong> </div>
           </div>
 
         </div>
@@ -135,13 +135,13 @@
 </div> -->
 
 <div class="row mb-2 mt-5 " *ngIf="onload && onload_1 && valid">
-  <div class="col text-center">
+  <div class="col text-center text-white">
       <div> सकाळ</div>
-      <div><strong>{{this.morMilk}}लि./{{this.morRate}}रु.</strong></div>
+      <div class="text-warning"><strong>{{this.morMilk}}लि./{{this.morRate}}रु.</strong></div>
   </div>
-  <div class="col text-center">
+  <div class="col text-center text-white">
       <div> संध्याकाळ</div>
-      <div><strong>{{this.eveMilk}}लि./{{this.eveRate}}रु.</strong></div>
+      <div class="text-warning"><strong>{{this.eveMilk}}लि./{{this.eveRate}}रु.</strong></div>
   </div>
 </div>
 <div class="mt-5 d-flex justify-content-center" *ngIf="!valid">

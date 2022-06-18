@@ -1,0 +1,2706 @@
+::-webkit-input-placeholder {
+  color: #c1c1c1 !important;
+}
+
+::-moz-placeholder {
+  color: #c1c1c1 !important;
+}
+
+:-ms-input-placeholder {
+  color: #c1c1c1 !important;
+}
+
+:-moz-placeholder {
+  color: #c1c1c1 !important;
+}
+
+* {
+  outline: 0 !important;
+}
+
+html, body {
+  background-color: #00305a;
+}
+
+body {
+  /* padding-top: 56px; */
+  font-family: "Muli", sans-serif !important;
+  overflow-x: hidden;
+}
+
+.cstmbtn {
+  min-width: auto;
+  padding: 10px 25px;
+  border: 0;
+  margin: 2px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  display: inline-block;
+  background-color: #e77817;
+  color: #fff;
+  font: 600 16px/20px "Muli", sans-serif;
+  letter-spacing: 1px;
+  outline: 0 !important;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+}
+
+.cstmbtn.small {
+  min-width: 125px;
+  padding: 8px 15px;
+  font-size: 13px;
+}
+
+.cstmbtn:active {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.54);
+  -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.54);
+  -moz-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.54);
+  text-decoration: none;
+}
+
+.cstmbtn:disabled {
+  border-bottom: 0;
+  opacity: .5;
+}
+
+.addbtn {
+  min-width: 150px;
+  padding: 13px 20px 13px 45px;
+  border: 1px solid #fff;
+  margin: 2px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  display: inline-block;
+  background: transparent url(../images/plus.png) no-repeat 15px center;
+  color: #fff;
+  font: 600 14px "Muli", sans-serif;
+  letter-spacing: 1px;
+  outline: 0 !important;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+}
+
+.addbtn:active {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.54);
+  -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.54);
+  -moz-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.54);
+  text-decoration: none;
+}
+
+/*Header Starts*/
+header {
+  background-color: #054074;
+  height: 60px;
+}
+
+header .headerContainer {
+  width: 98%;
+  margin: 0px auto;
+}
+
+header .headerContainer h1 {
+  margin: 0;
+  display: inline-block;
+}
+
+header .headerContainer h1 a {
+  width: 177px;
+  height: 28px;
+  padding: 0;
+  margin: 15px 0;
+  display: inline-block;
+  background: url(../images/icici-lombard-logo-3x.png) no-repeat center center/137px;
+  text-indent: -9999px;
+  vertical-align: top;
+}
+
+header .headerContainer h1 a.logoNew {
+  padding: 0;
+  margin: 10px 0;
+  display: inline-block;
+  background: none;
+  text-indent: -9999px;
+  vertical-align: top;
+  width: auto;
+}
+
+header .headerContainer h1 a.logoNew img {
+  width: 182px;
+  height: 38px;
+  display: block;
+}
+
+header .headerContainer span {
+  padding-left: 17px;
+  margin: 21px 0;
+  display: inline-block;
+  color: #fff;
+  font: 400 14px "Muli", sans-serif;
+  vertical-align: top;
+}
+
+header .headerContainer .cstmSearchBox .form-group .form-control {
+  color: #999;
+  font: 500 12px "Roboto", sans-serif;
+  background: url(../images/dashboard/ic_search.svg) no-repeat left center/26px;
+  padding-left: 35px;
+  border: 0px none;
+  margin: 15px 0px;
+}
+
+header .headerContainer .cstmSearchBox .form-group .form-control:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+header .headerContainer .userLogin {
+  text-align: right;
+}
+
+header .headerContainer .userLogin .notification {
+  width: 27px;
+  height: 27px;
+  display: inline-block;
+  background: url(../images/dashboard/ic_notifications.svg) no-repeat left center/27px;
+  margin: 18px 35px 15px 0px;
+}
+
+header .headerContainer .userLogin .userLoginTxt {
+  color: #fff;
+  font: 500 10px/30px "Roboto", sans-serif;
+  background: url(../images/dashboard/user-login.svg) no-repeat 0px 3px/26px;
+  padding-left: 40px;
+  display: inline-block;
+  margin: 15px 0px;
+}
+
+/*Header Ends*/
+.mainsec {
+  padding: 50px 15px;
+}
+
+.mainsec .polDetails {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.mainsec .polDetails thead tr th {
+  padding-bottom: 15px;
+  color: #fff;
+  font: 300 20px "Muli", sans-serif;
+  vertical-align: top;
+}
+
+.mainsec .polDetails thead tr th span {
+  margin-top: 3px;
+  display: block;
+  font-size: 13px;
+}
+
+.mainsec .polDetails thead tr th a {
+  border-bottom: 1px solid #f26624;
+  color: #f26624;
+  font: 600 12px "Muli", sans-serif;
+  text-decoration: none;
+}
+
+.mainsec .polDetails thead tr th:last-child {
+  text-align: right;
+}
+
+.mainsec .polDetails thead:after {
+  content: '';
+  width: 55px;
+  height: 2px;
+  display: block;
+  background-color: #004376;
+}
+
+.mainsec .polDetails tbody tr td {
+  padding-top: 15px;
+  color: #ffffff;
+  font: 300 13px "Muli", sans-serif;
+}
+
+.mainsec .polDetails tbody tr td:last-child {
+  text-align: right;
+}
+
+.mainsec .polDetails tbody tr:last-child td {
+  padding-bottom: 15px;
+}
+
+.mainsec .polDetails tbody:after {
+  content: '';
+  width: 55px;
+  height: 2px;
+  display: block;
+  background-color: #004376;
+}
+
+.mainsec .polDetails tfoot tr th, .mainsec .polDetails tfoot tr td {
+  padding-top: 15px;
+  color: #fff;
+  font: 500 14px "Muli", sans-serif;
+}
+
+.mainsec .polDetails tfoot tr td {
+  text-align: right;
+}
+
+.mainsec .polDetails.premSum {
+  position: relative;
+}
+
+.mainsec .polDetails.premSum tbody {
+  position: relative;
+}
+
+.mainsec .polDetails.premSum tbody::after {
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.mainsec .choosePlan {
+  padding-left: 10px;
+}
+
+.mainsec .choosePlan h2 {
+  margin: 0 0 12px;
+  color: #ffffff;
+  font: 200 28px "Muli", sans-serif;
+}
+
+.mainsec .choosePlan .sumInsdiv {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  background-color: #fff;
+}
+
+.mainsec .choosePlan .sumInsdiv ul {
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 15px;
+  display: table;
+  text-align: center;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li {
+  padding: 8px;
+  display: table-cell;
+  vertical-align: top;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li div {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  background-color: #eaeaea;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li div table {
+  width: 100%;
+  text-align: left;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li div table tr th {
+  color: #282828;
+  font: 400 10px "Muli", sans-serif;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li div table tr th:last-child {
+  text-align: right;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li div table tr td {
+  padding-top: 3px;
+  color: #282828;
+  font: 500 16px "Muli", sans-serif;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li div table tr td:last-child {
+  padding-top: 10px;
+  text-align: right;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li:first-child div {
+  background: #f26624;
+  background: -webkit-gradient(linear, left top, right top, from(#f26624), to(#b12b30));
+  background: linear-gradient(to right, #f26624 0%, #b12b30 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f26624', endColorstr='#b12b30',GradientType=1 );
+}
+
+.mainsec .choosePlan .sumInsdiv ul li:first-child div table tr th, .mainsec .choosePlan .sumInsdiv ul li:first-child div table tr td {
+  color: #fff;
+}
+
+.mainsec .choosePlan .sumInsdiv ul li:last-child div {
+  background-color: #eeecdd;
+}
+
+.mainsec .choosePlan .sumInsdiv .benifDiv {
+  padding: 0 20px 30px;
+}
+
+.mainsec .choosePlan .sumInsdiv .benifDiv h3 {
+  margin: 0 0 8px;
+  color: #004a80;
+  font: 600 14px "Muli", sans-serif;
+}
+
+.mainsec .choosePlan .sumInsdiv .benifDiv table {
+  width: 100%;
+}
+
+.mainsec .choosePlan .sumInsdiv .benifDiv table tr {
+  border-bottom: 1px solid #E9E8E7;
+}
+
+.mainsec .choosePlan .sumInsdiv .benifDiv table tr th {
+  padding: 12px 0 5px;
+  display: block;
+  color: #282828;
+  font: 600 14px "Muli", sans-serif;
+}
+
+.mainsec .choosePlan .sumInsdiv .benifDiv table tr td {
+  padding-bottom: 15px;
+  display: block;
+  color: #6c6c6c;
+  font: 400 12px "Muli", sans-serif;
+}
+
+.mainsec .choosePlan .formdiv {
+  padding: 0;
+  margin-top: 35px;
+}
+
+.mainsec .choosePlan .formdiv h3 {
+  margin: 0 0 10px;
+  color: #fff;
+  font: 300 19px "Muli", sans-serif;
+}
+
+.mainsec .choosePlan .formdiv .form-group {
+  margin-bottom: 30px;
+}
+
+.mainsec .choosePlan .formdiv .input-field label {
+  font: 300 13px "Muli", sans-serif;
+}
+
+.mainsec .choosePlan .formdiv .input-field label sup {
+  color: #f58220;
+}
+
+.mainsec .choosePlan .formdiv .input-field select {
+  padding-right: 15px;
+  background: url(../images/down-arrow-white.png) no-repeat 98% center/10px;
+}
+
+.mainsec .choosePlan .formdiv .input-field input, .mainsec .choosePlan .formdiv .input-field select {
+  font: 300 16px "Muli", sans-serif;
+}
+
+.formdiv {
+  padding: 30px;
+}
+
+.formdiv h2 {
+  margin: 0 0 50px;
+  color: #fff;
+  font: 200 50px "Muli", sans-serif;
+}
+
+.formdiv .form-group {
+  margin-bottom: 50px;
+}
+
+.formdiv .form-group small {
+  margin-top: 10px;
+  display: block;
+  color: #8097ac;
+  font: 400 12px "Muli", sans-serif;
+}
+
+.formdiv .input-field {
+  position: relative;
+  overflow: hidden;
+}
+
+.formdiv .input-field input,
+.formdiv .input-field select {
+  padding-left: 0;
+  border: 0;
+  border-bottom: 1px solid #7795A3;
+  margin-top: 20px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  background-color: transparent;
+  box-shadow: 0 0 0 0 !important;
+  -webkit-box-shadow: 0 0 0 0 !important;
+  -moz-box-shadow: 0 0 0 0 !important;
+  color: #fff;
+  font: 400 18px "Muli", sans-serif;
+}
+
+.formdiv .input-field input:disabled,
+.formdiv .input-field select:disabled {
+  border-bottom: 0;
+  background-color: transparent;
+}
+
+.formdiv .input-field input option,
+.formdiv .input-field select option {
+  color: #00305a;
+}
+
+.formdiv .input-field input.dob,
+.formdiv .input-field select.dob {
+  background: transparent url(../images/calendar.png) no-repeat 99% center;
+}
+
+.formdiv .input-field select {
+  background: url(../images/down-arrow.png) no-repeat 97% center/14px;
+}
+
+.formdiv .input-field label {
+  margin: 0;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  color: #7795a3;
+  cursor: text;
+  font: 400 14px "Muli", sans-serif;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+}
+
+.formdiv .input-field::after {
+  content: '';
+  width: 10px;
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background-color: #fe6625;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  visibility: hidden;
+}
+
+.formdiv .input-field.rupee label {
+  left: 15px;
+}
+
+.formdiv .input-field.rupee input, .formdiv .input-field.rupee select {
+  padding-left: 15px;
+  background: url(../images/rupee-white.png) no-repeat left center/9px;
+}
+
+.formdiv .input-field.focused label {
+  top: 5px;
+  left: 0;
+}
+
+.formdiv .input-field.focused::after {
+  width: 100%;
+  left: 0;
+  visibility: visible;
+}
+
+.formdiv .input-field.focused.disabled::after {
+  display: none;
+}
+
+.formdiv h3 {
+  margin: 5px 0;
+  color: #ffffff;
+  font: 400 16px "Muli", sans-serif;
+}
+
+.radioDiv label {
+  margin: 0;
+  color: #7795a3;
+  font: 300 13px "Muli", sans-serif;
+}
+
+.radioDiv label sup {
+  color: #f58220;
+}
+
+.radioDiv ul {
+  padding: 0;
+  margin: 0;
+}
+
+.radioDiv ul li {
+  margin: 5px 15px 5px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.radioDiv ul li input {
+  display: none;
+}
+
+.radioDiv ul li input:checked + label::before {
+  border-color: #f26624;
+  background-color: #f26624;
+  box-shadow: inset 0 0 0 4px #00305b;
+  -webkit-box-shadow: inset 0 0 0 4px #00305b;
+  -moz-box-shadow: inset 0 0 0 4px #00305b;
+}
+
+.radioDiv ul li label {
+  margin: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.radioDiv ul li label::before {
+  content: '';
+  width: 17px;
+  height: 17px;
+  border: 1px solid #fff;
+  margin-right: 10px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+}
+
+.radioDiv ul li:last-child {
+  margin: 5px 0;
+}
+
+footer {
+  padding: 30px 15px;
+  background-color: #ece9e9;
+}
+
+footer p {
+  padding-right: 115px;
+  color: #201d1d;
+  font: 400 11px/17px "Muli", sans-serif;
+}
+
+footer p strong {
+  display: block;
+  color: #171717;
+  font-weight: 700;
+}
+
+footer p a {
+  margin-top: 20px;
+  display: block;
+  color: #201d1d;
+}
+
+footer p a:hover {
+  color: #585858;
+  text-decoration: none;
+}
+
+footer ul {
+  padding: 0;
+  margin: 0;
+}
+
+footer ul li {
+  margin-right: 20px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+footer ul li a {
+  display: block;
+}
+
+footer ul li a svg {
+  fill: #282828;
+}
+
+footer ul li:last-child {
+  margin-right: 0;
+}
+
+footer select {
+  width: 250px;
+  padding-bottom: 7px;
+  border: 0;
+  border-bottom: 1px solid #CBC5C4;
+  background-color: transparent;
+  color: #6c6c6c;
+  font: 600 12px "Muli", sans-serif;
+}
+
+.chkBox input {
+  display: none;
+}
+
+.chkBox input:checked + label::before {
+  border-color: #e65b07;
+  background: #e65b07 url(../images/tick-white.png) no-repeat center center/7px;
+}
+
+.chkBox label {
+  margin: 0;
+  position: relative;
+  color: #8097ac;
+  cursor: pointer;
+  font: 300 11px "Muli", sans-serif;
+}
+
+.chkBox label::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  border: solid 1px #8097ac;
+  margin-right: 10px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  display: inline-block;
+  background: transparent;
+  vertical-align: -3px;
+}
+
+.paymentmode h2 {
+  padding: 0 22px;
+  margin: 0 0 8px;
+  color: #fff;
+  font: 300 15px "Muli", sans-serif;
+  text-align: center;
+}
+
+.paymentmode ul {
+  padding-left: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.paymentmode ul li {
+  margin: 15px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.paymentmode ul li a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.paymentmode ul li a div {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.51);
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.51);
+  -webkit-transition: -webkit-box-shadow 0.3s ease-in;
+  transition: -webkit-box-shadow 0.3s ease-in;
+  transition: box-shadow 0.3s ease-in;
+  transition: box-shadow 0.3s ease-in, -webkit-box-shadow 0.3s ease-in;
+  -webkit-transition: box-shadow 0.3s ease-in;
+  -moz-transition: box-shadow 0.3s ease-in;
+}
+
+.paymentmode ul li a div img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.paymentmode ul li a span {
+  margin-top: 10px;
+  display: inline-block;
+  color: #fff;
+  font: 400 11px "Muli", sans-serif;
+}
+
+.paymentmode ul li a:active div {
+  box-shadow: 0 0 0 0;
+  -webkit-box-shadow: 0 0 0 0;
+  -moz-box-shadow: 0 0 0 0;
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  header .mobMenuWrapper ul.navBar li a {
+    padding: 23px 13px;
+  }
+}
+
+@media (min-width: 992px) {
+  header .container {
+    max-width: 990px;
+  }
+}
+
+@media (min-width: 1200px) {
+  header .container {
+    max-width: 1140px;
+  }
+}
+
+@media (max-width: 991px) {
+  header {
+    text-align: center;
+  }
+  header .menu_btn {
+    display: block;
+  }
+  header .mobMenuWrapper {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 56px;
+    position: fixed;
+    top: 56px;
+    left: -101%;
+    z-index: 999;
+    background-color: #f2f5f8;
+    overflow-y: auto;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+  }
+  header .mobMenuWrapper ul.navBar li {
+    display: block;
+  }
+  header .mobMenuWrapper ul.navBar li a {
+    padding: 15px 30px;
+    border-bottom: 1px solid #fff;
+    color: #00305a;
+    font: 600 18px "Muli", sans-serif;
+  }
+  header .mobMenuWrapper ul.navBar li a span {
+    margin-top: 6px;
+    border: solid #00305a;
+    border-width: 0 1.5px 1.5px 0;
+    float: right;
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+  }
+  header .mobMenuWrapper ul.navBar li a.accordActive span {
+    margin-top: 10px;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
+  header .mobMenuWrapper ul.navBar li ul.innerlinks {
+    width: 100%;
+    padding: 0;
+    border-bottom: 0;
+    position: static;
+  }
+  header .mobMenuWrapper ul.navBar li ul.innerlinks li a {
+    padding: 15px 30px;
+    color: #7b7b7b;
+    font: 400 17px "Muli", sans-serif;
+  }
+  header .mobMenuWrapper.visible {
+    left: 0;
+  }
+  .formdiv {
+    padding: 0 15px;
+  }
+  .mainsec .choosePlan {
+    padding-left: 0;
+  }
+  footer p {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .mainsec .choosePlan .sumInsdiv ul li {
+    display: block;
+  }
+  footer {
+    padding: 15px;
+  }
+  footer ul {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .cstmbtn, .cstmbtn2, .cstmbtn3 {
+    width: 100%;
+    font-size: 13px;
+  }
+  header .menu_btn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  .formdiv h2 {
+    margin: 0;
+    font-size: 30px;
+  }
+  .formdiv .form-group {
+    margin-bottom: 40px;
+  }
+  .mainsec .choosePlan h2 {
+    font-size: 20px;
+  }
+  .paymentmode ul li {
+    margin: 10px;
+  }
+}
+
+/* ENDORSEMENT SECTION */
+.endorsementBg {
+  background: #00305a url(../images/endorsement/endorsementBg.png) no-repeat top right/70%;
+}
+
+.endorsementDiv {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.endorsementDiv .relative {
+  position: relative;
+}
+
+.endorsementDiv h2.endorsementTitle {
+  font: 500 20px/21px "Muli", sans-serif;
+  color: #e77817;
+  display: block;
+  padding-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.endorsementDiv h2.endorsementTitle i.icon-logout {
+  display: inline-block;
+  width: 27px;
+  height: 23px;
+  background: url(../images/endorsement/icon-logout.png) no-repeat 0px 0px/27px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}
+
+.endorsementDiv h2.endorsementTitle .icon-arrow-lft-orange {
+  display: inline-block;
+  width: 16px;
+  height: 23px;
+  background: url(../images/icon-chevron-selected.png) no-repeat 0px 0px/16px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+.formdiv h3.endorsementSubTitle {
+  font: 400 18px/16px "Muli", sans-serif;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.formdiv h3.basePolicySubTitle {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.formdiv label em.asterisk {
+  font-style: normal;
+  color: #e77817;
+  padding: 0px 5px;
+}
+
+.formdiv .basePolicyDiv {
+  background: #021d39;
+  border-radius: 15px;
+  padding: 10px 5px 1px 5px;
+  margin-bottom: 20px;
+}
+
+.formdiv .basePolicyDiv .form-inline .input-field .form-control {
+  width: 100%;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv {
+  background: #2771bc;
+  border-radius: 15px;
+  text-align: center;
+  padding: 15px 10px 0px 10px;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field label {
+  font: 500 14px "Muli", sans-serif;
+  color: #022a4d;
+  position: static;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field .form-control {
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  border: 0px none;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field .form-control::-webkit-input-placeholder {
+  color: red;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field .cstmbtn {
+  width: auto;
+  min-width: 120px;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field span.txtAmt {
+  display: block;
+  color: #fff;
+  font: 700 20px/25px "Muli", sans-serif;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.formdiv .basePolicyDiv2 {
+  background: #05134d;
+}
+
+.formdiv .topUpPolicyDiv {
+  background: #050340;
+}
+
+.formdiv .blueBgRadius {
+  background: #004388 url(../images/endorsement/blueBgForm.jpg) no-repeat top right/12%;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e77817;
+  min-height: 184px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.formdiv .greyBgRadius {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f5f5), to(#cecece));
+  background-image: linear-gradient(to bottom, #f7f5f5, #cecece);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #fff;
+  min-height: 184px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.formdiv #hiddenMobileDiv {
+  display: none;
+}
+
+.formdiv .form-group {
+  margin-bottom: 25px;
+}
+
+.formdiv .form-group input {
+  border-bottom: 2px solid #fff;
+}
+
+.formdiv .form-group .input-field label {
+  top: 0px;
+  color: #82afd6;
+  font: 400 13px/17px "Muli", sans-serif;
+}
+
+.formdiv .form-group .input-field select {
+  border-bottom: 2px solid #fff;
+}
+
+.formdiv .form-group .cstmbtn {
+  font: 500 18px/25px "Muli", sans-serif;
+  background-color: #e77817;
+  padding: 12px 25px;
+}
+
+.formdiv .form-group .icon-reset {
+  width: 27px;
+  height: 27px;
+  display: inline-block;
+  background: url(../images/endorsement/reset-icon.png) no-repeat center center;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 20%;
+}
+
+.formdiv .form-group .icon-checked-green {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background: url(../images/endorsement/icon-checked-green.png) no-repeat center center;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15%;
+}
+
+/* .formdiv .form-group #hiddenResetBtn {
+  display: none;
+}
+
+.formdiv .form-group #hiddenResetBtn2 {
+  display: none;
+} */
+
+.formdiv .form-group .dob {
+  background: url(../images/endorsement/icon-calendar-white.png) no-repeat 97% center;
+}
+
+/* .formdiv .form-group #hiddenCheckedBtn {
+  display: none;
+}
+
+.formdiv .form-group #hiddenCheckedBtn2 {
+  display: none;
+} */
+
+@-webkit-keyframes rotate-s-loader {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-s-loader {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.formdiv .form-group .input-field {
+  width: 100%;
+}
+
+.formdiv .form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  width: 70%;
+}
+
+.formdiv .form-inline .icon-dustbin {
+  width: 24px;
+  height: 31px;
+  display: inline-block;
+  background: url(../images/endorsement/icon-dustbin.png) no-repeat center center/20px;
+  cursor: pointer;
+  position: absolute;
+  top: 4px;
+  left: 20%;
+}
+
+/* .formdiv .getOtpDiv {
+  display: none;
+} */
+
+.formdiv .getOtpDiv .infoline {
+  font: 400 14px "Muli", sans-serif;
+  color: #fa5a13;
+  display: block;
+  padding: 10px 0px;
+}
+
+.formdiv .getOtpDiv .otpCodeBox input[type=number] {
+  height: 45px;
+  width: 10%;
+  color: #fdfdfd;
+  font: 400 16px "Muli", sans-serif;
+  text-align: center;
+  border-bottom: 1px solid #7795a3;
+  margin-right: 10px;
+}
+
+.formdiv .getOtpDiv .otpCodeBox input[type=number]::-webkit-inner-spin-button,
+.formdiv .getOtpDiv .otpCodeBox input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .formdiv .getOtpDiv2 {
+  display: none;
+} */
+
+.formdiv .getOtpDiv2 .infoline2 {
+  font: 400 14px "Muli", sans-serif;
+  color: #fa5a13;
+  display: block;
+  padding: 10px 0px;
+}
+
+.formdiv .getOtpDiv2 .otpCodeBox input[type=number] {
+  height: 45px;
+  width: 10%;
+  font: 400 20px "Muli", sans-serif;
+  text-align: center;
+  border-bottom: 2px solid #9bb5d0;
+  margin-right: 7px;
+}
+
+.formdiv .getOtpDiv2 .otpCodeBox input[type=number]::-webkit-inner-spin-button,
+.formdiv .getOtpDiv2 .otpCodeBox input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .formdiv .getOtpDiv4 {
+  display: none;
+} */
+
+.formdiv .getOtpDiv4 .infoline2 {
+  font: 400 14px "Muli", sans-serif;
+  color: #fa5a13;
+  display: block;
+  padding: 10px 0px;
+}
+
+.formdiv .getOtpDiv4 .otpCodeBox input[type=number] {
+  height: 45px;
+  width: 10%;
+  font: 400 20px "Muli", sans-serif;
+  text-align: center;
+  border-bottom: 2px solid #9bb5d0;
+  margin-right: 7px;
+}
+
+.formdiv .getOtpDiv4 .otpCodeBox input[type=number]::-webkit-inner-spin-button,
+.formdiv .getOtpDiv4 .otpCodeBox input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.formdiv .visible {
+  display: block;
+}
+
+.formdiv .basePolicyNote em {
+  color: #e77817;
+  font-style: normal;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.formdiv .basePolicyNote ul {
+  padding-left: 30px;
+}
+
+.formdiv .basePolicyNote ul li {
+  font: 400 14px/19px "Muli", sans-serif;
+  color: #fff;
+  padding-bottom: 15px;
+}
+
+.formdiv .basePolicyNote ul li::marker {
+  font-size: 0px;
+}
+
+.formdiv .basePolicyNote ul li::before {
+  color: #e77817;
+  content: "\2022";
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  font-size: 30px;
+}
+
+.formdiv .basePolicyTotalContri {
+  background: #004388;
+  border-radius: 15px;
+  padding: 12px;
+  margin: 5px 10px 20px 10px;
+}
+
+.formdiv .basePolicyTotalContri .table-responsive .table {
+  margin-bottom: 0px;
+}
+
+.formdiv .basePolicyTotalContri .table-responsive .table tr {
+  border: 0px none;
+}
+
+.formdiv .basePolicyTotalContri .table-responsive .table tr th {
+  color: #82afd6;
+  font: 400 14px/17px "Muli", sans-serif;
+  border-top: 1px solid #004388;
+}
+
+.formdiv .basePolicyTotalContri .table-responsive .table tr td {
+  color: #fff;
+  font: 400 20px/21px "Muli", sans-serif;
+  border-top: 1px solid #004388;
+}
+
+.formdiv .basePolicyTotalContri .table-responsive .table tr .totalTxt {
+  color: #fff;
+  font: 400 18px "Muli", sans-serif;
+  border-top: solid 1.5px #ffffff;
+  padding-top: 25px;
+}
+
+.formdiv .basePolicyTotalContri .table-responsive .table tr .totalNum {
+  color: #fff;
+  font: 400 23px "Muli", sans-serif;
+  border-top: solid 1.5px #ffffff;
+  padding-top: 25px;
+}
+
+/*formdiv ends*/
+/* enrollment accordion starts */
+.no-border {
+  border: 0px none !important;
+}
+
+.no-bg {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+.enrollmentDivAcco {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.enrollmentDivAcco .addDependentAcco {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBg {
+  background-color: #004388 !important;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .bgPosition {
+  background-position: -70px 0 !important;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card {
+  background-color: transparent;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  border: 1px solid #e77817;
+  background: url(../images/endorsement/blueBgForm.jpg) no-repeat top right/15%;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header {
+  padding: 10px;
+  margin-bottom: 0;
+  background: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  position: relative;
+  border-radius: 15px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 {
+  font: 400 15px "Muli", sans-serif;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 button.btn-link {
+  padding: 0px 10px;
+  font: 400 15px "Muli", sans-serif;
+  color: #fff;
+  max-width: 65%;
+  text-align: left;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 button.btn-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 button.btn-link:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 .floatingTxt {
+  display: block;
+  position: absolute;
+  top: 30%;
+  right: 60px;
+  color: #e77817;
+  font: 400 15px "Muli", sans-serif;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 .floatingLast {
+  right: 20px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header .fa {
+  margin-right: 0.5rem;
+  position: absolute;
+  top: 30%;
+  right: 15px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header .fa2 {
+  margin-right: 0.5rem;
+  position: absolute;
+  top: 30%;
+  right: 15px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header .fa2.active {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header .fa-plus-orange {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url(../images/endorsement/icon-plus-orange.png) no-repeat center center;
+  cursor: pointer;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header .fa-minus-orange {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url(../images/endorsement/icon-minus-orange.png) no-repeat center center;
+  cursor: pointer;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header .icon-down-arrow-white {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url(../images/endorsement/icon-down-arrow-white.png) no-repeat center center/14px;
+  cursor: pointer;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .card-header .icon-chevron-orange {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url(../images/endorsement/icon-chevron-orange.png) no-repeat center center/14px;
+  cursor: pointer;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .collapse {
+  margin-top: -12px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .collapse .card-body {
+  padding-top: 15px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .collapse .card-body .formDiv {
+  background: #12569b;
+  padding: 15px 0px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .card .collapse .card-body .formDiv .parentalSumInsuredDiv .sumInsuredDiv {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background: #157ce5;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .multipleSumInsuredDiv .sumInsuredDiv {
+  width: 48%;
+  display: inline-block;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .multipleSumInsuredDiv .parentDiv {
+  margin-right: 4%;
+  background: #21a4de;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .multipleSumInsuredDiv .parentDiv2 {
+  background: #005ddb;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .multipleSumInsuredDiv .empDiv {
+  background: #157ce5;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 .form-control {
+  font-size: 20px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 label.topUpPolicyLabel {
+  position: static;
+  color: #000;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 span.txtAmt {
+  display: block;
+  color: #fff;
+  font: 700 20px/25px "Roboto", sans-serif;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .bgblue1 {
+  background: #157ce5;
+  border-radius: 15px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .bgblue1 label {
+  padding-top: 10px;
+  padding-left: 12px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .bgblue1 .form-control {
+  padding-left: 12px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicyNote {
+  font: 400 14px/19px "Muli", sans-serif;
+  color: #fff;
+  padding-top: 30px;
+  margin-bottom: 0px;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicyNote em {
+  color: #e77817;
+  font-style: normal;
+}
+
+.enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyBtns .cstmbtn {
+  min-width: 132px;
+  font-size: 14px;
+}
+
+/* enrollment accordion ends */
+/* modal in enrollment */
+#modalAddDependent .modal-open {
+  padding-right: 0px;
+}
+
+#modalAddDependent .modal-dialog {
+  width: 300px;
+  margin: 0 auto;
+}
+
+#modalAddDependent .sucessDialog {
+  width: 350px !important;
+}
+
+#modalAddDependent .sucessDialog .modal-label {
+  max-width: 160px;
+}
+
+#modalAddDependent .actionDialog {
+  width: 350px !important;
+}
+
+#modalAddDependent .actionDialog .modal-label {
+  max-width: 220px;
+}
+
+#modalAddDependent .modal-content {
+  border-radius: 10px;
+  padding: 30px;
+}
+
+#modalAddDependent .modal-content .modal-body {
+  padding: 0px;
+}
+
+#modalAddDependent .modal-content .modal-body .modal-label {
+  display: block;
+  font: 600 20px/44px "Muli", sans-serif;
+  color: #e77817;
+  padding-left: 44px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+#modalAddDependent .modal-content .modal-body .icon-success {
+  background: url(../images/endorsement/icon-sucess-checked-orange.png) no-repeat center left/44px;
+}
+
+#modalAddDependent .modal-content .modal-body .icon-action {
+  background: url(../images/endorsement/icon-action-orange.png) no-repeat center left/44px;
+}
+
+#modalAddDependent .modal-content .modal-body .modal-text {
+  font: 500 14px "Muli", sans-serif;
+  color: #333;
+}
+
+#modalAddDependent .modal-content .modal-footer {
+  padding: 0px;
+  border-top: 0px none !important;
+  display: inline-block;
+  text-align: center;
+}
+
+#modalAddDependent .modal-content .modal-footer .cstmbtn {
+  min-width: 115px;
+  width: auto;
+  font: 500 14px "Muli", sans-serif;
+  padding: 8px 25px;
+}
+
+/* modal in enrollment ends */
+/* ---------- loading page css ---------- */
+@-webkit-keyframes load7 {
+  0%, 80%, 100% {
+    -webkit-box-shadow: 0 2.5em 0 -1.3em;
+            box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    -webkit-box-shadow: 0 2.5em 0 0;
+            box-shadow: 0 2.5em 0 0;
+  }
+}
+
+@keyframes load7 {
+  0%, 80%, 100% {
+    -webkit-box-shadow: 0 2.5em 0 -1.3em;
+            box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    -webkit-box-shadow: 0 2.5em 0 0;
+            box-shadow: 0 2.5em 0 0;
+  }
+}
+
+.loading-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  text-align: center;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.spanner {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: block;
+  text-align: center;
+  color: #FFF;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 1000;
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.loader {
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+  color: #ffffff;
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loader:before {
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.loader:after {
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 3.5em;
+}
+
+.show {
+  visibility: visible;
+}
+
+.spanner.show {
+  opacity: 1;
+}
+
+.overlay.show {
+  opacity: 1;
+}
+
+/* ---------- loading page css ends ---------- */
+@media (max-width: 575px) {
+  body.modal-open {
+    padding-right: 0px !important;
+  }
+  .modalAddDependent {
+    padding-right: 0px !important;
+  }
+  .endorsementDiv .formdiv .form-group .cstmbtn {
+    min-width: auto;
+    font: 500 16px/25px "Roboto", sans-serif;
+    background-color: #e77817;
+    padding: 12px 15px;
+    width: auto;
+  }
+  .endorsementDiv .formdiv .form-inline .form-control {
+    display: inline-block;
+    vertical-align: middle;
+    width: 65%;
+    font-size: 14px;
+  }
+  .endorsementDiv .formdiv .basePolicyTotalContri .table-responsive .table tr td {
+    font-size: 18px;
+  }
+  .endorsementDiv .formdiv .basePolicyTotalContri .table-responsive .table tr .totalTxt {
+    font-size: 18px;
+  }
+  .endorsementDiv .formdiv .basePolicyTotalContri .table-responsive .table tr .totalNum {
+    font-size: 18px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 .floatingTxt {
+    right: 35px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .card .card-header .fa2 {
+    right: 5px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 label.topUpPolicyLabel {
+    position: static;
+    color: #000;
+    padding-left: 0px;
+    margin-left: 12px;
+    text-align: center;
+    display: block;
+  }
+  #loader {
+    left: 45%;
+  }
+  .spanner p {
+    font-size: 13px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 380px) {
+  .endorsementDiv h2.endorsementTitle {
+    font-size: 16px;
+  }
+  .endorsementDiv .formdiv h3.endorsementSubTitle {
+    font-size: 16px;
+  }
+  .endorsementDiv .formdiv .form-group .input-field label {
+    font-size: 13px;
+  }
+  .endorsementDiv .formdiv .form-group .input-field span.txtAmt {
+    font-size: 15px;
+  }
+  .endorsementDiv .formdiv .form-inline .form-control {
+    width: 100%;
+    font-size: 14px;
+  }
+  .endorsementDiv .formdiv .basePolicyTotalContri .table-responsive .table tr td {
+    font-size: 14px;
+  }
+  .endorsementDiv .formdiv .basePolicyTotalContri .table-responsive .table tr .totalTxt {
+    font-size: 14px;
+  }
+  .endorsementDiv .formdiv .basePolicyTotalContri .table-responsive .table tr .totalNum {
+    font-size: 14px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 .floatingTxt {
+    font-size: 13px;
+    right: 35px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 button.btn-link {
+    font-size: 13px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .card .card-header .fa2 {
+    right: 5px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 .form-control {
+    font-size: 15px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 span.txtAmt {
+    font-size: 15px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 label.topUpPolicyLabel {
+    padding-left: 0px;
+    margin-left: 12px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicyNote {
+    font-size: 12px;
+  }
+  .endorsementDiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyBtns .cstmbtn {
+    min-width: auto;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 300px) {
+  .endorsementDiv h2.endorsementTitle {
+    font-size: 15px;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  .endorsementDiv .formdiv h3.endorsementSubTitle {
+    font-size: 13px;
+  }
+  .endorsementDiv .formdiv .form-group .cstmbtn {
+    min-width: 100px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .endorsementDiv .formdiv .form-group .icon-dustbin {
+    position: static;
+    display: block;
+    margin: 0px auto;
+  }
+  .endorsementDiv .formdiv .enrollmentDivAcco .addDependentAcco .accordion .card .card-header h2 .floatingTxt {
+    right: 35px;
+  }
+  .endorsementDiv .formdiv .enrollmentDivAcco .addDependentAcco .accordion .card .card-header .fa2 {
+    right: 5px;
+  }
+  .endorsementDiv .formdiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  .endorsementDiv .formdiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 .form-control {
+    font-size: 15px;
+  }
+  .endorsementDiv .formdiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 span.txtAmt {
+    font-size: 15px;
+  }
+  .endorsementDiv .formdiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicy1 label.topUpPolicyLabel {
+    padding-left: 0px;
+    margin-left: 12px;
+  }
+  .endorsementDiv .formdiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyDetails .topUpPolicyNote {
+    font-size: 12px;
+  }
+  .endorsementDiv .formdiv .enrollmentDivAcco .addDependentAcco .accordion .blueBgRadius .topUpPolicyBtns .cstmbtn {
+    min-width: auto;
+    font-size: 12px;
+  }
+}
+
+/* Enrolment login starts */
+/* .mainsec .endorsementDiv { */
+  /* login page starts */
+  /* login page ends */
+/* } */
+
+.mainsec .endorsementDiv.cstmMaxWidth {
+  max-width: 768px;
+}
+
+.mainsec .endorsementDiv .endorsementMainTitle {
+  font: 400 24px/30px "Muli", sans-serif;
+  color: #fff;
+  padding-left: 20px;
+}
+
+.mainsec .endorsementDiv .formdiv .form-group .loginBtnGroup {
+  overflow: initial;
+}
+
+.mainsec .endorsementDiv .formdiv .form-group .loginBtnGroup .loginCstmbtn {
+  -webkit-box-shadow: 0 4px 3px 0 #031424;
+          box-shadow: 0 4px 3px 0 #031424;
+  border: solid 1px #bcddff;
+  background-color: #004388;
+  border-radius: 10px;
+  width: 282px;
+  height: 62px;
+}
+
+.mainsec .endorsementDiv .formdiv .form-group .loginBtnGroup .loginCstmbtn .loginBtnTxt {
+  display: block;
+  position: relative;
+  font: 500 16px/25px "Muli", sans-serif;
+  width: 150px;
+  margin: 0px auto;
+}
+
+.mainsec .endorsementDiv .formdiv .form-group .loginBtnGroup .loginCstmbtn .loginBtnTxt i {
+  width: 30px;
+  height: 29px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.mainsec .endorsementDiv .formdiv .form-group .loginBtnGroup .loginCstmbtn .loginBtnTxt i.icon-emailid {
+  background: url(../images/email-login.svg) no-repeat center center/20px;
+}
+
+.mainsec .endorsementDiv .formdiv .form-group .loginBtnGroup .loginCstmbtn .loginBtnTxt i.icon-uniqueid {
+  background: url(../images/id-login.svg) no-repeat center center/20px;
+  left: 0px;
+}
+
+.mainsec .endorsementDiv .formdiv .form-group input.form-control {
+  font: 400 16px "Muli", sans-serif;
+  width: 100%;
+  border-bottom: 1px solid #7795a3;
+}
+
+.mainsec .endorsementDiv .formdiv .form-group input.form-control:focus {
+  border-bottom: 1px solid #fe6625;
+}
+
+.mainsec .endorsementDiv .formdiv .cstmbtn {
+  min-width: 152px;
+  font-size: 16px;
+  padding: 10px 25px;
+  text-transform: uppercase;
+}
+
+.mainsec .endorsementDiv .curveDownBg {
+  background: url(../images/endorsement/blueBgFormDown.jpg) no-repeat bottom left/contain;
+  width: 45px;
+  height: 65px;
+  position: absolute;
+  z-index: 0;
+  bottom: 1px;
+  left: 8px;
+  border-radius: 10px;
+}
+
+.mainsec .endorsementDiv .blueBgRadius {
+  padding: 20px 0px;
+  min-height: 174px;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group .input-field label {
+  color: #7795a3;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group .input-field label .asterisk {
+  color: #7795a3;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group .input-field .icon-reset {
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: url(../images/refresh.svg) no-repeat center center/20px;
+  top: 15px;
+  right: 15px;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group .input-field .icon-checked-green {
+  background: url(../images/green-checked.svg) no-repeat center center/20px;
+  top: 0px;
+  right: 0px;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group .input-field.otpCodeBox input {
+  width: 43px;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group .input-field .cstmbtn {
+  min-width: 152px;
+  font-size: 16px;
+  padding: 10px 25px;
+  text-transform: uppercase;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group .input-field .form-control.dob {
+  background: url(../images/calendar.svg) no-repeat 97% 0px;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group #hiddenResetBtn3 {
+  display: none;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group.getOtpDiv3 {
+  display: none;
+}
+
+.mainsec .endorsementDiv .blueBgRadius .form-group.getOtpDiv4 {
+  display: none;
+}
+
+.mainsec .endorsementDiv #hiddenMobileDiv2 {
+  display: none;
+}
+
+@media (max-width: 575px) {
+  .mainsec .endorsementDiv .formdiv .form-group .loginBtnGroup .loginCstmbtn {
+    width: 100%;
+  }
+  .mainsec .endorsementDiv .formdiv .form-group .input-field {
+    text-align: center;
+  }
+  .mainsec .endorsementDiv .formdiv .cstmbtn {
+    width: 152px;
+  }
+  .mainsec .endorsementDiv .blueBgRadius .form-group .input-field.otpCodeBox input {
+    width: 30px;
+  }
+}
+
+@media (max-width: 300px) {
+  .mainsec .endorsementDiv .formdiv .form-group input.form-control {
+    font: 400 12px "Muli", sans-serif;
+  }
+  .mainsec .endorsementDiv .formdiv .form-group .input-field .cstmbtn {
+    min-width: 110px;
+    font-size: 13px;
+  }
+  .mainsec .endorsementDiv .formdiv .form-group .input-field.otpCodeBox input {
+    width: 15px;
+  }
+}
+
+/* Enrolment login ends */
+/* dashboard starts */
+.mainsec .endorsementDiv .formdiv .logoSection .logo {
+  width: 145px;
+  height: 28px;
+  padding: 0;
+  margin: 15px 0;
+  display: inline-block;
+  background: url(../images/icici-lombard-logo-3x.png) no-repeat center center/137px;
+  text-indent: -9999px;
+  vertical-align: top;
+}
+
+.mainsec .endorsementDiv .formdiv .logoSection .userLogin {
+  height: 30px;
+  color: #fff;
+  display: block;
+  background: url(../images/dashboard/user-login.svg) no-repeat center left/26px;
+  padding: 3px 0px 0px 35px;
+  margin: 14px 0px 14px 20px;
+}
+
+.mainsec .endorsementDiv .formdiv .logoSection .userLogin:hover {
+  text-decoration: none;
+}
+
+.mainsec .sparkOffcanvasContainer {
+  position: relative;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default {
+  background-color: #00274a;
+  border-color: #e3f1ff;
+  padding-bottom: 40px;
+  width: 100%;
+  display: block;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default.navmenu-fixed-left {
+  position: fixed;
+  z-index: 10;
+  top: 60px;
+  bottom: 0;
+  overflow-y: auto;
+  width: 240px;
+  background: #00274a;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav {
+  background: #001529;
+  padding-top: 43px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li {
+  background: #00274a;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item {
+  border-top: 1px solid #054074;
+  padding-left: 50px;
+  background: transparent;
+  /* nav icons starts */
+  /* nav icons ends */
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-dashboard {
+  background: #00274a url(../images/dashboard/hamburger_menu.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-dashboard.active {
+  background: #001529 url(../images/dashboard/hamburger_menu_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-dashboard.active a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-dashboard:hover {
+  background: #001529 url(../images/dashboard/hamburger_menu_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-dashboard:hover a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-portal {
+  background: #00274a url(../images/dashboard/help_outline.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-portal.active {
+  background: #001529 url(../images/dashboard/help_outline_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-portal.active a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-portal:hover {
+  background: #001529 url(../images/dashboard/help_outline_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-portal:hover a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-takecare {
+  background: #00274a url(../images/dashboard/portal.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-takecare.active {
+  background: #001529 url(../images/dashboard/portal_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-takecare.active a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-takecare:hover {
+  background: #001529 url(../images/dashboard/portal_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-takecare:hover a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-reports {
+  background: #00274a url(../images/dashboard/reports.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-reports.active {
+  background: #001529 url(../images/dashboard/reports_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-reports.active a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-reports:hover {
+  background: #001529 url(../images/dashboard/reports_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-reports:hover a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-settings {
+  background: #00274a url(../images/dashboard/settings.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-settings.active {
+  background: #001529 url(../images/dashboard/settings_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-settings.active a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-settings:hover {
+  background: #001529 url(../images/dashboard/settings_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-settings:hover a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-help {
+  background: #00274a url(../images/dashboard/help.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-help.active {
+  background: #001529 url(../images/dashboard/help_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-help.active a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-help:hover {
+  background: #001529 url(../images/dashboard/help_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-help:hover a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-logout {
+  background: #00274a url(../images/dashboard/logout.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-logout.active {
+  background: #001529 url(../images/dashboard/logout_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-logout.active a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-logout:hover {
+  background: #001529 url(../images/dashboard/logout_hover.svg) no-repeat 18px 50%/30px;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item.icon-logout:hover a.nav-link {
+  color: #60c0da;
+}
+
+.mainsec .sparkOffcanvasContainer .navmenu-default .navmenu-nav li.nav-item .nav-link {
+  color: #b9b9b9;
+  font: 600 13px/20px "Roboto", sans-serif;
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer {
+  width: 100%;
+  position: fixed;
+  right: 15px;
+  top: 60px;
+  max-width: 84%;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .nav {
+  background-color: #00172c;
+  border-left: 1px solid #00274a;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .nav.nav-tabs {
+  border-bottom: 1px solid #001529;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .nav .nav-link {
+  color: #a0a8b0;
+  font: 500 12px "Roboto", sans-serif;
+  padding: 13px 10px;
+  min-width: 162px;
+  text-align: center;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .nav .nav-link.active {
+  color: #fff;
+  background-color: #00172c;
+  border-color: transparent;
+  border-bottom: 2px solid #fff;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .nav .nav-link:hover {
+  color: #fff;
+  background-color: #00172c;
+  border-color: transparent;
+  border-bottom: 2px solid #fff;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent {
+  padding: 20px 30px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent h4.sectionTitle {
+  color: #fff;
+  font: 500 12px "Muli", sans-serif;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer {
+  width: 920px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .corpDetails {
+  position: relative;
+  max-width: 32.33%;
+  border-radius: 10px;
+  background-color: #004388;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.35);
+          box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.35);
+  margin: 4px 3px;
+  padding: 15px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .corpDetails .editCorpDetails {
+  width: 16px;
+  height: 4px;
+  display: block;
+  background: url(../images/dashboard/dots.svg) no-repeat center center/16px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .corpDetails .corpName {
+  color: #fff;
+  font: 400 12px "Muli", sans-serif;
+  display: block;
+  padding-bottom: 30px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .corpDetails .corpDescription span {
+  color: #d8d8d8;
+  font: 400 10px "Muli", sans-serif;
+  display: block;
+  padding-bottom: 5px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .corpDetails.addCorp {
+  cursor: pointer;
+  background-color: #093767;
+  border: solid 1px #004388;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .corpDetails.addCorp .addCorpBtn {
+  color: #fff;
+  font: 500 12px "Muli", sans-serif;
+  display: block;
+  background: url(../images/dashboard/add_plus.svg) no-repeat center 5px/39px;
+  text-align: center;
+  padding-top: 55px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .cstmLink {
+  color: #e77817;
+  font: 500 12px "Muli", sans-serif;
+  text-decoration: underline;
+  display: block;
+  margin: 10px 5px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .cstmLink:hover {
+  text-decoration: none;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .cstmSelectDropdown .cstmSelectdiv {
+  position: relative;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .cstmSelectDropdown .cstmSelectdiv .custom-select {
+  max-width: 94%;
+  color: #fff;
+  font: 500 12px "Muli", sans-serif;
+  height: 40px;
+  background: #00305a url(../images/dashboard/cstm-select-chevron.png) no-repeat 99% center/14px;
+  border-radius: 8px;
+  border: solid 1px #5a748b;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .cstmSelectDropdown .cstmSelectdiv .cstmSearchBtn {
+  width: 40px;
+  height: 40px;
+  display: block;
+  background: url(../images/dashboard/search_orange.svg) no-repeat center center/40px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp {
+  padding: 20px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius {
+  padding: 20px;
+  background: #004388 url(../images/endorsement/blueBgForm.jpg) no-repeat top right/45px;
+  border-radius: 15px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .curveDownBg {
+  background: url(../images/endorsement/blueBgFormDown.jpg) no-repeat bottom left/60px;
+  width: 64px;
+  height: 82px;
+  position: absolute;
+  z-index: 0;
+  bottom: 1px;
+  left: 0px;
+  border-radius: 10px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput {
+  position: relative;
+  width: 100%;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group {
+  width: 100%;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group label {
+  display: block;
+  width: 100%;
+  color: #fff;
+  font: 400 12px "Roboto", sans-serif;
+  margin-bottom: 5px;
+  padding: 0px 3px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .file {
+  visibility: hidden;
+  position: absolute;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group {
+  width: 100%;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group .input-group-text {
+  background: #004388;
+  border: 1px solid #004388;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group .input-group-append .browse {
+  background-color: #e77817;
+  border-radius: 7px;
+  font: 400 16px "Roboto", sans-serif;
+  padding: 8px 15px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group .form-control {
+  color: #fff;
+  font: 400 12px "Roboto", sans-serif;
+  background: #004388;
+  border: 1px solid #004388;
+  padding: 20px 0px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group ::-webkit-input-placeholder {
+  color: #fff !important;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group ::-moz-placeholder {
+  color: #fff !important;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group :-ms-input-placeholder {
+  color: #fff !important;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group :-moz-placeholder {
+  color: #fff !important;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp .corpName {
+  color: #fff;
+  font: 500 16px "Roboto", sans-serif;
+  display: block;
+  padding-bottom: 5px;
+}
+
+.mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empDataContainer .empData {
+  color: #fff;
+  font: 500 12px "Roboto", sans-serif;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #00305a;
+  padding: 12px 0px;
+}
+
+@media (max-width: 1366px) {
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer {
+    right: 0px;
+    max-width: 82%;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1080px) {
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer {
+    right: 0px;
+    max-width: 79%;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer {
+    width: 100%;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 1079px) {
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer {
+    right: 0px;
+    max-width: 77%;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  header .mobMenu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
+  header .mobMenu div {
+    width: 20px;
+    height: 1px;
+    background-color: #fff;
+    margin: 6px 0;
+  }
+  header .cstmSearchBox {
+    display: none;
+  }
+  header .userLogin {
+    display: none;
+  }
+  .mainsec .sparkOffcanvasContainer .cstmSearchBox {
+    display: none;
+  }
+  .mainsec .sparkOffcanvasContainer .navmenu-default {
+    width: 100%;
+    display: none;
+  }
+  .mainsec .sparkOffcanvasContainer .navmenu-default.navmenu-fixed-left {
+    width: 100%;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    right: 0px;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  header .mobMenu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
+  header .mobMenu div {
+    width: 20px;
+    height: 1px;
+    background-color: #fff;
+    margin: 6px 0;
+  }
+  header .cstmSearchBox {
+    display: none;
+  }
+  header .userLogin {
+    display: none;
+  }
+  .mainsec .endorsementDiv .formdiv .logoSection {
+    text-align: center;
+  }
+  .mainsec .endorsementDiv .formdiv .logoSection .userLogin {
+    width: 100px;
+    margin: 0px auto 15px;
+  }
+  .mainsec .sparkOffcanvasContainer .navmenu-default {
+    width: 100%;
+    display: none;
+  }
+  .mainsec .sparkOffcanvasContainer .navmenu-default.navmenu-fixed-left {
+    width: 100%;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent {
+    overflow-y: scroll;
+    height: 535px;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .corpDetails {
+    max-width: 100%;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .cstmSelectDropdown .cstmSelectdiv .custom-select {
+    max-width: 82%;
+    background: #00305a url(../images/dashboard/cstm-select-chevron.png) no-repeat 95% center/14px;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .uploadCorpEmp.blueBgRadius .cstmFileInput .form-group .input-group .form-control {
+    width: 100%;
+  }
+  .mainsec .sparkOffcanvasContainer .sparkTableContainer .dashboardContainer .cstmTabContent .dataContainer .empContainer .empDataContainer .empData {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 10px;
+  }
+}
+
+/* dashboard ends */
+
+/* enrollment accordion ends */
+/* modal in enrollment */
+.modalAddDependent .modal-open {
+  padding-right: 0px;
+}
+
+.modalAddDependent .modal-dialog {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.modalAddDependent .sucessDialog {
+  width: 350px !important;
+}
+
+.modalAddDependent .sucessDialog .modal-label {
+  max-width: 160px;
+}
+
+.modalAddDependent .actionDialog {
+  width: 350px !important;
+}
+
+.modalAddDependent .actionDialog .modal-label {
+  max-width: 220px;
+}
+
+.modalAddDependent .modal-content {
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.modalAddDependent .modal-content .modal-body {
+  padding: 0px;
+}
+
+.modalAddDependent .modal-content .modal-body .modal-label {
+  display: block;
+  font: 600 20px/44px "Roboto", sans-serif;
+  color: #e77817;
+  padding-left: 44px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.modalAddDependent .modal-content .modal-body .icon-success {
+  background: url(../images/endorsement/icon-sucess-checked-orange.png) no-repeat center left/44px;
+}
+
+.modalAddDependent .modal-content .modal-body .icon-action {
+  background: url(../images/endorsement/icon-action-orange.png) no-repeat center left/44px;
+}
+
+.modalAddDependent .modal-content .modal-body .modal-text {
+  font: 500 14px "Roboto", sans-serif;
+  color: #333;
+}
+
+.modalAddDependent .modal-content .modal-footer {
+  padding: 0px;
+  border-top: 0px none !important;
+  display: inline-block;
+  text-align: center;
+}
+
+.modalAddDependent .modal-content .modal-footer .cstmbtn {
+  min-width: 115px;
+  width: auto;
+  font: 500 14px "Roboto", sans-serif;
+  padding: 8px 25px;
+}
+
+/* modal in enrollment ends */
+/*# sourceMappingURL=style.css.map */

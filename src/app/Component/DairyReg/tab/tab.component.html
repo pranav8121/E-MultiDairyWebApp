@@ -55,8 +55,8 @@
                                 </div>
                                 <div class="table-responsive" #tabledata>
                                     <table class="table table-striped">
-                                        <thead class="thead-light">
-                                            <tr>
+                                        <thead class="text-white">
+                                            <tr >
                                                 <th class="fix">
                                                     <p>तारीख</p>
                                                 </th>
@@ -113,7 +113,7 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tr class="text-center"
+                                        <tr class="text-center text-warning"
                                             *ngFor="let temp of Data | orderBy: 'order' : true| paginate: { itemsPerPage: 20, currentPage: p }">
                                             <td>{{temp.date}} </td>
                                             <td>{{temp.hours|slice:0:9}}</td>

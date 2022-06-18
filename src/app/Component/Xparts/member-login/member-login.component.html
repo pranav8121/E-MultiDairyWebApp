@@ -1,35 +1,148 @@
-<div class="container ">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card border-0 shadow rounded-3 my-5">
-          <div class="card-body p-4 p-sm-5">
-            <h5 class="card-title text-center text-primary mb-5 fw-bold fs-5">LOGIN</h5>
+<section class="container-fluid mainsec">
+    <!-- login section starts -->
+    <div class="row ml-0 mr-0">
+        <div class="container">
+            <div class="row endorsementDiv">
+                <div class="col-lg-12 pl-0 pr-0">
+                    <div class="formdiv pl-0 pr-0">
+                        <div class="logoSection">
+                            <div class="row">
+                                <div class="col-md-4 pr-0">
+                                    <!-- <a href="#" title="ICICI Lombard" class="logo">Master solution</a> -->
+                                </div>
+                                <div class="col-md-8  pr-0">
+                                    <a class="userLogin" style="width: 200px;">Member Login</a>
+                                </div>
+                            </div>
+                        </div>
 
 
-
-            <form autocomplete="off" [formGroup]="LoginForm">
-              <div class="form-group mb-3">
-                <input type="text" class="form-control" formControlName="Username"  placeholder="Username" >
-              </div>
-              <div class="form-group mb-3">
-                <input type="password" class="form-control" formControlName="Password" placeholder="Password">
-                <small class="text-danger">{{err}}</small>
-              </div>
-  
-              <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" (click)="submit()" type="submit" [disabled]="isClicked">
-                 <div *ngIf="!isClicked">LogIn</div> 
-                 <div *ngIf="isClicked"> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  Wait...</div>
-                </button>
-              </div>
-            </form>
+                        <div id="emailid" class="relative">
+                          <div class="curveDownBg"></div>
 
 
+                          <div class="row blueBgRadius">
+                            <form autocomplete="off" [formGroup]="LoginForm">
+                              <div class="col-lg-12 col-sm-12 form-group form-inline mb-0">
+                                  <div class="input-field relative">
 
-          </div>
+                                      <label for="txtEmail">User Id<em
+                                              class="asterisk">*</em></label>
+                                              <span>
+                            <input type="text" class="form-control" formControlName="Username"  placeholder="Username" >
+                          </span>
+                            <!-- <small class="text-danger">{{err}}</small>    -->
+                            <span class="infoline error_msg_style" style="color: #fa5a13;">{{err}}</span> 
+                                 
+                                                  <!-- <input type="text" id="txtEmail"
+                                                  class="form-control col-10 col-lg-10 col-xl-10" placeholder="Please Enter User Id "
+                                                  [(ngModel)]="userId" autocomplete="off" >
+                                                  <img id="hiddenCheckedBtn" *ngIf="otp_verified_email == true"
+                                      src="assets/images/endorsement/icon-checked-green.png"
+                                      class="checked mt-4 ml-3" >
+                                              </span>
+                                     
+                                      <span class="infoline error_msg_style" style="color: #fa5a13;"
+                                          *ngIf="email_validation_flag == false && otp_identifier == 'email'">{{email_error_msg}}</span>
+                                     
+                                    <i id="hiddenResetBtn" class="icon-reset mt-4"
+                                      *ngIf="otp_generated_email == true" (click)="reset()"></i> -->
+                           
+                                  </div>
+                              </div>
+
+                              <div class="col-lg-12 col-sm-12 form-group form-inline mb-0">
+                                  <div class="input-field relative">
+                                      <label for="txtEmail">Password<em
+                                              class="asterisk">*</em></label>
+                                              <span>
+                            <input type="password" class="form-control" formControlName="Password" placeholder="Password">
+                                             
+                                                  <!-- <input type="password" id="txtEmail"
+                                                  class="form-control col-10 col-lg-10 col-xl-10" placeholder="Please Enter Password "
+                                                  [(ngModel)]="passwordText" autocomplete="off">
+                                                  <img id="hiddenCheckedBtn" *ngIf="otp_verified_email == true"
+                                      src="assets/images/endorsement/icon-checked-green.png"
+                                      class="checked mt-4 ml-3" > -->
+                                              </span>
+                                     
+                                      <span class="infoline error_msg_style" style="color: #fa5a13;">{{err}}</span>
+
+                                      <div class="text-center">
+                                        <button class="cstmbtn mt-4" (click)="submit()" type="submit" [disabled]="isClicked">
+                                          <div *ngIf="!isClicked">LogIn</div> 
+                                          <div *ngIf="isClicked"> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                           Wait...</div>
+                                         </button>
+                                          <!-- <button type="submit" id="getOtpDiv" class="cstmbtn mt-4"
+                                              (click)="loginEmployer()" *ngIf="otp_generated_email == false">Login
+                                              </button> -->
+                                      </div>
+                                    <!-- <i id="hiddenResetBtn" class="icon-reset mt-4"
+                                      *ngIf="otp_generated_email == true" (click)="reset()"></i> -->
+                               
+                                  </div>
+                              </div>
+                            </form>
+                          </div>
+                      </div>
+
+                        <!-- <form autocomplete="off" [formGroup]="LoginForm">
+
+
+                          <div class="form-group mb-3">
+                            <input type="text" class="form-control" formControlName="Username"  placeholder="Username" >
+                          </div>
+                          <div class="form-group mb-3">
+                            <input type="password" class="form-control" formControlName="Password" placeholder="Password">
+                            <small class="text-danger">{{err}}</small>
+                          </div>
+              
+                          <div class="d-grid">
+                            <button class="btn btn-primary btn-login text-uppercase fw-bold" (click)="submit()" type="submit" [disabled]="isClicked">
+                             <div *ngIf="!isClicked">LogIn</div> 
+                             <div *ngIf="isClicked"> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                              Wait...</div>
+                            </button>
+                          </div>
+                        </form> -->
+
+                        
+
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  
+
+<!-- ***Modal for status Message -->
+    <!-- <div class="modal fade modalAddDependent" id="modalToken" tabindex="-1" role="dialog"
+    aria-labelledby="modalAddDependentTitle" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered actionDialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <span class="modal-label icon-action">Action Required!</span>
+                <p class="modal-text">{{modal_msg}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cstmbtn" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+   <!-- Generic Error Message for http-->
+   <!-- <div class="modal fade modalAddDependent" id="http_errMsg" tabindex="-1" role="dialog"
+   aria-labelledby="modalAddDependentTitle" aria-hidden="true" style="display:none;">
+   <div class="modal-dialog modal-dialog-centered actionDialog" role="document">
+       <div class="modal-content">
+           <div class="modal-body text-center">
+               <span class="modal-label icon-action">Action Required!</span>
+               <p class="modal-text">{{httpErrorMsg}}</p>
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="cstmbtn" data-dismiss="modal">Okay</button>
+           </div>
+       </div>
+   </div>
+   </div> -->
+</section> <!-- login section ends -->

@@ -12,10 +12,10 @@
 
 <div *ngIf="flag_1 && hideErr">
     <div>
-        <div class="table-responsive">
+        <div class="table-responsive ">
             <table class="table">
                 <thead>
-                    <tr class="text-center">
+                    <tr class="text-center text-white">
                         <th class="fix">
                             <p>पासून</p>
                         </th>
@@ -91,7 +91,7 @@
                       </tr> -->
                 </thead>
                 <tbody>
-                    <tr class="text-center"
+                    <tr class="text-center text-warning" 
                         *ngFor="let temp of data | orderBy:'order' : true| paginate: { itemsPerPage: 5, currentPage: p }">
                         <td>{{temp.from}}</td>
                         <td>{{temp.to|ReplaceDate}}</td>

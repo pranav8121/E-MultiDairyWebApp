@@ -19,17 +19,31 @@
             <div class="col  d-flex justify-content-end my-3 mx-2">
                 <button class="btn btn-info text-white" (click)="export()">डाउनलोड करा</button>
             </div>
+            <div class="col  d-flex justify-content-end my-3 mx-2">
+                <button type="button" class="btn btn-secondary btn-lg btn-block"
+            (click)="generatePDF('download')">Download Invoice</button>
+            </div>
+           
           <div class="table-responsive" #tabledata>
-
+<!-- <h5 class="text-center text-white" >{{dairyName}} </h5> -->
             <table class="table">
                 <thead>
-                    <tr class="text-center">
+                    <tr class="text-center text-white">
+                        <th colspan="14">{{dairyName}} ({{mainData.from}} -{{mainData.to|ReplaceDate}})</th></tr>
+                    <tr class="text-center text-white">
                         <th class="fix">
                             <p>नंबर</p>
                         </th>
                         <th class="fix">
+                            <p></p>
+                        </th>
+                        <th class="fix">
+                            <p></p>
+                        </th>
+                        <th class="fix">
                             <p>नाव</p>
                         </th>
+                       
 
                        <th class="fix">
                         <p>सकाळ(लि./रु.)</p>
@@ -76,9 +90,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center" *ngFor="let temp of data|orderBy: order">
+                    <tr class="text-center text-warning" *ngFor="let temp of data|orderBy: order">
                         <td>{{temp.No}}</td>
-                        <td>{{temp.Name}}</td>
+                        <td colspan="3" style="padding:0px ;">{{temp.Name}}</td>
                         <td>{{temp.morTotalmilk|ReplaceNan}}/{{temp.mortotalRate|ReplaceNan}}</td>
                         <!-- <td>{{temp.mortotalRate|ReplaceNan}}</td> -->
                         <td>{{temp.eveTotalmilk|ReplaceNan}}/{{temp.evetotalRate|ReplaceNan}}</td>
@@ -95,10 +109,10 @@
                         <td>{{temp.subAmount}}</td>
                         <td></td>
                     </tr>
-                    <tr class="text-center ">
+                    <tr class="text-center text-warning bg-secondary ">
                         
-                        <td>{{mainData.from}}</td>
-                        <td>{{mainData.to|ReplaceDate}}</td>
+                        <!-- <td></td> -->
+                        <td colspan="4"></td>
                         <td><strong>{{mainData.morTotalmilk|ReplaceNan}}/{{mainData.mortotalRate|ReplaceNan}}</strong></td>
                         <td><strong>{{mainData.eveTotalmilk|ReplaceNan}}/{{mainData.evetotalRate|ReplaceNan}}</strong></td>
                         <td><strong>{{mainData.totalmilk|ReplaceNan}}</strong></td>
