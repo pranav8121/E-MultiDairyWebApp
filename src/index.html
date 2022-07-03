@@ -33,16 +33,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="stylesheet" href="./assets/scss/bootstrap.min.css" />
-  <link rel="stylesheet" href="./assets/scss/style.css" />
-  <script src="./assets/js/jquery.min.js"></script>
-  <script src="./assets/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" href="./assets/scss/bootstrap.min.css" /> -->
+  <!-- <link rel="stylesheet" href="./assets/scss/style.css" /> -->
+  <!-- <script src="./assets/js/jquery.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script> -->
 
   <!-- DatePicker CDN -->
-  <link href="./assets/scss/bootstrap-datepicker.min.css">
-  <link rel="stylesheet" href="assets/scss/bootstrap-datepicker3.min.css" />
+  <!-- <link href="./assets/scss/bootstrap-datepicker.min.css"> -->
+  <!-- <link rel="stylesheet" href="assets/scss/bootstrap-datepicker3.min.css" /> -->
 
-  <script src="./assets/js/bootstrap-datepicker.min.js"></script>
+  <!-- <script src="./assets/js/bootstrap-datepicker.min.js"></script> -->
 
   <!-- Font Awespme CDN Link -->
   <link rel="./assets/scss/font-awesome-all.min.css">
@@ -53,53 +53,11 @@
   <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" /> -->
   <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800&display=swap" rel="stylesheet" />
   <!-- <link rel="stylesheet" href="assets/scss/style.css" /> -->
-
+ 
 
 </head>
-<body>
+<body class="endorsementBg">
   <app-root></app-root>
 </body>
-<script>
-  $(document).ready(function () {
-  // //mobile menu
-  $(".mobMenu").click(function(){
-      $(".navmenu-default").animate({
-          width: "toggle"
-      });
-  });
-  });
 
-  //Custom File Input
-  $(document).on("click", ".browse", function() {  
-    var file = $(this)  
-      .parent()  
-      .parent()  
-      .parent()  
-      .find(".file");  
-    file.trigger("click");  
-  }); 
-
-$(document).on("change", ".file", function() {  
-  $(this)  
-    .parent()  
-    .find(".form-control")  
-    .val(  
-      $(this) 
-        .val()  
-        .replace(/C:\\path\\/i, "")  
-    );  
-});
-// .replace(/C:\\path\\/i, "")  
-
-// datapicker
-
-$('.dob').datepicker({
-  format: "dd/mm/yyyy",
-  clearBtn: true,
-  autoclose: true,
-  todayHighlight: true,
-  toggleActive: true
-});
-
-</script>
 </html>

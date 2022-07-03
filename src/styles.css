@@ -6,3 +6,137 @@ input::-webkit-inner-spin-button {
 body{
   background-color: #00305a;
 }
+.endorsementBg {
+  background: #00305a url(./assets/images/endorsement/endorsementBg.png) no-repeat top right/70%;
+}
+.mainsec .endorsementDiv .formdiv .logoSection .userLogin {
+  height: 30px;
+  color: #fff;
+  display: block;
+  background: url(./assets/images/dashboard/user-login.svg) no-repeat center left/26px;
+  padding: 3px 0px 0px 35px;
+  margin: 14px 0px 14px 20px;
+}
+
+.endorsementDiv {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.endorsementDiv .relative {
+  position: relative;
+}
+
+.endorsementDiv h2.endorsementTitle {
+  font: 500 20px/21px "Muli", sans-serif;
+  color: #e77817;
+  display: block;
+  padding-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
+
+.formdiv h3.endorsementSubTitle {
+  font: 400 18px/16px "Muli", sans-serif;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.formdiv h3.basePolicySubTitle {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.formdiv label em.asterisk {
+  font-style: normal;
+  color: #e77817;
+  padding: 0px 5px;
+}
+
+.formdiv .basePolicyDiv {
+  background: #021d39;
+  border-radius: 15px;
+  padding: 10px 5px 1px 5px;
+  margin-bottom: 20px;
+}
+
+.formdiv .basePolicyDiv .form-inline .input-field .form-control {
+  width: 100%;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv {
+  background: #2771bc;
+  border-radius: 15px;
+  text-align: center;
+  padding: 15px 10px 0px 10px;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field label {
+  font: 500 14px "Muli", sans-serif;
+  color: #022a4d;
+  position: static;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field .form-control {
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  border: 0px none;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field .form-control::-webkit-input-placeholder {
+  color: red;
+}
+
+.formdiv .basePolicyDiv .sumInsuredDiv .input-field .cstmbtn {
+  width: auto;
+  min-width: 120px;
+}
+
+
+.formdiv .blueBgRadius {
+  /* background: #004388 url(../images/endorsement/blueBgForm.jpg) no-repeat top right/12%; */
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e77817;
+  min-height: 184px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+
+
+
+.formdiv .form-group {
+  margin-bottom: 25px;
+}
+
+.formdiv .form-group input {
+  border-bottom: 2px solid #fff;
+}
+
+.formdiv .form-group .input-field label {
+  top: 0px;
+  color: #82afd6;
+  font: 400 13px/17px "Muli", sans-serif;
+}
+
+.formdiv .form-group .input-field select {
+  border-bottom: 2px solid #fff;
+}
+
+.formdiv .form-group .cstmbtn {
+  font: 500 18px/25px "Muli", sans-serif;
+  background-color: #e77817;
+  padding: 12px 25px;
+}
+
+
+
+
