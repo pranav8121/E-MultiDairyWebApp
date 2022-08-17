@@ -5,9 +5,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TrimdatePipe implements PipeTransform {
 
+  removeFromString = (s:any, x:any, y:any) => {
+    const array = [...s];
+    array.splice(x, y);
+    return array.join('');
+  }
+  
   transform(date: any): any {
     if (date.length > 5) {
-      return date.slice(0, 5)
+      return this.removeFromString(date, 6, 2);
+
+      // return date.slice(0, 5)
     }
   }
 

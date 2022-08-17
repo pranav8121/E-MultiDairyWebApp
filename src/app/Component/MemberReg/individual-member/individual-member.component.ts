@@ -122,7 +122,7 @@ this.disableMemId=true;
   
     ShowdateDetails(){
       this.selectedDate=this.datePipe.transform((this.dateForm.get('Date').value), 'dd/MM/yyyy')
-      console.log(this.currentDate,this.selectedDate);
+      // console.log(this.currentDate,this.selectedDate);
 this.currentDate=this.selectedDate;
       this.OnLoad();
       
@@ -145,7 +145,7 @@ this.currentDate=this.selectedDate;
     }
   
     getTodays() {
-      console.log(this.currentDate);
+      // console.log(this.currentDate);
       
       this.Time()
       // this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
@@ -418,12 +418,12 @@ this.currentDate=this.selectedDate;
           this.t_rate = this.temp.data.t_rate
           this.rate = this.temp.data.rate
           this.getTodays()
-          console.log("donememcheck",this.DoneMem);
+          // console.log("donememcheck",this.DoneMem);
           this.EditClick=false
         },
           err => {
             this.isClicked = false
-            console.log("Edit ERR", err);
+            // console.log("Edit ERR", err);
             this.postErr = "*काहीतरी चूक झाली आहे कृपया रिफ्रेश करा!!"
             this.EditClick=false
           }

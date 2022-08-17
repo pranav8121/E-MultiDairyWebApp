@@ -27,6 +27,17 @@ export class TabComponent implements OnInit {
     this.flag_2 = true
     this._api.GetDairyReg().subscribe(res => {
       this.Data = res    
+      // console.log(this.Data);
+      this.Data.forEach((element:any) => {
+        if(element.extraMilk < 0){
+          element.lessMilk = element.extraMilk;
+          element.extraMilk = "-"
+// console.log(element);
+        }else{
+          element.lessMilk="-"
+        }
+      });
+      
       this.flag_2 = false
       this.flag_1 = false
       this.getErr = false

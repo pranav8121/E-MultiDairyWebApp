@@ -27,7 +27,7 @@ ShowMem(Uid:any,No:any){
 }
 
 getallMem(){
-console.log(this.UId);
+// console.log(this.UId);
 
   return this.http.get(`${this.baseUrl}/getallMem/${this.UId}`)
 }
@@ -43,7 +43,7 @@ postToData(data:any){
 }
 
 EditData(data:any,id:any){
-  console.log(id);
+  // console.log(id);
   return this.http.put(`${this.baseUrl}/EditDataDB/${id}`,data) 
 }
 

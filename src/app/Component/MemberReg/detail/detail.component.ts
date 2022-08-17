@@ -71,7 +71,13 @@ export class DetailComponent implements OnInit {
   }
 
   API(from: any, to: any) {
+   from = "01/01/2021" ;
+   to = "31/03/2022";
+  //  console.log (typeof from, from,to);
+
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
+
+      // console.log(res);
       this.getCurrentBill(res)
       this.findBill()
       this.onload = true
@@ -115,7 +121,7 @@ export class DetailComponent implements OnInit {
     this.Cyear = today.getFullYear()
 
     if (this.Cdate >= 1 && this.Cdate <= 10) {
-      console.log("1");
+      // console.log("1");
 
       this.from = `01/${this.Cmonth}/${this.Cyear}`
       this.to = `11/${this.Cmonth}/${this.Cyear}`
@@ -123,7 +129,7 @@ export class DetailComponent implements OnInit {
       this.invNo = `${this.Cnum}Bill-01_${this.to}`
     }
     else if (this.Cdate >= 11 && this.Cdate <= 20) {
-      console.log("2");
+      // console.log("2");
 
       this.from = `11/${this.Cmonth}/${this.Cyear}`
       this.to = `21/${this.Cmonth}/${this.Cyear}`
@@ -131,7 +137,7 @@ export class DetailComponent implements OnInit {
       this.invNo = `${this.Cnum}Bill-02_${this.to}`
     }
     else if (this.Cdate >= 21 && this.Cdate <= 31) {
-      console.log("3");
+      // console.log("3");
       if (this.Cmonth == 1) {
         this.from = `21/${this.Cmonth}/${this.Cyear}`
         this.to = `32/01/${this.Cyear + 1}`
@@ -146,6 +152,8 @@ export class DetailComponent implements OnInit {
     }
 
   }
+ 
+  
 
   getCurrentBill(res: any) {
     this.CurrentBill = []
@@ -155,13 +163,20 @@ export class DetailComponent implements OnInit {
     this.morRate = 0;
     this.eveMilk = 0;
     this.eveRate = 0;
+    // console.log(res);
+    // this.CurrentBill=res
+    
     res.forEach((ele: any) => {
      
       var emon = (ele.date).slice(3, 5)
       var eyrs = (ele.date).slice(6, 10)
       var cmon = this.currentDate.slice(3, 5)
       var cyrs = this.currentDate.slice(6, 10)
-      if (emon == cmon && eyrs == cyrs) {
+      // console.log(ele.date,emon,eyrs, this.currentDate,cmon,cyrs);
+      
+      // if (emon == cmon && eyrs == cyrs) {
+      if ((emon > 10 && eyrs == 2021) || (emon < 4 && eyrs == 2022)) {
+
         
         this.CurrentBill.push(ele);
         t_Trate = t_Trate + parseFloat(ele.t_rate);
@@ -189,6 +204,8 @@ export class DetailComponent implements OnInit {
       }
       }
     });
+    // console.log(this.CurrentBill);
+    
     this.morMilk =parseFloat(this.morMilk).toFixed(2)
     this.morRate=parseFloat(this.morRate).toFixed(2)
     this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
