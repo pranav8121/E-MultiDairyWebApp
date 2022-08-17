@@ -72,7 +72,7 @@ export class DetailComponent implements OnInit {
 
   API(from: any, to: any) {
    from = "01/01/2021" ;
-   to = "31/03/2022";
+   to = "32/03/2022";
   //  console.log (typeof from, from,to);
 
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
