@@ -174,8 +174,8 @@ export class DetailComponent implements OnInit {
       var cyrs = this.currentDate.slice(6, 10)
       // console.log(ele.date,emon,eyrs, this.currentDate,cmon,cyrs);
       
-      // if (emon == cmon && eyrs == cyrs) {
-      if ((emon > 10 && eyrs == 2021) || (emon < 4 && eyrs == 2022)) {
+      if (emon == cmon && eyrs == cyrs) {
+      // if ((emon > 10 && eyrs == 2021) || (emon < 4 && eyrs == 2022)) {
 
         
         this.CurrentBill.push(ele);
