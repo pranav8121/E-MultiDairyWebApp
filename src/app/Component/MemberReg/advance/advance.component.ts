@@ -64,7 +64,7 @@ this.showtoAdmin=false;
     this.isClicked=true
     var amount = this.detailsForm.get('Amount').value
     var temp: any
-    if(amount>0){
+    if(amount){
       this.err=""
         temp = {
       Name: this.Cname,
