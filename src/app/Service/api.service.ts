@@ -8,7 +8,7 @@ export class ApiService {
   // Local URL
 //  baseUrl=`http://localhost:3000`
 // LIVE URL
-baseUrl='https://multi-dairy-back-end.vercel.app/'
+baseUrl='https://multi-dairy-back-end.vercel.app'
 
   UId=sessionStorage.getItem('UId')
 
