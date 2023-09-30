@@ -71,8 +71,10 @@ export class DetailComponent implements OnInit {
   }
 
   API(from: any, to: any) {
-   from = "01/04/2021" ;
-   to = "32/03/2023";
+    // from = "01/01/2021" ;
+    // to = "32/03/2022";
+  //  from = "01/04/2021" ;
+  //  to = "32/03/2023";
     // console.log (typeof from, from,to);
 
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
@@ -155,17 +157,17 @@ export class DetailComponent implements OnInit {
 
   getCurrentBill(res: any) {
 
-    const startDate = new Date("04/01/2022");
-    const endDate = new Date("03/31/2023");
-    const filteredData = res.filter((item:any) => {
-      const itemDateParts = item.date.split('/');
-      const itemDate = new Date(
-        +itemDateParts[2], // year
-        +itemDateParts[1] - 1, // month (JavaScript months are 0-based)
-        +itemDateParts[0] // day
-      );
-      return itemDate >= startDate && itemDate <= endDate;
-    });
+    // const startDate = new Date("04/01/2022");
+    // const endDate = new Date("03/31/2023");
+    // const filteredData = res.filter((item:any) => {
+    //   const itemDateParts = item.date.split('/');
+    //   const itemDate = new Date(
+    //     +itemDateParts[2], // year
+    //     +itemDateParts[1] - 1, // month (JavaScript months are 0-based)
+    //     +itemDateParts[0] // day
+    //   );
+    //   return itemDate >= startDate && itemDate <= endDate;
+    // });
 // console.log(filteredData );
 
     this.CurrentBill = []
@@ -178,15 +180,16 @@ export class DetailComponent implements OnInit {
     // console.log(res);
     // this.CurrentBill=res
     
-    filteredData.forEach((ele: any) => {
+    res.forEach((ele: any) => {
+    // filteredData.forEach((ele: any) => {
      
       var emon = (ele.date).slice(3, 5)
       var eyrs = (ele.date).slice(6, 10)
       var cmon = this.currentDate.slice(3, 5)
       var cyrs = this.currentDate.slice(6, 10)
       // console.log(ele.date,emon,eyrs, this.currentDate,cmon,cyrs);
-      
-      // if (emon == cmon && eyrs == cyrs) {          this line  commented for yearly calculation
+      // follwing condition is  commented for yearly calculation
+       if (emon == cmon && eyrs == cyrs) {          
 
       // if ((emon > 10 && eyrs == 2021) || (emon < 4 && eyrs == 2022)) {
 
@@ -215,7 +218,7 @@ export class DetailComponent implements OnInit {
         
         // this.eveRate=parseFloat(this.eveRate).toFixed(2)
       }
-      // }
+       }
     });
     // console.log(this.CurrentBill);
     
