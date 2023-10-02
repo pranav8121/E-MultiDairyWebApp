@@ -1,0 +1,15 @@
+<div *ngIf="!authService.isLoggedIn">
+    <!-- Your introduction image or video here -->
+    <!-- <img src="./assets/images/advertisement/AdvertisementImage.jpg" alt="Introduction Image" style="width: 411px;" *ngIf="showImage" /> -->
+    <!-- or -->
+    <video width="430" height="240" controls autoplay muted *ngIf="showVideo">
+      <source src="./assets/images/advertisement/sampleVideo.mp4" type="video/mp4">
+      <!-- Your browser does not support the video tag. -->
+    </video>
+    <div  style="color:white;background-color: brown;text-align: center;" (click)="skipIntro()">Skip Advertisement</div>
+    <!-- <button (click)="skipIntro()">Skip Intro</button> -->
+  </div>
+  <div *ngIf="authService.isLoggedIn">
+    <!-- Your landing component here -->
+    <app-individual-member></app-individual-member>
+  </div>

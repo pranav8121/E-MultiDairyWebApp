@@ -5,6 +5,7 @@
   import { NgxSpinnerService } from 'ngx-spinner';
   import { ApiService } from 'src/app/Service/api.service';
   import { MatrixService } from 'src/app/Service/matrix.service';
+  import { Router } from '@angular/router';
   
 @Component({
   selector: 'app-individual-member',
@@ -98,7 +99,7 @@ export class IndividualMemberComponent implements OnInit {
   })
   selectedDate: any;
   
-    constructor(private _api: ApiService, private _tab: MatrixService, private spinner: NgxSpinnerService,private datePipe: DatePipe) { }
+    constructor(private _api: ApiService, private _tab: MatrixService, private spinner: NgxSpinnerService,private datePipe: DatePipe,private router: Router,) { }
   
     ngOnInit(): void {
 this.disableMemId=true;
@@ -497,5 +498,11 @@ this.currentDate=this.selectedDate;
         a.document.write('</body></html>');
         a.document.close();
         a.print();
+    }
+    logout() {
+      // Implement your logout functionality here
+      console.log('Logout clicked');
+      this.router.navigate([`/MemberLogin`]);
+      // Add your actual logout logic, such as clearing the session, navigating to the login page, etc.
     }
   }

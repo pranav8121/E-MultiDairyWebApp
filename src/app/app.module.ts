@@ -31,6 +31,8 @@ import { DailyregComponent } from './Component/MemberReg/dailyreg/dailyreg.compo
 import { SpinnerComponent } from './Component/Xparts/spinner/spinner.component';
 import { IndividualMemberComponent } from './Component/MemberReg/individual-member/individual-member.component';
 import { MemberLoginComponent } from './Component/Xparts/member-login/member-login.component';
+import { DairyRegisterComponent } from './Component/DairyReg/dairy-register/dairy-register.component';
+import { AdvertisementComponent } from './Component/MemberReg/advertisement/advertisement.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { MemberLoginComponent } from './Component/Xparts/member-login/member-log
     DailyregComponent,
     SpinnerComponent,
     IndividualMemberComponent,
-    MemberLoginComponent
+    MemberLoginComponent,
+    DairyRegisterComponent,
+    AdvertisementComponent
   ],
   imports: [
     BrowserModule,
