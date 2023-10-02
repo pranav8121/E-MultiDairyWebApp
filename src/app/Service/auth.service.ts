@@ -15,7 +15,7 @@ import { ActivatedRoute,Router} from "@angular/router";
       this.inactivityTimer = setTimeout(() => {
         let urlroute = this.getCurrentRoute();
         if (urlroute == "/" || urlroute == "/MemberLogin") {
-        } else if (urlroute === "/Advertisement") {
+        } else if (urlroute === "/MemberDetails") {
           this.memberlogout();
         } else {
           this.adminlogout();
