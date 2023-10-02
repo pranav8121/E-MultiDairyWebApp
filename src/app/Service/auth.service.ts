@@ -6,7 +6,7 @@ import { ActivatedRoute,Router} from "@angular/router";
     providedIn: "root",
   })
   export class AutoLogoutService {
-    private readonly inactivityTimeout = 15 * 60 * 1000; // 15 minutes in milliseconds
+    private readonly inactivityTimeout = 15 * 60 * 1000; // 15 minutes in milliseconds 
     private inactivityTimer: any;
   
     constructor(private route: Router,private router: ActivatedRoute) { }
@@ -15,7 +15,7 @@ import { ActivatedRoute,Router} from "@angular/router";
       this.inactivityTimer = setTimeout(() => {
         let urlroute = this.getCurrentRoute();
         if (urlroute == "/" || urlroute == "/MemberLogin") {
-        } else if (urlroute === "/MemberDetails") {
+        } else if (urlroute === "/MemberDetails") {        // if MemberDetails memberlogin
           this.memberlogout();
         } else {
           this.adminlogout();
