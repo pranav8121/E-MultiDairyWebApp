@@ -3,26 +3,6 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute,Router} from "@angular/router";
 
 @Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
-  private isAuthenticated: boolean = false;
-
-  login() {
-    this.isAuthenticated = true;
-  }
-
-  logout() {
-    this.isAuthenticated = false;
-  }
-
-  get isLoggedIn(): boolean {
-    return this.isAuthenticated;
-  }
-}
-
-
-@Injectable({
     providedIn: "root",
   })
   export class AutoLogoutService {

@@ -32,7 +32,6 @@ import { SpinnerComponent } from './Component/Xparts/spinner/spinner.component';
 import { IndividualMemberComponent } from './Component/MemberReg/individual-member/individual-member.component';
 import { MemberLoginComponent } from './Component/Xparts/member-login/member-login.component';
 import { DairyRegisterComponent } from './Component/DairyReg/dairy-register/dairy-register.component';
-import { AdvertisementComponent } from './Component/MemberReg/advertisement/advertisement.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +57,7 @@ import { AdvertisementComponent } from './Component/MemberReg/advertisement/adve
     SpinnerComponent,
     IndividualMemberComponent,
     MemberLoginComponent,
-    DairyRegisterComponent,
-    AdvertisementComponent
+    DairyRegisterComponent
   ],
   imports: [
     BrowserModule,

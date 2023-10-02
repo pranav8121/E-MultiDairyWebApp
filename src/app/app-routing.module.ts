@@ -13,7 +13,6 @@ import { DailyregComponent } from './Component/MemberReg/dailyreg/dailyreg.compo
 import { IndividualMemberComponent } from './Component/MemberReg/individual-member/individual-member.component';
 import { MemberLoginComponent } from './Component/Xparts/member-login/member-login.component';
 import { AdminGuardGuard } from './admin-guard.guard';
-import { AdvertisementComponent } from './Component/MemberReg/advertisement/advertisement.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -25,8 +24,7 @@ const routes: Routes = [
   {path:'DairySales', component:SalesComponent,canActivate: [AdminGuardGuard]},
   {path:'DailyRegister', component:DailyregComponent,canActivate: [AdminGuardGuard]},
   {path:'MemberDetails', component:IndividualMemberComponent},
-  {path:'MemberLogin', component:MemberLoginComponent},
-  {path:'Advertisement', component:AdvertisementComponent} 
+  {path:'MemberLogin', component:MemberLoginComponent}
 ];
 
 @NgModule({
