@@ -28,10 +28,14 @@ export class LoginComponent implements OnInit {
     this.isClicked = true
     let uname = this.LoginForm.get('Username').value
     let pass = this.LoginForm.get('Password').value
+    // console.log(uname,pass);
+    
     this._api.LoginAuth(uname, pass).subscribe(
       res => {
         this.isClicked = false
         this.temp = res
+        // console.log(res);
+        
         sessionStorage.setItem('UId', this.temp.Id);
         sessionStorage.setItem('Name', this.temp.Name);
         sessionStorage.setItem('token', this.temp.token);

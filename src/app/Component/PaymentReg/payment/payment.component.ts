@@ -25,6 +25,7 @@ parentData:any=[]
 getData(){
 this._api.GetPaymentReg().subscribe(res=>{
   this.temp=res
+  console.log(this.temp);
   this.data=this.temp.data
   this.flag_1=true
   this.hideErr=true
