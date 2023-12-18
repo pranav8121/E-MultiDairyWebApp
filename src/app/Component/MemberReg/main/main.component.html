@@ -226,6 +226,35 @@
                     <div class=" d-flex justify-content-end my-4">
                         <button class="btn btn-danger" (click)="onEdit()">बदल करणे</button>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="selectedDate" style="color: #ffff;">तारीख निवडा</label>
+                            <input type="date" id="selectedDate" (change)="onDateChange($event)">
+                      </div>
+                      <div class="col">
+                        <label for="selectOption" style="color: #ffff;">वेळ निवडा</label>
+                        <select (change)="onTimeOptionSelected($event)" [(ngModel)]="timeMsg">
+                            <option value="सकाळ">सकाळ</option>
+                            <option value="संध्याकाळ">संध्याकाळ</option>
+                          </select>
+                        
+                  </div>
+                    </div>
+                  
+                    <div *ngIf="dateChanged" class="row">
+                        
+                          <div class="col">
+                            <div  class="col text-center py-1 text-white" style="border-radius: 5px; background-color: rgb(255, 188, 106);"> <p>बदललेली तारीख </p><strong>{{currentDate}}</strong></div>
+                          </div>
+                          <div class="col">
+                            <div class="col text-center py-1 text-white" style="border-radius: 5px; background-color: rgb(255, 188, 106);"> <p>बदललेली वेळ </p><strong>{{timeMsg}}</strong></div>
+                          </div>
+                       
+                        <!-- <div class="row  text-center py-1 text-white" style="border-radius: 5px; background-color: rgb(255, 188, 106);">
+                            <div class="col"> <p>बदललेली तारीख </p><strong>{{currentDate}}</strong></div>
+                            <div class="col"> <p>बदललेली वेळ </p><strong>{{timeMsg}}</strong></div>
+                        </div> -->
+                    </div>
                 </div>
             </div>
 

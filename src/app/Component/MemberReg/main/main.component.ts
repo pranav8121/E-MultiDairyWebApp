@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -88,7 +88,8 @@ export class MainComponent implements OnInit {
   id: any;
   EditClick: any=false
   Name: any;
-
+  dateChanged: any;
+  timeChange: any;
 
 
 
@@ -97,7 +98,10 @@ export class MainComponent implements OnInit {
   constructor(private _api: ApiService, private _tab: MatrixService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this.flag_1 = true
+    this.flag_1 = true;
+    this.dateChanged=false;
+    this.timeChange=false;
+    this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
     this.OnLoad()
   }
 
@@ -106,9 +110,29 @@ export class MainComponent implements OnInit {
     this.getallMem()
     this.serviceCall()
     this.CountCall()
-    this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+    // this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
   }
 
+  onDateChange(event: any) {
+     this.flag_1 = true;
+    // this.dateChanged=true;
+    this.currentDate = formatDate(event.target.value, 'dd/MM/YYYY', 'en')
+    this.dateChanged=true;
+    this.OnLoad();
+  }
+
+  onTimeOptionSelected(event: any) {
+    this.timeChange=true;
+    this.timeMsg = event.target.value;
+    if(this.timeMsg == "सकाळ"){
+      this.engtimeMsg = "Morning"
+    }else{
+      this.engtimeMsg = "Evening"
+    }
+    // console.log(event,this.timeMsg,this.currentDate);
+    this.flag_1 = true;
+    this.OnLoad();
+  }
 
   getallMem() {
     sessionStorage.getItem('UId')
@@ -128,7 +152,7 @@ export class MainComponent implements OnInit {
 
   getTodays() {
     this.Time()
-    this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+    // this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
     this._api.getTodaysData(this.engtimeMsg, this.currentDate).subscribe(res => {
       this.DoneMem = res
       this.doneMemCheck(this.DoneMem)
@@ -424,13 +448,15 @@ export class MainComponent implements OnInit {
 
 
   Time() {
-    this.currentHour = moment().format("HH");
-    if (this.currentHour >= 1 && this.currentHour < 15) {
-      this.timeMsg = "सकाळ";
-      this.engtimeMsg = "Morning";
-    } else {
-      this.timeMsg = "संध्याकाळ";
-      this.engtimeMsg = "Evening";
+    if (!this.timeChange){
+      this.currentHour = moment().format("HH");
+      if (this.currentHour >= 1 && this.currentHour < 15) {
+        this.timeMsg = "सकाळ";
+        this.engtimeMsg = "Morning";
+      } else {
+        this.timeMsg = "संध्याकाळ";
+        this.engtimeMsg = "Evening";
+      }
     }
   }
 
