@@ -261,7 +261,7 @@ export class MainComponent implements OnInit {
         else {
           this.inValid = false
           // rate = this.cowtab[i][j]+2+1+1+1+3+2;
-          rate = this.cowtab[i][j]+2+1+1+1+3-2-3; //change rate dated 30/11/2024
+          rate = this.cowtab[i][j]+2+1+1+1+3-2-3+2; //change rate dated 06/04/2025
           let milk = parseFloat(this.entryForm.get('Milk').value)
           t_rate = rate * milk
           this.RateVal = rate.toFixed(2)
