@@ -117,6 +117,8 @@ this.showtoAdmin=false;
     this._api.FindBill(this.invNo, this.Cnum).subscribe(
       res => {
         this.temp = res
+        console.log(this.temp);
+        
         this.detailsForm.controls['Adv'].setValue(this.temp[0].adv);
         this.detailsForm.controls['Sup'].setValue(this.temp[0].supply);
         this.detailsForm.controls['Saving'].setValue(this.temp[0].bank);
@@ -164,16 +166,20 @@ this.showtoAdmin=false;
       this.invNo = `${this.Cnum}Bill-02_${this.to}`
     }
     else if (this.Cdate >= 21 && this.Cdate <= 31) {
-      console.log("3");
+      console.log("3",this.Cmonth,);
+
       if (this.Cmonth == 1) {
         this.from = `21/${this.Cmonth}/${this.Cyear}`
         this.to = `32/01/${this.Cyear + 1}`
         this.API(this.from, this.to)
+        
       }
       else {
         this.from = `21/${this.Cmonth}/${this.Cyear}`
         this.to = `32/${this.Cmonth + 1}/${this.Cyear}`
         this.API(this.from, this.to)
+        
+        console.log(this.from, this.to);
       }
       this.invNo = `${this.Cnum}Bill-03_31/${this.Cmonth + 1}/${this.Cyear}`
     }
@@ -313,6 +319,8 @@ this.showtoAdmin=false;
     this._api.postBill(temp).subscribe(res => {
       this.err_p = ""
       this.temp = res
+      console.log(this.temp );
+      
       this.detailsForm.controls['Adv'].setValue(this.temp.data.adv);
       this.detailsForm.controls['Sup'].setValue(this.temp.data.supply);
       this.detailsForm.controls['Saving'].setValue(this.temp.data.bank);

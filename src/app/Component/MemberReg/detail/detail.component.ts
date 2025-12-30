@@ -73,8 +73,8 @@ export class DetailComponent implements OnInit {
   API(from: any, to: any) {
     // from = "01/01/2021" ;
     // to = "32/03/2022";
-  //  from = "01/04/2021" ;
-  //  to = "32/03/2023";
+   from = "01/04/2023" ;
+   to = "32/03/2024";
     // console.log (typeof from, from,to);
 
     this._api.getBillData(this.Cnum, `${from}`, `${to}`).subscribe(res => {
@@ -157,17 +157,19 @@ export class DetailComponent implements OnInit {
 
   getCurrentBill(res: any) {
 
-    // const startDate = new Date("04/01/2022");
-    // const endDate = new Date("03/31/2023");
-    // const filteredData = res.filter((item:any) => {
-    //   const itemDateParts = item.date.split('/');
-    //   const itemDate = new Date(
-    //     +itemDateParts[2], // year
-    //     +itemDateParts[1] - 1, // month (JavaScript months are 0-based)
-    //     +itemDateParts[0] // day
-    //   );
-    //   return itemDate >= startDate && itemDate <= endDate;
-    // });
+    const startDate = new Date("04/01/2023");
+    const endDate = new Date("03/31/2024");
+    const filteredData = res.filter((item:any) => {
+      const itemDateParts = item.date.split('/');
+      const itemDate = new Date(
+        +itemDateParts[2], // year
+        +itemDateParts[1] - 1, // month (JavaScript months are 0-based)
+        +itemDateParts[0] // day
+      );
+      // console.log(itemDate);
+      
+      return itemDate >= startDate && itemDate <= endDate;
+    });
 // console.log(filteredData );
 
     this.CurrentBill = []
@@ -178,10 +180,11 @@ export class DetailComponent implements OnInit {
     this.eveMilk = 0;
     this.eveRate = 0;
     // console.log(res);
-    // this.CurrentBill=res
-    
-    res.forEach((ele: any) => {
-    // filteredData.forEach((ele: any) => {
+    this.CurrentBill=res
+
+    this.CurrentBill=filteredData;// extra line added for filtered yearly data 
+    // res.forEach((ele: any) => {
+    filteredData.forEach((ele: any) => {
      
       var emon = (ele.date).slice(3, 5)
       var eyrs = (ele.date).slice(6, 10)
@@ -189,14 +192,15 @@ export class DetailComponent implements OnInit {
       var cyrs = this.currentDate.slice(6, 10)
       // console.log(ele.date,emon,eyrs, this.currentDate,cmon,cyrs);
       // follwing condition is  commented for yearly calculation
-       if (emon == cmon && eyrs == cyrs) {          
+      //  if (emon == cmon && eyrs == cyrs) {          
 
-      // if ((emon > 10 && eyrs == 2021) || (emon < 4 && eyrs == 2022)) {
+      if ((emon > 4 && eyrs == 2023) || (emon < 3 && eyrs == 2024)) {
 
         
         this.CurrentBill.push(ele);
         t_Trate = t_Trate + parseFloat(ele.t_rate);
         Tmilk = Tmilk + parseFloat(ele.milk);
+// console.log(Tmilk);
 
          if (ele.ehours == "Morning") {
         this.morMilk = this.morMilk + parseFloat(ele.milk);
@@ -228,6 +232,8 @@ export class DetailComponent implements OnInit {
     this.eveRate=parseFloat(this.eveRate).toFixed(2)
 
     this.totalMilk = Tmilk.toFixed(2)
+    console.log(this.totalMilk);
+    
     var share = (this.totalMilk * 0.05).toFixed(2)
     this.detailsForm.controls['Saving'].setValue(this.totalMilk);
     this.detailsForm.controls['Share'].setValue(share);

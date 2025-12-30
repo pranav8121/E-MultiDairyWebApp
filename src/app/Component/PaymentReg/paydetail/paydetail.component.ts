@@ -116,7 +116,7 @@ console.log(num.toLocaleString("hi-u-nu-latn"),num.toLocaleString("hi-u-nu-deva"
       content: [
                  {
             // text: `${this.dairyName} (${this.from} - ${this.to})`,
-            text: `${this.dairyName} (${this.from} - ${'30/04/2023'})`,
+            text: `${this.dairyName} (${this.from} - ${'31/12/2023'})`,
             fontSize:12,
             // font:'Segoe', 
             alignment: 'center',

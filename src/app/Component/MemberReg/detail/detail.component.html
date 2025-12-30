@@ -39,7 +39,9 @@
         </thead>
         <tbody>
           <!-- <tr class="text-warning" *ngFor="let temp of CurrentBill  | orderBy: order"> -->
+          <!-- <tr class="text-warning" *ngFor="let temp of CurrentBill"> -->
           <tr class="text-warning" *ngFor="let temp of CurrentBill">
+
 
             <td>{{temp.date|trimdate}} </td>
             <td>{{temp.hours|trimhours }}</td>
