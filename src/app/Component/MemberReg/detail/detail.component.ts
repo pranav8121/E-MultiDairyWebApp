@@ -155,89 +155,181 @@ export class DetailComponent implements OnInit {
  
   
 
-  getCurrentBill(res: any) {
+//   getCurrentBill(res: any) {
 
-    // const startDate = new Date("04/01/2022");
-    // const endDate = new Date("03/31/2023");
-    // const filteredData = res.filter((item:any) => {
-    //   const itemDateParts = item.date.split('/');
-    //   const itemDate = new Date(
-    //     +itemDateParts[2], // year
-    //     +itemDateParts[1] - 1, // month (JavaScript months are 0-based)
-    //     +itemDateParts[0] // day
-    //   );
-    //   return itemDate >= startDate && itemDate <= endDate;
-    // });
-// console.log(filteredData );
+//     // const startDate = new Date("04/01/2022");
+//     // const endDate = new Date("03/31/2023");
+//     // const filteredData = res.filter((item:any) => {
+//     //   const itemDateParts = item.date.split('/');
+//     //   const itemDate = new Date(
+//     //     +itemDateParts[2], // year
+//     //     +itemDateParts[1] - 1, // month (JavaScript months are 0-based)
+//     //     +itemDateParts[0] // day
+//     //   );
+//     //   return itemDate >= startDate && itemDate <= endDate;
+//     // });
+// // console.log(filteredData );
 
-    this.CurrentBill = []
-    var t_Trate = 0
-    var Tmilk = 0
-    this.morMilk = 0;
-    this.morRate = 0;
-    this.eveMilk = 0;
-    this.eveRate = 0;
-    // console.log(res);
-    // this.CurrentBill=res
+//     this.CurrentBill = []
+//     var t_Trate = 0
+//     var Tmilk = 0
+//     this.morMilk = 0;
+//     this.morRate = 0;
+//     this.eveMilk = 0;
+//     this.eveRate = 0;
+//     // console.log(res);
+//     // this.CurrentBill=res
     
-    res.forEach((ele: any) => {
-    // filteredData.forEach((ele: any) => {
+//     res.forEach((ele: any) => {
+//     // filteredData.forEach((ele: any) => {
      
-      var emon = (ele.date).slice(3, 5)
-      var eyrs = (ele.date).slice(6, 10)
-      var cmon = this.currentDate.slice(3, 5)
-      var cyrs = this.currentDate.slice(6, 10)
-      // console.log(ele.date,emon,eyrs, this.currentDate,cmon,cyrs);
-      // follwing condition is  commented for yearly calculation
-       if (emon == cmon && eyrs == cyrs) {          
+//       var emon = (ele.date).slice(3, 5)
+//       var eyrs = (ele.date).slice(6, 10)
+//       var cmon = this.currentDate.slice(3, 5)
+//       var cyrs = this.currentDate.slice(6, 10)
+//       // console.log(ele.date,emon,eyrs, this.currentDate,cmon,cyrs);
+//       // follwing condition is  commented for yearly calculation
+//        if (emon == cmon && eyrs == cyrs) {          
 
-      // if ((emon > 10 && eyrs == 2021) || (emon < 4 && eyrs == 2022)) {
+//       // if ((emon > 10 && eyrs == 2021) || (emon < 4 && eyrs == 2022)) {
 
         
-        this.CurrentBill.push(ele);
-        t_Trate = t_Trate + parseFloat(ele.t_rate);
-        Tmilk = Tmilk + parseFloat(ele.milk);
+//         this.CurrentBill.push(ele);
+//         t_Trate = t_Trate + parseFloat(ele.t_rate);
+//         Tmilk = Tmilk + parseFloat(ele.milk);
 
-         if (ele.ehours == "Morning") {
-        this.morMilk = this.morMilk + parseFloat(ele.milk);
-        // console.log("MorningM",this.morMilk);
+//          if (ele.ehours == "Morning") {
+//         this.morMilk = this.morMilk + parseFloat(ele.milk);
+//         // console.log("MorningM",this.morMilk);
         
-        // 
-        this.morRate = this.morRate + parseFloat(ele.t_rate);
-        // console.log("MorningR",this.morRate);
+//         // 
+//         this.morRate = this.morRate + parseFloat(ele.t_rate);
+//         // console.log("MorningR",this.morRate);
         
-        // this.morRate=parseFloat(this.morRate).toFixed(2)
-      }
-      if (ele.ehours == "Evening") {
-        this.eveMilk = this.eveMilk + parseFloat(ele.milk);
-        // console.log("EveM",this.eveMilk);
+//         // this.morRate=parseFloat(this.morRate).toFixed(2)
+//       }
+//       if (ele.ehours == "Evening") {
+//         this.eveMilk = this.eveMilk + parseFloat(ele.milk);
+//         // console.log("EveM",this.eveMilk);
         
-        // this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
-        this.eveRate = this.eveRate + parseFloat(ele.t_rate);
-        // console.log("EveR",this.eveRate);
+//         // this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
+//         this.eveRate = this.eveRate + parseFloat(ele.t_rate);
+//         // console.log("EveR",this.eveRate);
         
-        // this.eveRate=parseFloat(this.eveRate).toFixed(2)
-      }
-       }
-    });
-    // console.log(this.CurrentBill);
+//         // this.eveRate=parseFloat(this.eveRate).toFixed(2)
+//       }
+//        }
+//     });
+//     // console.log(this.CurrentBill);
     
-    this.morMilk =parseFloat(this.morMilk).toFixed(2)
-    this.morRate=parseFloat(this.morRate).toFixed(2)
-    this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
-    this.eveRate=parseFloat(this.eveRate).toFixed(2)
+//     this.morMilk =parseFloat(this.morMilk).toFixed(2)
+//     this.morRate=parseFloat(this.morRate).toFixed(2)
+//     this.eveMilk=parseFloat(this.eveMilk).toFixed(2)
+//     this.eveRate=parseFloat(this.eveRate).toFixed(2)
 
-    this.totalMilk = Tmilk.toFixed(2)
-    var share = (this.totalMilk * 0.05).toFixed(2)
-    this.detailsForm.controls['Saving'].setValue(this.totalMilk);
-    this.detailsForm.controls['Share'].setValue(share);
-    this.totalRate = t_Trate.toFixed(2);
-    var sum = parseFloat(this.totalMilk) + parseFloat(share)
-    this.totalDeduct = parseFloat(sum.toFixed(2));
-    var sub = this.totalRate - sum
-    this.subTotal = sub.toFixed(2)
-    // this.detailsForm.setValue(Saving:)
+//     this.totalMilk = Tmilk.toFixed(2)
+//     var share = (this.totalMilk * 0.05).toFixed(2)
+//     this.detailsForm.controls['Saving'].setValue(this.totalMilk);
+//     this.detailsForm.controls['Share'].setValue(share);
+//     this.totalRate = t_Trate.toFixed(2);
+//     var sum = parseFloat(this.totalMilk) + parseFloat(share)
+//     this.totalDeduct = parseFloat(sum.toFixed(2));
+//     var sub = this.totalRate - sum
+//     this.subTotal = sub.toFixed(2)
+//     // this.detailsForm.setValue(Saving:)
+//   }
+getCurrentBill(res: any) {
+
+  this.CurrentBill = [];
+
+  let t_Trate = 0;
+  let Tmilk = 0;
+
+  this.morMilk = 0;
+  this.morRate = 0;
+  this.eveMilk = 0;
+  this.eveRate = 0;
+
+  /* -------------------------------
+     STEP 1: Decide batch date range
+  --------------------------------*/
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const year = today.getFullYear();
+  const month = today.getMonth(); // 0-based
+
+  let startDay: number;
+  let endDay: number;
+
+  if (today.getDate() <= 10) {
+    startDay = 1;
+    endDay = 10;
+  } else if (today.getDate() <= 20) {
+    startDay = 11;
+    endDay = 20;
+  } else {
+    startDay = 21;
+    // automatically handles 28 / 29 / 30 / 31
+    endDay = new Date(year, month + 1, 0).getDate();
   }
+
+  const startDate = new Date(year, month, startDay);
+  const endDate = new Date(year, month, endDay);
+
+  /* -------------------------------
+     STEP 2: Filter & calculate bill
+  --------------------------------*/
+
+  res.forEach((ele: any) => {
+
+    if (!ele.date) return;
+
+    const [day, mon, yr] = ele.date.split('/');
+    const itemDate = new Date(+yr, +mon - 1, +day);
+    itemDate.setHours(0, 0, 0, 0);
+
+    if (itemDate >= startDate && itemDate <= endDate) {
+
+      this.CurrentBill.push(ele);
+
+      t_Trate += parseFloat(ele.t_rate);
+      Tmilk += parseFloat(ele.milk);
+
+      if (ele.ehours === "Morning") {
+        this.morMilk += parseFloat(ele.milk);
+        this.morRate += parseFloat(ele.t_rate);
+      }
+
+      if (ele.ehours === "Evening") {
+        this.eveMilk += parseFloat(ele.milk);
+        this.eveRate += parseFloat(ele.t_rate);
+      }
+    }
+  });
+
+  /* -------------------------------
+     STEP 3: Final calculations
+  --------------------------------*/
+
+  this.morMilk = this.morMilk.toFixed(2);
+  this.morRate = this.morRate.toFixed(2);
+  this.eveMilk = this.eveMilk.toFixed(2);
+  this.eveRate = this.eveRate.toFixed(2);
+
+  this.totalMilk = Tmilk.toFixed(2);
+  this.totalRate = t_Trate.toFixed(2);
+
+  const share = (Tmilk * 0.05).toFixed(2);
+  this.detailsForm.controls['Saving'].setValue(this.totalMilk);
+  this.detailsForm.controls['Share'].setValue(share);
+
+  const sum = parseFloat(this.totalMilk) + parseFloat(share);
+  this.totalDeduct = parseFloat(sum.toFixed(2));
+  this.subTotal = (t_Trate - sum).toFixed(2);
+}
+
 
   calcu() {
     var adv = this.detailsForm.get('Adv').value
