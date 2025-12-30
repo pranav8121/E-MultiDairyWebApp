@@ -101,7 +101,7 @@ export class MainComponent implements OnInit {
     this.flag_1 = true;
     this.dateChanged=false;
     this.timeChange=false;
-    this.currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en')
+    this.currentDate = formatDate(new Date(), 'dd/MM/yyyy', 'en')
     this.OnLoad()
   }
 
